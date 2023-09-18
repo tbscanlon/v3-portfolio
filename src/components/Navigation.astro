@@ -1,5 +1,6 @@
 ---
 import Logo from "./Logo.astro";
+import Rainbow from "./Rainbow.astro";
 
 const links = [
   {
@@ -28,45 +29,9 @@ const links = [
 <>
   <nav
     aria-label="Main"
-    class="relative flex flex-row-reverse p-4 bg-grey-2 shadow-xl"
+    class="relative flex flex-row-reverse p-4 md:p-6 xl:p-8 bg-grey-2 shadow-xl"
   >
-    <svg
-      width="82"
-      height="64"
-      viewBox="0 0 82 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      class="absolute left-0 top-0"
-    >
-      <rect
-        x="48.6278"
-        y="-36.3"
-        width="12"
-        height="128"
-        transform="rotate(32 48.6278 -36.3)"
-        class="fill-red"></rect>
-      <rect
-        x="79.1096"
-        y="-17.2528"
-        width="12"
-        height="128"
-        transform="rotate(32 79.1096 -17.2528)"
-        class="fill-blue"></rect>
-      <rect
-        x="68.9331"
-        y="-23.6118"
-        width="12"
-        height="128"
-        transform="rotate(32 68.9331 -23.6118)"
-        class="fill-green"></rect>
-      <rect
-        x="58.7565"
-        y="-29.9709"
-        width="12"
-        height="128"
-        transform="rotate(32 58.7565 -29.9709)"
-        class="fill-yellow"></rect>
-    </svg>
+    <Rainbow />
     <button
       id="show-mobile-nav"
       type="button"
@@ -87,7 +52,23 @@ const links = [
           d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
       </svg>
     </button>
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex flex-row">
+      {
+        links.map((link) => (
+          <li>
+            <a
+              class="block py-0.5 xl:py-1 ml-8 xl:ml-12 hover:text-blue-light focus:bg-grey-4 rounded-lg duration-300"
+              href={link.href}
+            >
+              {link.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </nav>
+  <!-- Mobile nav -->
   <div
     id="mobile-nav-container"
     class="hidden md:hidden fixed z-50 h-full w-full top-0 bg-grey-1 p-4"
@@ -113,7 +94,7 @@ const links = [
         </svg>
         <span class="sr-only">Close main menu</span>
       </button>
-      <div class="px-4 pt-12 w-[50%]">
+      <div class="px-4 pt-12 w-[50%] max-w-[220px]">
         <Logo />
       </div>
       <ul class="text-2xl pt-12">
