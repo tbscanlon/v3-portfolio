@@ -2,6 +2,8 @@
 import "@fontsource/ibm-plex-sans";
 import "@fontsource/ibm-plex-serif/500.css";
 
+import Navigation from "../components/Navigation.astro";
+
 const { title } = Astro.props;
 ---
 
@@ -16,6 +18,7 @@ const { title } = Astro.props;
   <body
     class="antialiased bg-grey-12 dark:bg-grey-2 text-grey-2 dark:text-grey-11"
   >
+    <Navigation />
     <slot />
   </body>
 </html>
