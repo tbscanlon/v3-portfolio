@@ -1,22 +1,88 @@
 ---
-import Logo from "./Logo.astro";
+
 ---
 
-<header
-  class="grid grid-cols-2 gap-12 p-4 md:p-6 xl:p-8 justify-center items-center"
->
-  <div class="bg-red">
-    <Logo />
+<header class="p-4 md:p-6 xl:p-8">
+  <div class="container mx-auto h-full grid justify-center items-center">
+    <div>
+      <h1
+        class="pb-2 xl:pb-4 text-lg lg:text-xl 2xl:text-2xl font-semibold text-blue-light"
+      >
+        Tom Scanlon | Web Developer
+      </h1>
+      <h2
+        class="leading-tight text-4xl md:text-6xl 2xl:text-8xl pb-6 md:pb-8 lg:pb-12 2xl:pb-16"
+      >
+        Making the world a <span
+          class="text-transparent bg-clip-text bg-gradient-to-b from-blue to-blue-light"
+          >better place</span
+        >, one line of code at a time.
+      </h2>
+      <div class="space-x-4 xl:space-x-8">
+        <a
+          href="/contact"
+          class="inline-block p-3 xl:p-4 md:px-6 xl:px-8 bg-blue-light text-grey-2 text-md md:text-lg xl:text-xl rounded-lg shadow-md hover:bg-blue focus:bg-blue duration-300"
+          >Get in touch</a
+        >
+        <a
+          href="/portfolio"
+          class="inline-block p-3 xl:p-4 md:px-6 xl:px-8 bg-grey-2 border text-grey-11 text-md md:text-lg xl:text-xl rounded-lg shadow-md hover:bg-grey-4 focus:bg-grey-4 duration-300"
+          >See my work</a
+        >
+      </div>
+    </div>
   </div>
-  <h1 class="font-serif text-4xl">
-    Cool eye-catching header with <span class="text-blue-light">word</span>
-  </h1>
 </header>
 
 <style>
   header {
-    height: calc(100vh - 76px);
+    height: calc(100vh - 64px);
     background-color: theme(colors.grey.2);
     background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23504945' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+    @media screen(md) {
+      height: calc(100vh - 76px);
+    }
+
+    @media screen(xl) {
+      height: calc(100vh - 96px);
+    }
+  }
+
+  header h2 {
+    text-shadow: 2px 2px 0px theme(colors.grey.5);
+
+    @media screen(md) {
+      text-shadow: 3px 3px 0px theme(colors.grey.5);
+    }
+
+    @media screen(xl) {
+      text-shadow: 4px 4px 0px theme(colors.grey.5);
+    }
+  }
+
+  header a {
+    box-shadow: 2px 2px 0px theme(colors.grey.5);
+
+    @media screen(md) {
+      box-shadow: 3px 3px 0px theme(colors.grey.5);
+    }
+
+    @media screen(xl) {
+      box-shadow: 4px 4px 0px theme(colors.grey.5);
+    }
+  }
+
+  header h2 > span {
+    text-shadow: none;
+    filter: drop-shadow(2px 2px 0px theme(colors.grey.3));
+
+    @media screen(md) {
+      filter: drop-shadow(3px 3px 0px theme(colors.grey.3));
+    }
+
+    @media screen(xl) {
+      filter: drop-shadow(4px 4px 0px theme(colors.grey.3));
+    }
   }
 </style>
