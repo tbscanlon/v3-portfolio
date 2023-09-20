@@ -1,0 +1,79 @@
+---
+
+---
+
+<section class="p-4 md:p-6 xl:p-8 xl:text-lg">
+  <div class="container mx-auto">
+    <h2 class="font-semibold text-2xl md:text-4xl pb-4">Hello, I'm Tom</h2>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-4">
+        <p>I'm a web developer specialising in front-end development.</p>
+        <p>
+          I enjoy building websites and web applications that are performant,
+          accessible and beautiful.
+        </p>
+        <p>
+          I'm passionate about building things with real value that make things
+          better for people.
+        </p>
+        <a
+          href="/"
+          class="block underline underline-offset-4 decoration-2 decoration-blue-light after:content-['_→'] duration-300 hover:text-blue-light"
+          >Learn more about me</a
+        >
+      </div>
+      <div
+        id="facts"
+        class="relative p-6 bg-blue-light text-grey-2 rounded-lg flex flex-col justify-between items-start"
+      >
+        <h2 class="text-2xl z-10">Fun fact about me:</h2>
+        <p id="fact" class="z-10">
+          I learned to type when I was three years old.
+        </p>
+        <button
+          id="new-fact"
+          role="button"
+          class="border rounded-lg p-3 xl:p-4 md:px-6 xl:px-8 z-10"
+          >See another fact</button
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const facts = [
+    "I learned to type when I was three years old.",
+    "I once accidentally shoplifted £20 worth of sweets. (I paid for them the next day!)",
+    "I can't click my fingers.",
+    "I can't touch my toes.",
+    "I have no soul.",
+  ];
+
+  const factButton = document.getElementById("new-fact");
+  const text = document.getElementById("fact");
+
+  function updateFact() {
+    const currentFact = text?.innerText;
+    const otherFacts = facts.filter((fact) => fact !== currentFact);
+    const selectedFact =
+      otherFacts[Math.floor(Math.random() * otherFacts.length)];
+
+    if (text) {
+      text.innerText = selectedFact;
+    }
+  }
+
+  factButton?.addEventListener("click", updateFact);
+</script>
+
+<style>
+  #facts {
+    background-image: url("/public/starburst.svg");
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: 400% 0%;
+    animation-name: starburst;
+    animation-duration: 60s;
+  }
+</style>
