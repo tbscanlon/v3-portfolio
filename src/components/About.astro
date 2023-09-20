@@ -2,20 +2,36 @@
 
 ---
 
-<section class="p-4 md:p-6 xl:p-8 xl:text-lg">
+<section
+  class="p-4 md:p-6 xl:p-8 xl:text-lg min-h-screen flex justify-center items-center"
+>
   <div class="container mx-auto">
-    <h2 class="font-semibold text-2xl md:text-4xl pb-4">Hello, I'm Tom</h2>
-    <div class="grid grid-cols-2 gap-4">
-      <div class="space-y-4">
-        <p>I'm a web developer specialising in front-end development.</p>
+    <div class="grid grid-cols-12 gap-4 xl:gap-16 xl:text-2xl">
+      <div class="space-y-4 xl:space-y-8 col-span-8">
+        <h2
+          class="font-semibold text-2xl md:text-4xl xl:text-6xl pb-4 md:pb-8 xl:pb-12"
+        >
+          Hello, I'm <span class="text-blue-light">Tom</span>
+        </h2>
         <p>
-          I enjoy building websites and web applications that are performant,
-          accessible and beautiful.
+          I'm a web developer specialising in <span class="text-blue-light"
+            >front-end development</span
+          > using JavaScript.
+        </p>
+        <p>
+          I enjoy using agile methodologies to build websites and web
+          applications that are <span class="text-blue-light">performant</span>,
+
+
+          <span class="text-blue-light">accessible</span> and <span
+            class="text-blue-light">beautiful</span
+          >.
         </p>
         <p>
           I'm passionate about building things with real value that make things
-          better for people.
+          <span class="text-blue-light">better</span> for people.
         </p>
+        <p></p>
         <a
           href="/"
           class="block underline underline-offset-4 decoration-2 decoration-blue-light after:content-['_→'] duration-300 hover:text-blue-light"
@@ -24,16 +40,16 @@
       </div>
       <div
         id="facts"
-        class="relative p-6 bg-blue-light text-grey-2 rounded-lg flex flex-col justify-between items-start"
+        class="relative p-6 bg-gradient-to-tr from-blue-light to-blue to-85% text-grey-2 rounded-lg flex flex-col justify-between items-start col-span-4"
       >
-        <h2 class="text-2xl z-10">Fun fact about me:</h2>
-        <p id="fact" class="z-10">
+        <h3 class="font-semibold text-4xl z-10 pb-4">Fun fact about me:</h3>
+        <p id="fact" class="z-10 pb-8">
           I learned to type when I was three years old.
         </p>
         <button
           id="new-fact"
           role="button"
-          class="border rounded-lg p-3 xl:p-4 md:px-6 xl:px-8 z-10"
+          class="border rounded-lg p-3 xl:p-4 md:px-6 xl:px-8 z-10 w-full enabled:hover:bg-blue enabled:focus:bg-blue duration-300 disabled:opacity-75"
           >See another fact</button
         >
       </div>
@@ -43,24 +59,31 @@
 
 <script>
   const facts = [
-    "I learned to type when I was three years old.",
+    "I built my first website when I was thirteen years old.",
+    "I'm entirely self-taught in front-end development.",
     "I once accidentally shoplifted £20 worth of sweets. (I paid for them the next day!)",
     "I can't click my fingers.",
     "I can't touch my toes.",
-    "I have no soul.",
-  ];
+    "Parlo un po' d'italiano.",
+    "I memorised the entire Monty Python dead parrot sketch for a school performance.",
+    "I have a worringly encyclopaedic knowledge of the London Underground.",
+  ].sort(() => Math.random() - 0.5);
 
-  const factButton = document.getElementById("new-fact");
   const text = document.getElementById("fact");
+  const factButton = document.getElementById(
+    "new-fact"
+  ) as HTMLButtonElement | null;
 
   function updateFact() {
-    const currentFact = text?.innerText;
-    const otherFacts = facts.filter((fact) => fact !== currentFact);
-    const selectedFact =
-      otherFacts[Math.floor(Math.random() * otherFacts.length)];
+    const newFact = facts.pop();
 
-    if (text) {
-      text.innerText = selectedFact;
+    if (text && newFact) {
+      text.innerText = newFact;
+    }
+
+    if (factButton && facts.length === 0) {
+      factButton.innerText = "Ok that's enough";
+      factButton.disabled = true;
     }
   }
 
@@ -68,12 +91,11 @@
 </script>
 
 <style>
-  #facts {
-    background-image: url("/public/starburst.svg");
-    background-repeat: no-repeat;
-    background-size: 90%;
-    background-position: 400% 0%;
-    animation-name: starburst;
-    animation-duration: 60s;
+  #new-fact {
+    box-shadow: 4px 4px 0px theme(colors.grey.5);
+  }
+
+  section h2 {
+    text-shadow: 3px 3px 0px theme(colors.grey.5);
   }
 </style>
