@@ -4,10 +4,6 @@ import Rainbow from "./Rainbow.astro";
 
 const links = [
   {
-    href: "/",
-    text: "Home",
-  },
-  {
     href: "/portfolio",
     text: "Portfolio",
   },
@@ -29,13 +25,17 @@ const links = [
 <>
   <nav
     aria-label="Main"
-    class="relative flex flex-row-reverse p-4 md:p-6 xl:p-8 bg-grey-2 shadow-xl"
+    class="relative flex flex-row p-4 md:p-6 xl:p-8 bg-grey-2 shadow-xl"
   >
+    <a
+      class="z-50 md:text-lg xl:text-xl xl-py-0.5 hover:text-blue-light focus:bg-grey-4 rounded-lg duration-300"
+      href="/">Tom Scanlon</a
+    >
     <Rainbow />
     <button
       id="show-mobile-nav"
       type="button"
-      class="md:hidden rounded-full p-1 hover:bg-grey-4 focus:bg-grey-4 duration-300"
+      class="md:hidden rounded-full p-1 ml-auto hover:bg-grey-4 focus:bg-grey-4 duration-300"
     >
       <span class="sr-only">Open main menu</span>
       <svg
@@ -53,7 +53,7 @@ const links = [
       </svg>
     </button>
     <!-- Desktop nav -->
-    <ul class="hidden md:flex flex-row">
+    <ul class="hidden md:flex flex-row ml-auto">
       {
         links.map((link) => (
           <li>
@@ -68,52 +68,82 @@ const links = [
       }
     </ul>
   </nav>
-  <!-- Mobile nav -->
-  <div
-    id="mobile-nav-container"
-    class="hidden md:hidden fixed z-50 h-full w-full top-0 bg-grey-1 p-4"
-  >
-    <div class="relative">
-      <button
-        type="button"
-        id="hide-mobile-nav"
-        class="absolute right-0 rounded-full p-1 hover:bg-grey-4 focus:bg-grey-4 duration-300"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-        <span class="sr-only">Close main menu</span>
-      </button>
-      <div class="px-4 pt-12 w-[50%] max-w-[220px]">
-        <Logo />
-      </div>
-      <ul class="text-2xl pt-12">
-        {
-          links.map((link) => (
-            <li>
-              <a
-                class="block py-6 px-4 w-full hover:bg-grey-4 focus:bg-grey-4 rounded-lg duration-300"
-                href={link.href}
-              >
-                {link.text}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </div>
 </>
+<!-- Mobile nav -->
+<div
+  id="mobile-nav-container"
+  class="hidden md:hidden fixed z-50 h-full w-full top-0 bg-grey-1 p-4"
+>
+  <div class="relative">
+    <button
+      type="button"
+      id="hide-mobile-nav"
+      class="absolute right-0 rounded-full p-1 hover:bg-grey-4 focus:bg-grey-4 duration-300"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+      <span class="sr-only">Close main menu</span>
+    </button>
+    <div class="px-4 pt-12 w-[50%] max-w-[220px]">
+      <Logo />
+    </div>
+    <ul class="text-2xl pt-12">
+      <li>
+        <a
+          class="block py-6 px-4 w-full hover:bg-grey-4 focus:bg-grey-4 rounded-lg duration-300"
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      {
+        links.map((link) => (
+          <li>
+            <a
+              class="block py-6 px-4 w-full hover:bg-grey-4 focus:bg-grey-4 rounded-lg duration-300"
+              href={link.href}
+            >
+              {link.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  nav {
+    padding-left: 82px;
+  }
+
+  nav > a {
+    text-shadow: 1px 1px 0px theme(colors.grey.5);
+  }
+
+  @media screen(md) {
+    nav {
+      padding-left: 105px;
+    }
+  }
+
+  @media screen(xl) {
+    nav {
+      padding-left: 146px;
+    }
+  }
+</style>
 
 <script>
   const openMobileNav = document.getElementById("show-mobile-nav");
