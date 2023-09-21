@@ -1,5 +1,4 @@
 ---
-import Logo from "./Logo.astro";
 import Rainbow from "./Rainbow.astro";
 
 const links = [
@@ -25,10 +24,10 @@ const links = [
 <>
   <nav
     aria-label="Main"
-    class="relative flex flex-row p-4 md:p-6 xl:p-8 bg-grey-2 shadow-xl"
+    class="relative flex flex-row p-4 md:p-6 xl:p-8 bg-grey-2 shadow-xl items-center"
   >
     <a
-      class="z-50 md:text-lg xl:text-xl xl-py-0.5 hover:text-blue-light focus:bg-grey-4 rounded-lg duration-300"
+      class="xl:py-0.5 hover:text-blue-light focus:bg-grey-4 duration-300 bg-grey-2 z-10"
       href="/">Tom Scanlon</a
     >
     <Rainbow />
@@ -58,7 +57,7 @@ const links = [
         links.map((link) => (
           <li>
             <a
-              class="block px-1 xl:py-0.5 ml-6 xl:ml-12 text-lg xl:text-xl hover:text-blue-light focus:bg-grey-4 rounded-lg duration-300"
+              class="block px-1 xl:py-0.5 ml-6 xl:ml-12 hover:text-blue-light focus:bg-grey-4 rounded-lg duration-300"
               href={link.href}
             >
               {link.text}
@@ -121,15 +120,15 @@ const links = [
 </div>
 
 <style>
-  nav {
+  /* nav {
     padding-left: 82px;
-  }
+  } */
 
   nav > a {
     text-shadow: 1px 1px 0px theme(colors.grey.5);
   }
 
-  @media screen(md) {
+  /* @media screen(md) {
     nav {
       padding-left: 105px;
     }
@@ -139,7 +138,7 @@ const links = [
     nav {
       padding-left: 146px;
     }
-  }
+  } */
 </style>
 
 <script>
