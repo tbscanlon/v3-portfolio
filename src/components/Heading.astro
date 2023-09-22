@@ -1,0 +1,24 @@
+---
+const { class: className } = Astro.props;
+---
+
+<h2
+  class="font-semibold text-2xl md:text-4xl xl:text-6xl pb-4 md:pb-8 xl:pb-12"
+  class:list={className}
+>
+  <slot />
+</h2>
+
+<style>
+  h2 {
+    text-shadow: 2px 2px 0px theme(colors.grey.5);
+
+    @media screen(md) {
+      text-shadow: 3px 3px 0px theme(colors.grey.5);
+    }
+
+    @media screen(xl) {
+      text-shadow: 4px 4px 0px theme(colors.grey.5);
+    }
+  }
+</style>

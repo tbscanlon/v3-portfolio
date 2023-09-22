@@ -1,0 +1,39 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
+  class?: string;
+  color: "blue" | "red" | "green" | "yellow" | "grey";
+}
+
+const { children, color, class: className, ...props } = Astro.props;
+---
+
+<button
+  {...props}
+  class="border rounded-lg p-3 xl:p-4 md:px-6 xl:px-8 duration-300 disabled:opacity-75"
+  class:list={[
+    className,
+    {
+      "border-grey-2 text-grey-2 bg-blue-light enabled:hover:bg-blue enabled:focus:bg-blue":
+        color === "blue",
+      // Need to use the darkest grey available (grey 1) for WCAG AA with red buttons
+      "border-grey-1 bg-red-light enabled:hover:bg-red enabled:focus:bg-red text-grey-1":
+        color === "red",
+      "border-grey-2 text-grey-2 bg-green-light enabled:hover:bg-green enabled:focus:bg-green":
+        color === "green",
+      "border-grey-2 text-grey-2 bg-yellow-light enabled:hover:bg-yellow enabled:focus:bg-yellow":
+        color === "yellow",
+      "bg-grey-2  border-grey-11 text-grey-11 enabled:hover:bg-grey-4 enabled:focus:bg-grey-4":
+        color === "grey",
+    },
+  ]}
+>
+  <slot />
+</button>
+
+<style>
+  button {
+    box-shadow: 4px 4px 0px theme(colors.grey.5);
+  }
+</style>

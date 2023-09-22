@@ -66,9 +66,6 @@ module.exports = {
         sans: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
         serif: ["IBM Plex Serif", ...defaultTheme.fontFamily.serif],
       },
-      animation: {
-        'spin-slow': 'spin 60s linear infinite',
-      }
     },
   },
   plugins: [],

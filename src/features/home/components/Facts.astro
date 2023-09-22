@@ -1,0 +1,51 @@
+---
+import Button from "@components/Button.astro";
+---
+
+<div
+  id="facts"
+  class="p-4 md:p-6 bg-blue-light 2xl:bg-gradient-to-tr from-blue-light to-blue to-90% text-grey-2 rounded-lg flex flex-col justify-between items-start col-span-4 lg:col-span-3 xl:col-span-4 min-h-[250px]"
+>
+  <h3 class="font-semibold text-xl md:text-2xl xl:text-4xl z-10 pb-4">
+    Fun fact about me:
+  </h3>
+  <p id="fact" class="z-10 pb-8">
+    I learned to type when I was three years old.
+  </p>
+  <Button color="blue" id="new-fact" class="lg:bg-transparent w-full">
+    See another fact
+  </Button>
+</div>
+
+<script>
+  const facts = [
+    "I built my first website when I was thirteen years old.",
+    "I'm entirely self-taught in front-end development.",
+    "I once accidentally shoplifted £20 worth of sweets. (I paid for them the next day!)",
+    "I can't click my fingers.",
+    "I can't touch my toes.",
+    "Parlo un po' d'italiano.",
+    "I memorised the entire Monty Python dead parrot sketch for a school performance.",
+    "I have a worringly encyclopaedic knowledge of the London Underground.",
+  ].sort(() => Math.random() - 0.5);
+
+  const text = document.getElementById("fact");
+  const factButton = document.getElementById(
+    "new-fact"
+  ) as HTMLButtonElement | null;
+
+  function updateFact() {
+    const newFact = facts.pop();
+
+    if (text && newFact) {
+      text.innerText = newFact;
+    }
+
+    if (factButton && facts.length === 0) {
+      factButton.innerText = "Ok that's enough";
+      factButton.disabled = true;
+    }
+  }
+
+  factButton?.addEventListener("click", updateFact);
+</script>

@@ -1,0 +1,37 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  class?: string;
+  isExternal?: boolean;
+  color: "blue" | "red" | "green" | "yellow";
+  children: any;
+}
+
+const { class: className, color, isExternal = false, ...attrs } = Astro.props;
+---
+
+<a
+  target={isExternal ? "_blank" : ""}
+  class="inline-block underline underline-offset-4 decoration-2 duration-300 hover:decoration-4 focus:decoration-4 py-2 md:py-0"
+  class:list={[
+    className,
+    {
+      "decoration-blue-light hover:text-blue-light focus:text-blue-light":
+        color === "blue",
+      "decoration-red-light hover:text-red-light focus:text-red-light":
+        color === "red",
+      "decoration-green-light hover:text-green-light focus:text-green-light":
+        color === "green",
+      "decoration-yellow-light hover:text-yellow-light focus:text-yellow-light":
+        color === "yellow",
+    },
+    {
+      "after:content-['_→']": !isExternal,
+      "after:content-['_↗']": isExternal,
+    },
+  ]}
+  {...attrs}
+>
+  <slot />
+</a>

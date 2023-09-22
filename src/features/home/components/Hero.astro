@@ -1,5 +1,5 @@
 ---
-
+import LinkButton from "@components/LinkButton.astro";
 ---
 
 <header class="p-4 md:p-6 xl:p-8">
@@ -22,16 +22,8 @@
         <span class="block"> one line of code at a time.</span>
       </h2>
       <div class="space-x-4 xl:space-x-8">
-        <a
-          href="/contact"
-          class="inline-block p-3 xl:p-4 md:px-6 xl:px-8 bg-blue-light text-grey-2 rounded-lg shadow-md hover:bg-blue focus:bg-blue duration-300"
-          >Get in touch</a
-        >
-        <a
-          href="/portfolio"
-          class="inline-block p-3 xl:p-4 md:px-6 xl:px-8 bg-grey-2 border text-grey-11 rounded-lg shadow-md hover:bg-grey-4 focus:bg-grey-4 duration-300"
-          >See my work</a
-        >
+        <LinkButton color="blue" href="/contact">Get in touch</LinkButton>
+        <LinkButton color="grey" href="/portfolio">See my work</LinkButton>
       </div>
     </div>
   </div>
