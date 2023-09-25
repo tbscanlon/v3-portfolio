@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
+  label: string;
+  children: any;
+  class?: string;
+}
+
+const { label, class: className, ...attrs } = Astro.props;
+---
+
+<button
+  class="md:hidden rounded-full p-1 hover:bg-grey-4 focus:bg-grey-4 duration-300"
+  class:list={className}
+  {...attrs}
+>
+  <span class="sr-only">{label}</span>
+  <slot />
+</button>
