@@ -1,6 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import IconButton from "@components/IconButton.astro";
 import Rainbow from "./Rainbow.astro";
+import logo from "../images/logo.svg";
 
 const links = [
   {
@@ -70,15 +72,16 @@ const links = [
   </nav>
 </>
 <!-- Mobile nav -->
-<div
+<dialog
   id="mobile-nav-container"
-  class="hidden md:hidden fixed z-50 h-full w-full top-0 bg-grey-1 p-4"
+  class="p-4 h-full w-full top-0 bg-grey-1 text-grey-11 backdrop:bg-grey-1"
 >
   <div class="relative">
     <IconButton
       id="hide-mobile-nav"
       class="absolute right-0"
       label="Close main menu"
+      autofocus
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -94,6 +97,7 @@ const links = [
           d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </IconButton>
+    <Image src={logo} alt="My logo" class="pt-12 px-4 w-[150px]" />
     <ul class="text-2xl pt-12">
       <li>
         <a
@@ -117,7 +121,7 @@ const links = [
       }
     </ul>
   </div>
-</div>
+</dialog>
 
 <style>
   nav {
@@ -142,18 +146,21 @@ const links = [
 </style>
 
 <script>
+  const body = document.querySelector("body");
   const openMobileNav = document.getElementById("show-mobile-nav");
   const closeMobileNav = document.getElementById("hide-mobile-nav");
-  const mobileNav = document.getElementById("mobile-nav-container");
+  const mobileNav = document.getElementById(
+    "mobile-nav-container"
+  ) as HTMLDialogElement;
 
   function showNav() {
-    mobileNav?.classList.remove("hidden");
-    closeMobileNav?.focus();
+    mobileNav.showModal();
+    body?.classList.add("overflow-hidden");
   }
 
   function hideNav() {
-    mobileNav?.classList.add("hidden");
-    openMobileNav?.focus();
+    mobileNav.close();
+    body?.classList.remove("overflow-hidden");
   }
 
   openMobileNav?.addEventListener("click", showNav);
