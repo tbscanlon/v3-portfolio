@@ -1,0 +1,38 @@
+---
+import Heading from "@components/Heading.astro";
+import Container from "@components/Container.astro";
+import Columns from "@components/Columns.astro";
+import TextLink from "@components/TextLink.astro";
+
+import FeaturedProject from "./FeaturedProject.astro";
+---
+
+<Container class="bg-grey-1">
+  <Columns reverse>
+    <div slot="left" class="space-y-4 xl:space-y-8">
+      <Heading>My <span class="text-yellow-light">projects</span></Heading>
+      <p>
+        I've worked on a wide variety of things over the last few years, from
+        small <span class="text-yellow-light">freelance</span> projects to live
+        products with <span class="text-yellow-light"
+          >millions of monthly users</span
+        >.
+      </p>
+      <p>
+        Alongside my professional work, I also try to dedicate some of my time
+        to <span class="text-yellow-light">volunteer</span> projects. I take
+        great satisfaction in using my skills and knowledge for <span
+          class="text-yellow-light">good causes</span
+        >.
+      </p>
+      <p>
+        I enjoy working in <span class="text-yellow-light">agile</span>
+         cross-functional teams with fast feedback loops and <span
+          class="text-yellow-light">data-driven</span
+        > decision making.
+      </p>
+      <TextLink href="/portfolio" color="yellow">See some of my work</TextLink>
+    </div>
+    <FeaturedProject slot="right" />
+  </Columns>
+</Container>

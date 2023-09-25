@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  class?: string;
+  children: any;
+  reverse?: boolean;
+}
+
+const { class: className, reverse, ...attrs } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-4 md:grid-cols-8 xl:grid-cols-12 gap-8 xl:gap-16"
+  class:list={className}
+  {...attrs}
+>
+  <div
+    class="col-span-4 lg:col-span-5 xl:col-span-8"
+    class:list={{
+      "md:order-1": reverse,
+    }}
+  >
+    <slot name="left" />
+  </div>
+  <div class="col-span-4 lg:col-span-3 xl:col-span-4">
+    <slot name="right" />
+  </div>
+</div>

@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"section"> {
+  class?: string;
+  children: any;
+}
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<section
+  class="p-4 md:p-6 xl:p-8 min-h-screen flex justify-center items-center"
+  class:list={className}
+  {...attrs}
+>
+  <div class="container mx-auto">
+    <slot />
+  </div>
+</section>

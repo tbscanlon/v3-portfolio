@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import LinkButton from "@components/LinkButton.astro";
+
+import logo from "../images/irish-heritage.svg";
+---
+
+<div
+  class="p-4 md:p-6 bg-yellow-light 2xl:bg-gradient-to-tr from-yellow-light to-yellow to-90% text-grey-2 rounded-lg flex flex-col justify-between items-start h-full min-h-[250px]"
+>
+  <h3 class="font-semibold text-xl md:text-2xl xl:text-4xl pb-4">
+    Featured project: <span class="sr-only">Irish Heritage</span>
+  </h3>
+  <Image
+    src={logo}
+    alt="Irish Heritage Logo"
+    class="pt-4 pb-4 xl:pb-8 max-w-xs"
+  />
+  <p class="pb-8">
+    A site for a music charity awarding bursaries to young people with an
+    interest in Irish music.
+  </p>
+  <LinkButton
+    color="yellow"
+    href="/projects/irish-heritage"
+    class="lg:bg-transparent w-full"
+  >
+    View featured project
+  </LinkButton>
+</div>
