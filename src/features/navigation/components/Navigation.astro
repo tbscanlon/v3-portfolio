@@ -74,7 +74,7 @@ const links = [
 <!-- Mobile nav -->
 <dialog
   id="mobile-nav-container"
-  class="p-4 h-full w-full top-0 bg-grey-1 text-grey-11 backdrop:bg-grey-1"
+  class="p-4 h-full w-full top-0 bg-grey-1 text-grey-11 backdrop:bg-transparent"
 >
   <div class="relative">
     <IconButton
@@ -97,7 +97,13 @@ const links = [
           d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </IconButton>
-    <Image src={logo} alt="My logo" class="pt-12 px-4 w-[150px]" />
+    <Image
+      src={logo}
+      alt="My logo"
+      class="pt-12 px-4 w-[150px]"
+      loading="eager"
+      quality="max"
+    />
     <ul class="text-2xl pt-12">
       <li>
         <a
@@ -124,12 +130,42 @@ const links = [
 </dialog>
 
 <style>
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes hide {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
   nav {
     padding-left: 82px;
   }
 
   nav > a {
     text-shadow: 1px 1px 0px theme(colors.grey.5);
+  }
+
+  dialog {
+    box-shadow: 0px 0px 0px 19px theme(colors.grey.1);
+  }
+
+  dialog[open] {
+    animation: show theme(transitionDuration.300) ease normal;
+  }
+
+  dialog.closing {
+    animation: hide theme(transitionDuration.300) ease normal;
   }
 
   @media screen(md) {
@@ -159,8 +195,17 @@ const links = [
   }
 
   function hideNav() {
-    mobileNav.close();
-    body?.classList.remove("overflow-hidden");
+    mobileNav.classList.add("closing"); // run animation here
+
+    mobileNav.addEventListener(
+      "animationend",
+      () => {
+        mobileNav.classList.remove("closing");
+        mobileNav.close(); // then run the default close method
+        body?.classList.remove("overflow-hidden");
+      },
+      { once: true }
+    ); // add this to prevent bugs when reopening the modal
   }
 
   openMobileNav?.addEventListener("click", showNav);
