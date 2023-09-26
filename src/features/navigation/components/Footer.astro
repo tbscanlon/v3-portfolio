@@ -6,16 +6,16 @@ import logo from "../images/logo.svg";
 import { links } from "../lib/links";
 ---
 
-<footer class="bg-grey-1 p-4 md:p-6 xl:p-8 flex justify-center items-center">
-  <div class="container mx-auto">
+<footer class="bg-grey-1 px-4 md:px-6 xl:px-8 py-16">
+  <div
+    class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16"
+  >
+    <Image src={logo} alt="" quality="max" class="w-24 md:col-span-full" />
     <div>
-      <Image src={logo} alt="" quality="max" class="w-24" />
-      <p class="mt-8">
-        Making the world a better place, one line of code at a time.
-      </p>
+      <p>Making the world a better place, one line of code at a time.</p>
       <SocialMedia />
     </div>
-    <div class="grid mt-16 grid-cols-2 gap-4">
+    <div class="grid grid-cols-2 md:col-span-2 md:gap-16 mb-8 md:mb-0">
       <nav aria-label="Footer">
         <h2 class="mb-4 font-semibold">Navigation</h2>
         <ul>
@@ -37,11 +37,14 @@ import { links } from "../lib/links";
         <h2 class="mb-4 font-semibold">Where I am</h2>
         <p class="mb-4">I'm currently in:</p>
         <a
-          class="px-3 py-1 bg-grey-3 rounded-full"
+          class="px-3 py-1 bg-grey-2 rounded-full hover:bg-grey-4 focus:bg-grey-4 duration-300"
           href="https://www.google.com/maps/search/?api=1&query=perugia+italy"
-          target="_blank">🇮🇹 Perugia, Italy</a
+          target="_blank">🇮🇹 Perugia</a
         >
       </div>
+    </div>
+    <div class="col-span-full border-t border-t-grey-3 text-sm pt-8">
+      © {new Date().getFullYear()} Tom Scanlon. All rights reserved.
     </div>
   </div>
 </footer>
