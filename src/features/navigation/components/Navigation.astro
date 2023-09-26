@@ -179,6 +179,16 @@ const links = [
       padding-left: 146px;
     }
   }
+
+  @media (prefers-reduced-motion) {
+    dialog[open] {
+      animation: none;
+    }
+
+    dialog.closing {
+      animation: none;
+    }
+  }
 </style>
 
 <script>
@@ -195,6 +205,15 @@ const links = [
   }
 
   function hideNav() {
+    // Only fade mobile nav if motion-safe.
+    const isReduced = window.matchMedia(
+      `(prefers-reduced-motion: reduce)`
+    ).matches;
+
+    if (isReduced) {
+      return mobileNav.close();
+    }
+
     mobileNav.classList.add("closing"); // run animation here
 
     mobileNav.addEventListener(
