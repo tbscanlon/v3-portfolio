@@ -1,0 +1,30 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { Image } from "astro:assets";
+import interests from "../lib/interests.json";
+
+interface Props extends HTMLAttributes<"div"> {
+  class?: string;
+}
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<div
+  class="p-4 md:p-6 bg-purple-light 2xl:bg-gradient-to-tr from-purple-light to-purple to-90% text-grey-2 rounded-lg flex flex-col justify-between items-start h-full min-h-[250px]"
+  class:list={className}
+  {...attrs}
+>
+  <h3 class="font-semibold text-xl md:text-2xl xl:text-4xl pb-4">
+    I'm playing
+  </h3>
+  <Image
+    src={interests.playing.image}
+    alt=""
+    width="250"
+    height="250"
+    class="pb-4 xl:pb-8 max-w-xs w-full"
+  />
+  <p class="font-semibold">{interests.playing.title}</p>
+  <p>{interests.playing.developer}</p>
+</div>

@@ -1,38 +1,38 @@
 ---
-import Heading from "@components/Heading.astro";
-import Container from "@components/Container.astro";
-import Columns from "@components/Columns.astro";
+import type { HTMLAttributes } from "astro/types";
 import TextLink from "@components/TextLink.astro";
 
-import FeaturedProject from "./FeaturedProject.astro";
+interface Props extends HTMLAttributes<"div"> {
+  class?: string;
+}
+
+const { class: className, ...attrs } = Astro.props;
 ---
 
-<Container class="bg-grey-1">
-  <Columns reverse>
-    <div slot="left" class="space-y-4 xl:space-y-8">
-      <Heading>My <span class="text-green-light">projects</span>.</Heading>
-      <p>
-        I've worked on a wide variety of things over the last few years, from
-        small <span class="text-green-light">freelance</span> projects to live
-        products with <span class="text-green-light"
-          >millions of monthly users</span
-        >.
-      </p>
-      <p>
-        Alongside my professional work, I also try to dedicate some of my time
-        to <span class="text-green-light">volunteer</span> projects. I take
-        great satisfaction in using my skills and knowledge for <span
-          class="text-green-light">good causes</span
-        >.
-      </p>
-      <p>
-        I enjoy working in <span class="text-green-light">agile</span>
-         cross-functional teams with fast feedback loops and <span
-          class="text-green-light">data-driven</span
-        > decision making.
-      </p>
-      <TextLink href="/portfolio" color="green">See some of my work</TextLink>
-    </div>
-    <FeaturedProject slot="right" />
-  </Columns>
-</Container>
+<div
+  class="bg-grey-1 border border-grey-11 rounded-lg p-4 md:p-6 xl:p-8 space-y-4 xl:space-y-8"
+  class:list={className}
+  {...attrs}
+>
+  <p>
+    I've worked on a wide variety of things over the last few years, from small <span
+      class="text-green-light">freelance</span
+    > projects to live products with <span class="text-green-light"
+      >millions of monthly users</span
+    >.
+  </p>
+  <p>
+    Alongside my professional work, I also try to dedicate some of my time to <span
+      class="text-green-light">volunteer</span
+    > projects. I take great satisfaction in using my skills and knowledge for <span
+      class="text-green-light">good causes</span
+    >.
+  </p>
+  <p>
+    I enjoy working in <span class="text-green-light">agile</span>
+     cross-functional teams with fast feedback loops and <span
+      class="text-green-light">data-driven</span
+    > decision making.
+  </p>
+  <TextLink href="/portfolio" color="green">See some of my work</TextLink>
+</div>

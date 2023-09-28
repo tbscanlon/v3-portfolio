@@ -1,0 +1,35 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import TextLink from "@components/TextLink.astro";
+
+interface Props extends HTMLAttributes<"div"> {
+  class?: string;
+}
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<div
+  class="bg-grey-1 border border-grey-11 rounded-lg p-4 md:p-6 xl:p-8 space-y-4 xl:space-y-8"
+  class:list={className}
+  {...attrs}
+>
+  <p>
+    I'm a web developer specialising in <span class="text-blue-light"
+      >front-end development</span
+    > using JavaScript.
+  </p>
+  <p>
+    I enjoy using agile methodologies to build websites and web applications
+    that are <span class="text-blue-light">performant</span>,
+
+    <span class="text-blue-light">accessible</span> and <span
+      class="text-blue-light">beautiful</span
+    >.
+  </p>
+  <p>
+    I'm passionate about building things with real value that make things
+    <span class="text-blue-light">better</span> for people.
+  </p>
+  <TextLink href="/about" color="blue">Learn more about me</TextLink>
+</div>

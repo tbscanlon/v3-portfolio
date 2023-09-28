@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  class?: string;
+  children: any;
+}
+
+const { class: className, ...attrs } = Astro.props;
+---
+
+<div
+  class="grid grid-cols-12 gap-4 md:gap-8 xl:gap-16"
+  class:list={className}
+  {...attrs}
+>
+  <slot />
+</div>
