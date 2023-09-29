@@ -1,0 +1,44 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  class?: string;
+  type: "listening to" | "playing" | "reading" | "learning" | "watching";
+  color: "blue" | "red" | "green" | "yellow" | "orange" | "purple" | "teal";
+  title: string;
+  description: string;
+}
+
+const {
+  class: className,
+  type,
+  title,
+  description,
+  color,
+  ...attrs
+} = Astro.props;
+---
+
+<a
+  class="p-4 md:p-6 xl:p-8 2xl:bg-gradient-to-tr text-grey-2 rounded-lg flex flex-col justify-between items-start h-full min-h-[250px]"
+  class:list={[
+    className,
+    {
+      "bg-blue-light from-blue-light to-blue to-90%": color === "blue",
+      "bg-red-light from-red-light to-red to-90%": color === "red",
+      "bg-green-light from-green-light to-green to-90%": color === "green",
+      "bg-yellow-light from-yellow-light to-yellow to-90%": color === "yellow",
+      "bg-orange-light from-orange-light to-orange to-90%": color === "orange",
+      "bg-purple-light from-purple-light to-purple to-90%": color === "purple",
+      "bg-teal-light from-teal-light to-teal to-90%": color === "teal",
+    },
+  ]}
+  target="_blank"
+  {...attrs}
+>
+  <h3 class="font-semibold text-xl md:text-2xl xl:text-4xl pb-4">
+    I'm {type}
+  </h3>
+  <p class="font-semibold">{title}</p>
+  <p>{description}</p>
+</a>

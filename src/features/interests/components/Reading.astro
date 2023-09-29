@@ -1,22 +1,19 @@
 ---
-import type { HTMLAttributes } from "astro/types";
+import Box from "./Box.astro";
 import interests from "../lib/interests.json";
 
-interface Props extends HTMLAttributes<"div"> {
+interface Props {
   class?: string;
 }
 
-const { class: className, ...attrs } = Astro.props;
+const { class: className } = Astro.props;
 ---
 
-<div
-  class="p-4 md:p-6 bg-teal-light 2xl:bg-gradient-to-tr from-teal-light to-teal to-90% text-grey-2 rounded-lg flex flex-col justify-between items-start h-full min-h-[250px]"
-  class:list={className}
-  {...attrs}
->
-  <h3 class="font-semibold text-xl md:text-2xl xl:text-4xl pb-4">
-    I'm reading
-  </h3>
-  <p class="font-semibold">{interests.reading.title}</p>
-  <p>{interests.reading.author}</p>
-</div>
+<Box
+  type="reading"
+  title={interests.reading.title}
+  description={interests.reading.author}
+  color="teal"
+  href={interests.reading.url}
+  class={className}
+/>
