@@ -27,16 +27,30 @@ import Watching from "@features/interests/components/Watching.astro";
       </Heading>
       <Grid>
         <AboutMe class="col-span-8" />
-        <Facts class="col-span-4" />
+        <FeaturedProject class="col-span-4" />
+        <Facts class="col-span-3 row-span-2" />
+        <Studying class="col-span-3" />
+        <Projects class="col-span-6 row-span-2" />
+        <Reading class="col-span-3" />
+        <ContactMe class="col-span-6 row-span-2" />
+        <div
+          data-filler
+          class="col-span-3 w-full rounded-lg border border-grey-11"
+        >
+        </div>
         <ListeningTo class="col-span-3" />
         <Playing class="col-span-3" />
-        <Reading class="col-span-3" />
-        <Studying class="col-span-3" />
         <Watching class="col-span-3" />
-        <FeaturedProject class="col-span-4" />
-        <Projects class="col-span-8" />
-        <ContactMe class="col-span-8" />
       </Grid>
     </Container>
   </main>
 </BaseLayout>
+
+<style>
+  div[data-filler] {
+    background: url("/colours.svg");
+    background-color: theme(colors.grey.1);
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+</style>
