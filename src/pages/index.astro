@@ -14,6 +14,8 @@ import ContactMe from "@features/home/components/ContactMe.astro";
 import ListeningTo from "@features/home/components/ListeningTo.astro";
 import Playing from "@features/home/components/Playing.astro";
 import Reading from "@features/home/components/Reading.astro";
+import Studying from "@features/home/components/Studying.astro";
+import Watching from "@features/home/components/Watching.astro";
 ---
 
 <BaseLayout title="Home">
@@ -26,11 +28,13 @@ import Reading from "@features/home/components/Reading.astro";
       <Grid>
         <AboutMe class="col-span-8" />
         <Facts class="col-span-4" />
-        <FeaturedProject class="col-span-4" />
-        <Projects class="col-span-8" />
         <ListeningTo class="col-span-3" />
         <Playing class="col-span-3" />
         <Reading class="col-span-3" />
+        <Studying class="col-span-3" />
+        <Watching class="col-span-3" />
+        <FeaturedProject class="col-span-4" />
+        <Projects class="col-span-8" />
         <ContactMe class="col-span-8" />
       </Grid>
     </Container>

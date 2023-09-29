@@ -10,13 +10,13 @@ const { class: className, ...attrs } = Astro.props;
 ---
 
 <div
-  class="p-4 md:p-6 bg-orange-light 2xl:bg-gradient-to-tr from-orange-light to-orange to-90% text-grey-2 rounded-lg flex flex-col justify-between items-start h-full min-h-[250px]"
+  class="p-4 md:p-6 bg-blue-light 2xl:bg-gradient-to-tr from-blue-light to-blue to-90% text-grey-2 rounded-lg flex flex-col justify-between items-start h-full min-h-[250px]"
   class:list={className}
   {...attrs}
 >
   <h3 class="font-semibold text-xl md:text-2xl xl:text-4xl pb-4">
-    I'm listening to
+    I'm learning
   </h3>
-  <p class="font-semibold">{interests.listening.title}</p>
-  <p>{interests.listening.artist}</p>
+  <p class="font-semibold">{interests.studying.title}</p>
+  <p>{interests.studying.author}</p>
 </div>

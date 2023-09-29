@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "get-latest": "node ./src/getLatest.js"
+    "get-interests": "node ./src/getInterests.js"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.0.0",
