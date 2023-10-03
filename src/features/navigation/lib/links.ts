@@ -5,8 +5,8 @@ interface Link {
 
 export const links: Link[] = [
   {
-    href: "/portfolio",
-    text: "Portfolio",
+    href: "/projects",
+    text: "Projects",
   },
   {
     href: "/blog",

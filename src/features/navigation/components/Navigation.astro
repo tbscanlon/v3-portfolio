@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import IconButton from "@components/IconButton.astro";
-import Rainbow from "./Rainbow.astro";
+import Monogram from "./Monogram.astro";
 import logo from "../images/logo.svg";
 import { links } from "../lib/links";
 ---
@@ -9,13 +9,11 @@ import { links } from "../lib/links";
 <>
   <nav
     aria-label="Main"
-    class="relative flex flex-row p-4 md:p-6 xl:p-8 bg-grey-2 shadow-xl items-center"
+    class="sticky m-auto container top-4 border border-grey-11 rounded-lg z-40 flex flex-row bg-grey-1 items-center pl-10 pr-4 md:pr-6 xl:pr-8"
   >
-    <a
-      class="xl:py-0.5 hover:text-blue-light focus:bg-grey-4 duration-300 bg-grey-2"
-      href="/">Tom Scanlon</a
-    >
-    <Rainbow />
+    <a href="/" class="py-2" aria-label="Home">
+      <Monogram />
+    </a>
     <!-- Mobile nav button -->
     <IconButton
       id="show-mobile-nav"
@@ -42,7 +40,7 @@ import { links } from "../lib/links";
         links.map((link) => (
           <li>
             <a
-              class="block px-1 xl:py-0.5 ml-6 xl:ml-12 hover:text-blue-light focus:bg-grey-4 rounded-lg duration-300"
+              class="block px-1 xl:py-0.5 ml-6 xl:ml-8 hover:text-blue-light focus:bg-grey-4 rounded-lg duration-300"
               href={link.href}
             >
               {link.text}
@@ -131,7 +129,10 @@ import { links } from "../lib/links";
   }
 
   nav {
-    padding-left: 82px;
+    background-image: url("/navBg.svg");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    box-shadow: 4px 4px 0px theme(colors.grey.5);
   }
 
   nav > a {
@@ -148,18 +149,6 @@ import { links } from "../lib/links";
 
   dialog.closing {
     animation: hide theme(transitionDuration.300) ease normal;
-  }
-
-  @media screen(md) {
-    nav {
-      padding-left: 105px;
-    }
-  }
-
-  @media screen(xl) {
-    nav {
-      padding-left: 146px;
-    }
   }
 
   @media (prefers-reduced-motion) {
