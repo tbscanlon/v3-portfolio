@@ -1,20 +1,24 @@
 ---
+import { getEntry } from "astro:content";
 import Box from "./Box.astro";
-import interests from "../lib/interests.json";
+import type { Watching } from "../lib/types";
 
 interface Props {
   class?: string;
 }
+
+const res = await getEntry("interests", "watching");
+const watching: Watching = res.data;
 
 const { class: className } = Astro.props;
 ---
 
 <Box
   type="watching"
-  title={interests.watching.title}
-  description={interests.watching.genres}
+  title={watching.title}
+  description={watching.genres}
   color="blue"
-  href={interests.watching.url}
+  href={watching.url}
   class={className}
 >
   <svg
