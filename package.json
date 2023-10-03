@@ -20,6 +20,7 @@
   "devDependencies": {
     "@types/node": "^20.7.1",
     "playwright": "^1.38.1",
+    "prettier": "3.0.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0"
   }

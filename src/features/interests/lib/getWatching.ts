@@ -1,3 +1,5 @@
+import type { Watching } from "./types";
+
 /**
  * Gets the current TV show or film I'm watching from the TVMaze API. Uses the
  * show's IMDB ID for the lookup.
@@ -5,7 +7,7 @@
  * @param id The ID of a film or TV show on IMDB.
  * @returns An object with the show's name, genres and an IMDB URL.
  */
-export async function getWatching(id: string) {
+export async function getWatching(id: string): Promise<Watching> {
   // Need a valid user-agent header for the TVMaze public API.
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
@@ -28,6 +30,7 @@ export async function getWatching(id: string) {
   const genres = data.genres.join(" | ");
 
   return {
+    type: "watching",
     title,
     genres,
     url,

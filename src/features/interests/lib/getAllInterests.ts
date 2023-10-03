@@ -22,12 +22,18 @@
 import fs from "fs/promises";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import prettier from "prettier"
 
 import { getListeningTo } from "./getListeningTo.ts";
 import { getPlaying } from "./getPlaying.ts";
 import { getReading } from "./getReading.ts";
 import { getStudying } from "./getStudying.ts";
 import { getWatching } from "./getWatching.ts";
+
+/**
+ * directory of /src.
+ */
+const __dirname = dirname(fileURLToPath(import.meta.url + "../" + "../" + "../" + "../"));
 
 /**
  * Identifiers of my current interests.
@@ -64,22 +70,17 @@ const ids = {
   show: "tt0434706",
 };
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 await Promise.all([
   getListeningTo(ids.album),
   getPlaying(ids.game),
   getReading(ids.book),
   getStudying(ids.course),
   getWatching(ids.show),
-]).then(async ([listening, playing, reading, studying, watching]) => {
-  const interests = JSON.stringify({
-    listening,
-    playing,
-    reading,
-    studying,
-    watching,
-  });
+]).then((interests) => {
+  const dir = `${__dirname}/content/interests`
 
-  await fs.writeFile(`${__dirname}/interests.json`, interests);
+  interests.forEach(async (interest) => {
+    const formatted = await prettier.format(JSON.stringify(interest), { parser: "json"})
+    await fs.writeFile(`${dir}/${interest.type}.json`, formatted);
+  });
 });

@@ -1,4 +1,5 @@
 import { chromium } from "playwright";
+import type { Playing } from "./types";
 
 /**
  * Gets the current game I'm playing on Steam. Uses the game's app ID from
@@ -8,7 +9,7 @@ import { chromium } from "playwright";
  * @returns An object with the game's name, developer and URL for the game
  * on the steam storefront.
  */
-export async function getPlaying(id: string) {
+export async function getPlaying(id: string): Promise<Playing> {
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
@@ -31,6 +32,7 @@ export async function getPlaying(id: string) {
   await browser.close();
 
   return {
+    type: "playing",
     title,
     developer,
     url,

@@ -1,3 +1,5 @@
+import type { Listening } from "./types";
+
 /**
  * Gets the current album I'm listening to. Uses the album ID from
  * the MusicBrainz DB.
@@ -6,7 +8,7 @@
  * @returns An object with the album's title, artist and URL for
  * the album on MusicBrainz.
  */
-export async function getListeningTo(id: string) {
+export async function getListeningTo(id: string): Promise<Listening>  {
   // MusicBrainz API times out a lot without a user-agent header.
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
@@ -25,6 +27,7 @@ export async function getListeningTo(id: string) {
   const data = await response.json();
 
   return {
+    type: "listening",
     title: data.title,
     artist: data["artist-credit"][0].name,
     url: `https://musicbrainz.org/release/${id}`,

@@ -1,4 +1,5 @@
 import { chromium } from "playwright";
+import type { Studying } from "./types";
 
 /**
  * Gets the current course on Udemy I'm studying. Uses the course's slug from
@@ -7,7 +8,7 @@ import { chromium } from "playwright";
  * @param slug A URL slug for a course on Udemy.
  * @returns An object with the course's name, author and URL.
  */
-export async function getStudying(slug: string) {
+export async function getStudying(slug: string): Promise<Studying> {
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
@@ -32,6 +33,7 @@ export async function getStudying(slug: string) {
   await browser.close();
 
   return {
+    type: "studying",
     title,
     author,
     url,
