@@ -22,7 +22,7 @@
 import fs from "fs/promises";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import prettier from "prettier"
+import prettier from "prettier";
 
 import { getListeningTo } from "./getListeningTo.ts";
 import { getPlaying } from "./getPlaying.ts";
@@ -33,7 +33,9 @@ import { getWatching } from "./getWatching.ts";
 /**
  * directory of /src.
  */
-const __dirname = dirname(fileURLToPath(import.meta.url + "../" + "../" + "../" + "../"));
+const __dirname = dirname(
+  fileURLToPath(import.meta.url + "../" + "../" + "../" + "../")
+);
 
 /**
  * Identifiers of my current interests.
@@ -76,11 +78,15 @@ await Promise.all([
   getReading(ids.book),
   getStudying(ids.course),
   getWatching(ids.show),
-]).then((interests) => {
-  const dir = `${__dirname}/content/interests`
+]).then(async (interests) => {
+  const dir = `${__dirname}/content/interests`;
 
-  interests.forEach(async (interest) => {
-    const formatted = await prettier.format(JSON.stringify(interest), { parser: "json"})
-    await fs.writeFile(`${dir}/${interest.type}.json`, formatted);
-  });
+  const formatted = interests.map(
+    async (interest) =>
+      await prettier.format(JSON.stringify(interests), {
+        parser: "json",
+      })
+  );
+
+  await fs.writeFile(`${dir}/interests.json`, formatted);
 });

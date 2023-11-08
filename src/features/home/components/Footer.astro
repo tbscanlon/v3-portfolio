@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import Interest from "./Interest.astro";
+
+const collection = await getCollection("interests");
+const interests = collection.map((item) => item.data);
+
+const colours = ["orange", "teal", "purple", "yellow", "green"] as const;
+---
+
+<footer
+  class="bg-grey-1 container mx-auto border border-grey-11 rounded-lg px-4 md:px-6 xl:px-8 mb-4 flex justify-between"
+>
+  {
+    interests.map((interest, index) => (
+      <Interest interest={interest} colour={colours[index]} />
+    ))
+  }
+</footer>
+
+<style>
+  footer {
+    box-shadow: 4px 4px 0px theme(colors.grey.5);
+  }
+</style>

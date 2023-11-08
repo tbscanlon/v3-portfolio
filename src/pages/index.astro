@@ -1,56 +1,11 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-
-import Container from "@components/Container.astro";
-import Heading from "@components/Heading.astro";
+import HomeLayout from "@layouts/HomeLayout.astro";
 
 import Hero from "@features/home/components/Hero.astro";
-import Facts from "@features/home/components/Facts.astro";
-import Grid from "@features/home/components/Grid.astro";
-import AboutMe from "@features/home/components/AboutMe.astro";
-import Projects from "@features/home/components/Projects.astro";
-import FeaturedProject from "@features/home/components/FeaturedProject.astro";
-import ContactMe from "@features/home/components/ContactMe.astro";
-import ListeningTo from "@features/interests/components/ListeningTo.astro";
-import Playing from "@features/interests/components/Playing.astro";
-import Reading from "@features/interests/components/Reading.astro";
-import Studying from "@features/interests/components/Studying.astro";
-import Watching from "@features/interests/components/Watching.astro";
+import Footer from "@features/home/components/Footer.astro";
 ---
 
-<BaseLayout title="Home">
+<HomeLayout title="Home">
   <Hero />
-  <main class="mt-[100vh]">
-    <Container>
-      <Heading class="text-center mb-24 mt-16">
-        Hello, I'm <span class="text-blue-light">Tom</span>.
-      </Heading>
-      <Grid>
-        <AboutMe class="col-span-8" />
-        <FeaturedProject class="col-span-4" />
-        <Facts class="col-span-3 row-span-2" />
-        <Studying class="col-span-3" />
-        <Projects class="col-span-6 row-span-2" />
-        <Reading class="col-span-3" />
-        <ContactMe class="col-span-6 row-span-2" />
-        <div
-          data-filler
-          class="col-span-3 w-full rounded-lg border border-grey-11"
-        >
-        </div>
-        <ListeningTo class="col-span-3" />
-        <Playing class="col-span-3" />
-        <Watching class="col-span-3" />
-      </Grid>
-    </Container>
-  </main>
-</BaseLayout>
-
-<style>
-  div[data-filler] {
-    background: url("/colours.svg");
-    background-color: theme(colors.grey.1);
-    background-repeat: no-repeat;
-    background-position: 50%;
-  }
-</style>
+  <Footer />
+</HomeLayout>

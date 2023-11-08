@@ -1,10 +1,9 @@
 ---
-import IconButton from "@components/IconButton.astro";
 import LinkButton from "@components/LinkButton.astro";
 ---
 
 <header class="p-4 md:p-6 xl:p-8">
-  <div class="container relative mx-auto h-full grid items-center">
+  <div class="container relative mx-auto grid items-center">
     <div>
       <h1
         class="pb-4 xl:pb-6 text-lg lg:text-xl 2xl:text-2xl font-semibold text-blue-light"
@@ -27,43 +26,10 @@ import LinkButton from "@components/LinkButton.astro";
         <LinkButton color="grey" href="/portfolio">See my work</LinkButton>
       </div>
     </div>
-    <!-- Scroll to content -->
-    <div class="w-full absolute bottom-0">
-      <IconButton
-        id="scroll-to-content"
-        label="Scroll to content"
-        class="mx-auto block animate-pulse"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-8 h-8"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
-        </svg>
-      </IconButton>
-    </div>
   </div>
 </header>
 
 <style>
-  header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: calc(100vh - 64px);
-    background-color: theme(colors.grey.2);
-    background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23504945' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    background-attachment: fixed;
-    height: 100vh;
-  }
-
   header h2 {
     text-shadow: 2px 2px 0px theme(colors.grey.5);
 
@@ -101,21 +67,3 @@ import LinkButton from "@components/LinkButton.astro";
     }
   }
 </style>
-
-<script>
-  const mainContent = document.querySelector("main");
-  const scrollButton = document.getElementById("scroll-to-content");
-
-  function handleScroll() {
-    // Only animate scroll if motion-safe.
-    const isReduced = window.matchMedia(
-      `(prefers-reduced-motion: reduce)`
-    ).matches;
-
-    mainContent?.scrollIntoView({
-      behavior: isReduced ? "instant" : "smooth",
-    });
-  }
-
-  scrollButton?.addEventListener("click", handleScroll);
-</script>
