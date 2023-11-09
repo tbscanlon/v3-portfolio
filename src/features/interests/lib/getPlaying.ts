@@ -55,6 +55,7 @@ export async function getPlaying(id: string): Promise<Playing> {
 
   return {
     type: "playing",
+    image: "/game.jpg",
     title,
     developer,
     url,

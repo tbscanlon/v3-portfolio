@@ -13,10 +13,26 @@ export interface Interest {
   developer?: string;
   author?: string;
   genres?: string;
+  image?: string;
 }
 
-export type Listening = Pick<Interest, "type" | "url" | "title" | "artist">;
-export type Playing = Pick<Interest, "type" | "url" | "title" | "developer">;
-export type Reading = Pick<Interest, "type" | "url" | "title" | "author">;
-export type Studying = Pick<Interest, "type" | "url" | "title" | "author">;
-export type Watching = Pick<Interest, "type" | "url" | "title" | "genres">;
+export type Listening = Pick<
+  Interest,
+  "type" | "url" | "title" | "image" | "artist"
+>;
+export type Playing = Pick<
+  Interest,
+  "type" | "url" | "title" | "image" | "developer"
+>;
+export type Reading = Pick<
+  Interest,
+  "type" | "url" | "title" | "image" | "author"
+>;
+export type Studying = Pick<
+  Interest,
+  "type" | "url" | "title" | "image" | "author"
+>;
+export type Watching = Pick<
+  Interest,
+  "type" | "url" | "title" | "image" | "genres"
+>;
