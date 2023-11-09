@@ -1,6 +1,10 @@
 {
   "type": "watching",
+  "image": "/interests/show.jpg",
   "title": "Monster",
   "genres": "Drama | Anime | Crime | Horror",
-  "url": "https://www.imdb.com/title/tt0434706"
+  "cta": {
+    "url": "https://www.imdb.com/title/tt0434706",
+    "text": "View on IMDB"
+  }
 }

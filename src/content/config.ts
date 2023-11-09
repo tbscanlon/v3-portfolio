@@ -5,11 +5,14 @@ const interestsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     type: z.enum(["listening", "playing", "reading", "studying", "watching"]),
-    url: z.string().url(),
     artist: z.string().optional(),
     developer: z.string().optional(),
     author: z.string().optional(),
     genres: z.string().optional(),
+    cta: z.object({
+      url: z.string().url(),
+      text: z.string(),
+    }),
   }),
 });
 

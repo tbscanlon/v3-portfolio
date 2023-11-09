@@ -2,5 +2,9 @@
   "type": "listening",
   "title": "World of Hassle",
   "artist": "Alan Palomo",
-  "url": "https://musicbrainz.org/release/f8855ad4-5db2-44a1-a781-c393cd07f4d1"
+  "image": "/interests/album.jpg",
+  "cta": {
+    "url": "https://open.spotify.com/album/06Zp2J6vjuVSOKHtFcFtJ0",
+    "text": "Listen on Spotify"
+  }
 }

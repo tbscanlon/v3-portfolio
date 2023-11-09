@@ -1,3 +1,4 @@
+import { fetchImage } from "./fetchImage.ts";
 import type { Watching } from "./types";
 
 /**
@@ -28,11 +29,18 @@ export async function getWatching(id: string): Promise<Watching> {
   const url = `https://www.imdb.com/title/${data.externals.imdb}`;
   const title = data.name;
   const genres = data.genres.join(" | ");
+  const imageRemoteURL = data.image.medium;
+
+  const imageLocalURL = await fetchImage(imageRemoteURL, "show");
 
   return {
     type: "watching",
+    image: imageLocalURL,
     title,
     genres,
-    url,
+    cta: {
+      url,
+      text: "View on IMDB",
+    },
   };
 }

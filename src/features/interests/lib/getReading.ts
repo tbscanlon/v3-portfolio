@@ -1,4 +1,5 @@
-import type { Reading } from "./types"
+import { fetchImage } from "./fetchImage.ts";
+import type { Reading } from "./types";
 
 /**
  * Gets the current book I'm reading from the OpenLibrary API. Uses the book's ISBN-13
@@ -19,10 +20,21 @@ export async function getReading(id: string): Promise<Reading> {
   // the info we need.
   const book = data[`ISBN:${id}`];
 
+  // https://covers.openlibrary.org/b/isbn/9781800182813-M.jpg&default=false
+
+  const imageLocalURL = await fetchImage(
+    `https://covers.openlibrary.org/b/isbn/${id}-M.jpg&default=false`,
+    "book"
+  );
+
   return {
     type: "reading",
     title: book.details.title,
     author: book.details.authors[0].name,
-    url: book.info_url,
+    image: imageLocalURL,
+    cta: {
+      url: book.info_url,
+      text: "View on OpenLibrary",
+    },
   };
 }

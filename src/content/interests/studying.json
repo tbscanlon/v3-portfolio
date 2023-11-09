@@ -1,6 +1,10 @@
 {
   "type": "studying",
+  "image": "/interests/course.jpg",
   "title": "100 Days of Code: The Complete Python Pro Bootcamp for 2023",
   "author": "Dr. Angela Yu",
-  "url": "https://www.udemy.com/course/100-days-of-code/"
+  "cta": {
+    "url": "https://www.udemy.com/course/100-days-of-code/",
+    "text": "View on Udemy"
+  }
 }

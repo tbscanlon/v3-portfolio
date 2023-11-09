@@ -2,7 +2,6 @@ import { chromium } from "playwright";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import type { Playing } from "./types";
-import { writeFile } from "fs/promises";
 import { fetchImage } from "./fetchImage.ts";
 
 /**
@@ -52,6 +51,9 @@ export async function getPlaying(id: string): Promise<Playing> {
     image: imageLocalURL,
     title,
     developer,
-    url,
+    cta: {
+      url,
+      text: "View on Steam",
+    },
   };
 }

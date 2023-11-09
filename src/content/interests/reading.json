@@ -2,5 +2,9 @@
   "type": "reading",
   "title": "Decade in Tory",
   "author": "Russell Jones",
-  "url": "https://openlibrary.org/books/OL49278398M/Decade_in_Tory"
+  "image": "",
+  "cta": {
+    "url": "https://openlibrary.org/books/OL49278398M/Decade_in_Tory",
+    "text": "View on OpenLibrary"
+  }
 }

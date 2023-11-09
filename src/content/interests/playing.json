@@ -1,6 +1,10 @@
 {
   "type": "playing",
+  "image": "/interests/game.jpg",
   "title": "Starfield",
   "developer": "Bethesda Game Studios",
-  "url": "https://store.steampowered.com/app/1716740"
+  "cta": {
+    "url": "https://store.steampowered.com/app/1716740",
+    "text": "View on Steam"
+  }
 }

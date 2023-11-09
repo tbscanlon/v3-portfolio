@@ -16,8 +16,6 @@ const __dirname = dirname(
  * @returns The file extension for a MIME type (e.g., ".jpg")
  */
 function getImageFileExtension(imageType: string) {
-  console.log("IMAGE TYPE::: ", imageType);
-
   if (/jpeg/.test(imageType)) {
     return ".jpg";
   }
@@ -54,17 +52,22 @@ export async function fetchImage(
   from: string | null,
   to: string
 ): Promise<string> {
-  // We conditionally render an image client-side.
-  if (!from) {
+  try {
+    // We conditionally render an image client-side.
+    if (!from) {
+      return "";
+    }
+
+    const response = await fetch(from);
+    const blob = await response.blob();
+    const data = await blob.arrayBuffer();
+    const location = `/interests/${to}${getImageFileExtension(blob.type)}`;
+
+    await writeFile(`${__dirname}/public${location}`, Buffer.from(data));
+
+    return location;
+  } catch (e) {
+    console.error(e);
     return "";
   }
-
-  const response = await fetch(from);
-  const blob = await response.blob();
-  const data = await blob.arrayBuffer();
-  const location = `/interests/${to}${getImageFileExtension(blob.type)}`;
-
-  await writeFile(`${__dirname}/public${location}`, Buffer.from(data));
-
-  return location;
 }

@@ -47,6 +47,9 @@ export async function getStudying(slug: string): Promise<Studying> {
     image: imageLocalURL,
     title,
     author,
-    url,
+    cta: {
+      url,
+      text: "View on Udemy",
+    },
   };
 }

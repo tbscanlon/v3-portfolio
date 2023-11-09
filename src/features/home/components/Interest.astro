@@ -60,15 +60,23 @@ const icons: Record<InterestType, string> = {
       {interest.type}
       {interest.type === "listening" && " to"}
     </h2>
-    <ul class="italic text-base">
-      <li class="not-italic font-semibold truncate">{interest.title}</li>
-      {interest.artist && <li>{interest.artist}</li>}
-      {interest.developer && <li>{interest.developer}</li>}
-      {interest.author && <li>{interest.author}</li>}
-      {interest.genres && <li>{interest.genres}</li>}
-    </ul>
-    <TextLink isExternal color={colour} class="text-base" href={interest.url}>
-      Learn more <span class="sr-only">about {interest.title}</span>
+    <div class="bg-red-dark mb-4 flex">
+      <span>Image</span>
+      <ul class="italic text-base">
+        <li class="not-italic font-semibold truncate">{interest.title}</li>
+        {interest.artist && <li>{interest.artist}</li>}
+        {interest.developer && <li>{interest.developer}</li>}
+        {interest.author && <li>{interest.author}</li>}
+        {interest.genres && <li>{interest.genres}</li>}
+      </ul>
+    </div>
+    <TextLink
+      isExternal
+      color={colour}
+      class="text-base"
+      href={interest.cta.url}
+    >
+      {interest.cta.text}
     </TextLink>
   </dialog>
   <button
