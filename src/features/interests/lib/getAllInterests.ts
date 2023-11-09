@@ -78,15 +78,14 @@ await Promise.all([
   getReading(ids.book),
   getStudying(ids.course),
   getWatching(ids.show),
-]).then(async (interests) => {
+]).then((interests) => {
   const dir = `${__dirname}/content/interests`;
 
-  const formatted = interests.map(
-    async (interest) =>
-      await prettier.format(JSON.stringify(interests), {
-        parser: "json",
-      })
-  );
+  interests.forEach(async (interest) => {
+    const formatted = await prettier.format(JSON.stringify(interest), {
+      parser: "json",
+    });
 
-  await fs.writeFile(`${dir}/interests.json`, formatted);
+    await fs.writeFile(`${dir}/${interest.type}.json`, formatted);
+  });
 });
