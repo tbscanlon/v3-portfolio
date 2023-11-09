@@ -17,6 +17,22 @@ const interestsCollection = defineCollection({
   }),
 });
 
+const projectsCollection = defineCollection({
+  type: "data",
+  schema: z.array(
+    z.object({
+      slug: z.string(),
+      title: z.string(),
+      url: z.string().url(),
+      image: z.string(),
+      description: z.string(),
+      longDescription: z.array(z.string()),
+      stack: z.array(z.string()),
+    })
+  ),
+});
+
 export const collections = {
   interests: interestsCollection,
+  projects: projectsCollection,
 };

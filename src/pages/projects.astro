@@ -1,7 +1,67 @@
 ---
+import Container from "@components/Container.astro";
+import PageHeading from "@components/PageHeading.astro";
+import TextLink from "@components/TextLink.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const [freelance, student, work] = await getCollection("projects");
+
+console.log(freelance);
 ---
 
 <BaseLayout title="Projects">
-  <h1 class="font-serif text-4xl">Portfolio</h1>
+  <PageHeading>Projects</PageHeading>
+  <main class="min-h-screen">
+    <Container>
+      <h2 class="text-2xl md:text-4xl font-bold pb-8">Work Projects</h2>
+      <div class="grid gap-8 grid-cols-4">
+        {
+          work.data.map((project) => (
+            <a
+              class="p-4 rounded-lg border border-grey-11 flex flex-col min-h-[250px] group"
+              href={`/projects/${project.slug}`}
+            >
+              <h3 class="font-bold mb-2">{project.title}</h3>
+              <ul class="flex flex-wrap mb-3">
+                {project.stack.map((tech) => (
+                  <li class="text-sm bg-grey-4 px-1 rounded-sm mr-1 mb-1">
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+              <p class="text-base mt-auto mb-4">{project.description}</p>
+              <TextLink
+                as="span"
+                color="blue"
+                class="text-base group-hover:bg-red"
+              >
+                Learn more
+              </TextLink>
+            </a>
+          ))
+        }
+      </div>
+    </Container>
+    <Container>
+      <h2>Freelance Projects</h2>
+      <div class="grid gap-8 grid-cols-4">
+        {
+          freelance.data.map((project) => (
+            <div class="bg-red-dark">{project.title}</div>
+          ))
+        }
+      </div>
+    </Container>
+    <Container>
+      <h2>Student Projects</h2>
+      <div class="grid gap-8 grid-cols-4">
+        {
+          student.data.map((project) => (
+            <div class="bg-red-dark">{project.title}</div>
+          ))
+        }
+      </div>
+    </Container>
+  </main>
 </BaseLayout>

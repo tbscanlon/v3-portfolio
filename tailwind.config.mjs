@@ -64,7 +64,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
-        serif: ["IBM Plex Serif", ...defaultTheme.fontFamily.serif],
+        serif: ["Bungee Shade", ...defaultTheme.fontFamily.serif],
       },
     },
   },

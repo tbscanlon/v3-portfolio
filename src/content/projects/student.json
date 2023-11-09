@@ -1,0 +1,62 @@
+[
+  {
+    "title": "The PERCEPTICON",
+    "slug": "the-percepticon",
+    "type": "student",
+    "url": "https://the-percepticon.firebaseapp.com/",
+    "image": "/portfolio/percepticon.png",
+    "description": "A hand-written implementation of the perceptron algorithm that has been trained to detemine if an article is clickbait or not, based on its title",
+    "longDescription": [
+      "The PERCEPTICON is a full-stack application built for my final project at Makers Academy.",
+      "Our team wanted to explore how to build and apply machine learning algorithms, and decided on attempting to build an AI to determine journalistic quality by reading an article's headline. In essence, our application could tell a visitor if an article was 'clickbait'.",
+      "I made contributions across the entire stack for the duration of the project. I provided leadership for building the user-facing side of the application, packaged the algorithm we built as an API, and helped to refactor our implementation of the machine learning algorithm itself.",
+      "We presented the project after 2 weeks of development, where I explained the motivation behind the project. Our project and presentation are included on the Makers website as an example to potential students of what can be achieved by enrolling in the course."
+    ],
+    "stack": ["jQuery", "Ruby on Rails"]
+  },
+  {
+    "title": "Ping",
+    "slug": "ping",
+    "type": "student",
+    "url": "https://ping-js.firebaseapp.com/",
+    "image": "/portfolio/ping.png",
+    "description": "A pure JavaScript implementation of the classic game Pong",
+    "longDescription": [
+      "Ping is a pure JavaScript implementation of the classic game Pong.",
+      "I participated in a team building Ping as our first independent group project within Makers Academy, where we had one week to build and present an idea we wanted to create.",
+      "The project required extensive upskilling by all of the members of the team, and each of us had to take leadership over different parts of the game and its engine to allow us to deliver something substantial on such a short timescale.",
+      "I took leadership over the canvas and game loop, writing code to enable the work achieved by other members to render onto the screen. My work also enabled the implementation of the game's controls and physics.",
+      "My team and I were successful in our work, and had a fully-functional (if slightly primative!) game to present after one week."
+    ],
+    "stack": ["Javascript", "HTML5 canvas"]
+  },
+  {
+    "title": "Chitter",
+    "slug": "chitter",
+    "type": "student",
+    "url": "https://chitter-june2017.herokuapp.com/",
+    "image": "/portfolio/chitter.png",
+    "description": "A REALLY GOOD twitter clone",
+    "longDescription": [
+      "Chitter is a clone of Twitter, built from scratch over the course of one weekend. I built this as my Week 4 challenge whilst attending Makers Academy.",
+      "I was given a loose brief with some user stories to create functionality to, and a limited amount of time to deliver something functional. Over the course of one weekend, I built a full-stack application to meet the brief and user stories using what I had learned so far at Makers Academy.",
+      "The site included posts, comments and user account functionality. I included a rudimentary-but-functional front-end to enable visitors to create accounts and interact with the logic I built by posting and commenting on 'tweets'."
+    ],
+    "stack": ["Ruby", "Sinatra", "PostgreSQL"]
+  },
+  {
+    "title": "CYBER RPS",
+    "type": "student",
+    "slug": "cyber-rps",
+    "url": "https://github.com/tbscanlon/rps-challenge",
+    "image": "/portfolio/cyber-rps.png",
+    "description": "Rock Paper Scissors",
+    "longDescription": [
+      "CYPER RPS was my take on Rock Paper Scissors, built as a web site in which visitors could play against a computer opponent. I built this project as my Week 3 challenge at Makers Academy.",
+      "I spent a lot of time upskilling with CSS for this project, because I wanted my submission to be visually distinct from the submissions made by other members of my cohort.",
+      "As part of this project, I had to learn about sessions and routing, because these were necessary to persist game state when moving between pages.",
+      "This project was built over the course of a weekend, and was the first web application I built and published."
+    ],
+    "stack": ["Ruby", "Sinatra"]
+  }
+]

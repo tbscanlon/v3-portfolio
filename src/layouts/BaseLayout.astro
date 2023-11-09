@@ -1,6 +1,5 @@
 ---
 import "@fontsource/ibm-plex-sans";
-import "@fontsource/ibm-plex-serif/500.css";
 
 import Navigation from "@features/navigation/components/Navigation.astro";
 import Footer from "@features/navigation/components/Footer.astro";
@@ -16,9 +15,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Tom Scanlon</title>
   </head>
-  <body
-    class="antialiased bg-grey-2 text-grey-11 text-md md:text-lg lg:text-xl"
-  >
+  <body class="antialiased bg-grey-2 text-grey-11 text-md md:text-lg">
     <Navigation />
     <slot />
     <Footer />

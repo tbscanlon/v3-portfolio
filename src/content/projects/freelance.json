@@ -1,0 +1,40 @@
+[
+  {
+    "title": "RapidWage",
+    "slug": "rapidwage",
+    "url": "https://www.rapidwage.com",
+    "image": "/portfolio/rapidwage.png",
+    "description": "A marketing site for a SaaS employee payment platform",
+    "longDescription": [
+      "RapidWage is a SaaS platform enabling employees to claim their wages earned immediately, rather than waiting for their next salary payment. Its mission is to enable employees to escape cycles of debt by allowing them to claim what they have earned immediately.",
+      "I was engaged to create a marketing website that could be used to explain the product to investors, employees and payroll staff. Everything involved with the creation of the site and upkeep was under my remit.",
+      "Following extensive collaboration with stakeholders, I quickly scaffolded a website with the features deemed critical for promoting the service. In subsequent iterations, I added more content and features as requested by the client.",
+      "I built the website using modern tooling to enable rapid iterations and account for potential future directions that the site could be taken in, enabling a level of flexibility that would not be possible with off-the-shelf site building solutions."
+    ],
+    "stack": [
+      "react",
+      "NextJS",
+      "Vercel",
+      "i18n",
+      "AWS SES",
+      "AWS S3",
+      "headless CMS",
+      "SEO"
+    ]
+  },
+  {
+    "title": "Irish Heritage",
+    "slug": "irish-heritage",
+    "url": "https://www.irishheritage.org.uk",
+    "image": "/portfolio/irish-heritage.png",
+    "description": "A site for a music charity awarding bursaries to young people with an interest in Irish music",
+    "longDescription": [
+      "Full disclosure: I sit as a member on the Irish heritage committee providing advice about technology and digital strategy.",
+      "Irish Heritage is a registered charity, established to continue the musical legacy of Ireland by providing funding and exposure to performers of Irish descent. Irish Heritage also provides outreach to the Irish community in the UK through performances and recitals.",
+      "A new website was requested as part of a larger rebranding of the charity, and over the course of a few months I built and iterated upon a site that tells the story of the charity and provides a platform for the charity to communicate with the public.",
+      "I was repsonsible for the entirety of the charity's web presence. This ranges from SEO, to content management, to all technical concerns involved with running a live website. I engaged extensively with senior stakeholders within the charity to produce a website fitting of the charity's objectives, and I continue to build and maintain the site to this day.",
+      "I built a site using modern tooling because of the various integrations with third party services that were required. The site I built supports integrations with a content management system, ticketing system and archive system. The tooling I use and the architecture I've chosen allow work done across the charity to be promoted on the website without any changes in workflow for non-technical staff."
+    ],
+    "stack": ["react", "NextJS", "Vercel", "graphQL", "AWS SES", "headless CMS"]
+  }
+]

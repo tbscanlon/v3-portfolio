@@ -1,10 +1,7 @@
 ---
 import "@fontsource/ibm-plex-sans";
-import "@fontsource/ibm-plex-serif/500.css";
 
 import Navigation from "@features/navigation/components/Navigation.astro";
-
-const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -12,12 +9,12 @@ const { title } = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <title>{title} | Tom Scanlon</title>
+    <title>Tom Scanlon</title>
   </head>
   <body
     class="antialiased bg-grey-2 text-grey-11 text-md md:text-lg flex flex-col justify-between"
   >
-    <Navigation />
+    <Navigation isRelative />
     <slot />
   </body>
 </html>

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.0.2",
+    "@fontsource/bungee-shade": "^5.0.17",
     "@fontsource/ibm-plex-sans": "^5.0.17",
     "@fontsource/ibm-plex-serif": "^5.0.8",
     "astro": "^3.4.4",

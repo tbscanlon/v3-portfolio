@@ -1,17 +1,24 @@
 ---
-import type { HTMLAttributes } from "astro/types";
+import type { HTMLTag, Polymorphic } from "astro/types";
 
-interface Props extends HTMLAttributes<"a"> {
+type Props<Tag extends HTMLTag> = Polymorphic<{
   class?: string;
   isExternal?: boolean;
   color: "blue" | "red" | "green" | "yellow" | "purple";
   children: any;
-}
+  as: Tag;
+}>;
 
-const { class: className, color, isExternal = false, ...attrs } = Astro.props;
+const {
+  class: className,
+  color,
+  as: Tag = "a",
+  isExternal = false,
+  ...attrs
+} = Astro.props;
 ---
 
-<a
+<Tag
   target={isExternal ? "_blank" : ""}
   class="inline-block underline underline-offset-4 decoration-2 duration-300 hover:decoration-4 focus:decoration-4 py-2 md:py-0"
   class:list={[
@@ -36,4 +43,4 @@ const { class: className, color, isExternal = false, ...attrs } = Astro.props;
   {...attrs}
 >
   <slot />
-</a>
+</Tag>
