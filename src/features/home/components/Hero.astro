@@ -5,23 +5,19 @@ import LinkButton from "@components/LinkButton.astro";
 <header class="p-4 md:p-6 xl:p-8">
   <div class="container relative mx-auto grid items-center">
     <div>
-      <h1
-        class="pb-4 xl:pb-6 text-lg lg:text-xl 2xl:text-2xl font-semibold text-blue-light"
-      >
+      <h1 class="text-lg lg:text-xl 2xl:text-2xl font-semibold text-blue-light">
         Tom Scanlon | Web Developer
       </h1>
-      <h2
-        class="text-4xl md:text-6xl 2xl:text-8xl pb-6 md:pb-8 lg:pb-12 2xl:pb-16 leading-normal"
-      >
-        <span class="block">
+      <h2 class="text-4xl md:text-6xl pb-6 md:pb-8">
+        <span class="block leading-normal">
           Making the world a <span
-            class="text-transparent bg-clip-text bg-gradient-to-b from-blue to-blue-light"
+            class="leading-normal text-transparent bg-clip-text bg-gradient-to-b from-blue to-blue-light"
             >better place</span
           >,
         </span>
-        <span class="block"> one line of code at a time.</span>
+        <span class="block leading-normal"> one line of code at a time.</span>
       </h2>
-      <div class="space-x-4 xl:space-x-8">
+      <div class="space-x-4">
         <LinkButton color="blue" href="/contact">Get in touch</LinkButton>
         <LinkButton color="grey" href="/portfolio">See my work</LinkButton>
       </div>
