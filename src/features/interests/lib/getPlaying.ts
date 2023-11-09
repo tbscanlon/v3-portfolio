@@ -1,5 +1,16 @@
 import { chromium } from "playwright";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 import type { Playing } from "./types";
+import { createWriteStream, fstat } from "fs";
+import { writeFile } from "fs/promises";
+
+/**
+ * Project top-level directory.
+ */
+const __dirname = dirname(
+  fileURLToPath(import.meta.url + "../" + "../" + "../" + "../" + "../")
+);
 
 /**
  * Gets the current game I'm playing on Steam. Uses the game's app ID from
@@ -27,6 +38,17 @@ export async function getPlaying(id: string): Promise<Playing> {
 
   const title = await page.locator("#appHubAppName").innerText();
   const developer = await page.locator(".dev_row > a").first().innerText();
+  const image = await page
+    .locator(".game_header_image_full")
+    .getAttribute("src");
+
+  // Refactor into image fetching generic function.
+  if (image) {
+    const res = await fetch(image);
+    const data = await res.arrayBuffer();
+
+    await writeFile(`${__dirname}/public/game.jpg`, Buffer.from(data));
+  }
 
   await context.close();
   await browser.close();
