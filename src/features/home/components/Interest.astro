@@ -35,7 +35,8 @@ const icons: Record<InterestType, string> = {
   }}
 >
   <dialog
-    class="absolute -top-40 -left-[25%] p-4 bg-grey-1 border border-grey-11 rounded-lg text-grey-11 w-64"
+    class="w-full relative lg:absolute container mx-auto lg:-top-48 lg:-left-[50%] p-4 bg-grey-1 border border-grey-11 rounded-lg text-grey-11 lg:w-80 xl:w-96 backdrop:bg-grey-1/75"
+    aria-label={interest.type}
   >
     <IconButton
       label={`close dialog for ${interest.type}`}
@@ -48,6 +49,7 @@ const icons: Record<InterestType, string> = {
         stroke-width="1.5"
         stroke="currentColor"
         class="w-6 h-6"
+        aria-hidden="true"
       >
         <path
           stroke-linecap="round"
@@ -60,14 +62,26 @@ const icons: Record<InterestType, string> = {
       {interest.type}
       {interest.type === "listening" && " to"}
     </h2>
-    <div class="bg-red-dark mb-4 flex">
-      <span>Image</span>
-      <ul class="italic text-base">
+    <div class="mb-4 flex">
+      {
+        interest.image && (
+          <img
+            src={interest.image}
+            alt=""
+            class="max-h-16 object-contain mr-2"
+          />
+        )
+      }
+      <ul class="italic text-base truncate items-center">
         <li class="not-italic font-semibold truncate">{interest.title}</li>
-        {interest.artist && <li>{interest.artist}</li>}
-        {interest.developer && <li>{interest.developer}</li>}
-        {interest.author && <li>{interest.author}</li>}
-        {interest.genres && <li>{interest.genres}</li>}
+        {interest.artist && <li class="text-sm truncate">{interest.artist}</li>}
+        {
+          interest.developer && (
+            <li class="text-sm truncate">{interest.developer}</li>
+          )
+        }
+        {interest.author && <li class="text-sm truncate">{interest.author}</li>}
+        {interest.genres && <li class="text-sm truncate">{interest.genres}</li>}
       </ul>
     </div>
     <TextLink
@@ -88,7 +102,7 @@ const icons: Record<InterestType, string> = {
       fill="none"
       viewBox="0 0 24 24"
       stroke-width={interest.type === "playing" ? "1" : "1.5"}
-      class="w-6 h-6 mr-2 shrink-0"
+      class="w-6 h-6 lg:mr-2 shrink-0"
       class:list={{
         "stroke-yellow-dark": colour === "yellow",
         "stroke-green-dark": colour === "green",
@@ -99,7 +113,7 @@ const icons: Record<InterestType, string> = {
     >
       <path d={icons[interest.type]}></path>
     </svg>
-    <span class="capitalize after:content-['_→']"
+    <span class="sr-only lg:not-sr-only capitalize after:content-['_→']"
       >{interest.type} {interest.type === "listening" && " to"}</span
     >
   </button>
@@ -124,7 +138,8 @@ const icons: Record<InterestType, string> = {
     }
 
     private show() {
-      this.dialog?.show();
+      let isSmall = window.matchMedia("(max-width: 1024px)").matches;
+      isSmall ? this.dialog?.showModal() : this.dialog?.show();
       this.isExpanded = true;
     }
 
