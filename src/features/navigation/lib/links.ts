@@ -9,10 +9,6 @@ export const links: Link[] = [
     text: "Projects",
   },
   {
-    href: "/blog",
-    text: "Blog",
-  },
-  {
     href: "/about",
     text: "About",
   },

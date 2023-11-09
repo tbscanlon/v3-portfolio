@@ -67,7 +67,8 @@ export async function fetchImage(
 
     return location;
   } catch (e) {
-    console.error(e);
+    console.log(`Error getting: ${from}`);
+    console.log(e);
     return "";
   }
 }

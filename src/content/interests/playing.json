@@ -1,10 +1,10 @@
 {
   "type": "playing",
   "image": "/interests/game.jpg",
-  "title": "Starfield",
-  "developer": "Bethesda Game Studios",
+  "title": "Cyberpunk 2077",
+  "developer": "CD PROJEKT RED",
   "cta": {
-    "url": "https://store.steampowered.com/app/1716740",
+    "url": "https://store.steampowered.com/app/1091500",
     "text": "View on Steam"
   }
 }

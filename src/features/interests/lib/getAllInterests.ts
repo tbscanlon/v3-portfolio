@@ -14,9 +14,9 @@
  * data is sourced via public APIs, and some is scraped from their respective
  * websites.
  *
- * This code is *only* executed via `npm run get-interests` to generate a JSON file
+ * This code is *only* executed via `npm run get-interests` to generate JSON
  * which is then used as my cached source of truth within `src/features/interests/components/*`.
- * I do this to make sure I don't hit any API limits and for ensure a high page load speed.
+ * I do this to make sure I don't hit any API limits and to ensure good page load speeds.
  */
 
 import fs from "fs/promises";
@@ -51,7 +51,7 @@ const ids = {
    * ID of a game from Steam.
    * @see https://store.steampowered.com/
    */
-  game: "1716740",
+  game: "1091500",
 
   /**
    * ISBN-13 of a book.

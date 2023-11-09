@@ -1,7 +1,24 @@
 import { fetchImage } from "./fetchImage.ts";
 import type { Listening } from "./types";
 
-function getStreamingURL(relations: any[]) {
+/**
+ * An incomplete representation of a related URL
+ * from MusicBrainz.
+ */
+interface Relation {
+  url: {
+    resource: string;
+  };
+}
+
+/**
+ * Extracts the Spotify streaming URL for an album.
+ *
+ * @param relations A list of related URLs for an album, as provided by
+ * the MusicBrainz API.
+ * @returns The URL for streaming the album on Spotify.
+ */
+function getStreamingURL(relations: Relation[]) {
   const urls: string[] = relations.map((link) => link.url.resource);
 
   const spotifyURL = urls.find((url) => /spotify/.test(url));
