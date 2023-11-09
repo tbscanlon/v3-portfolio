@@ -1,5 +1,6 @@
 import { chromium } from "playwright";
 import type { Studying } from "./types";
+import { fetchImage } from "./fetchImage.ts";
 
 /**
  * Gets the current course on Udemy I'm studying. Uses the course's slug from
@@ -25,15 +26,25 @@ export async function getStudying(slug: string): Promise<Studying> {
   await page.goto(url);
 
   const title = await page.locator('[data-purpose="lead-title"]').innerText();
+
   const author = await page
     .locator('[data-purpose="instructor-name-top"] > span > a')
     .innerText();
+
+  const imageRemoteURL = await page
+    .getByLabel("Play course preview")
+    .locator("img")
+    .first()
+    .getAttribute("src");
+
+  const imageLocalURL = await fetchImage(imageRemoteURL, "course");
 
   await context.close();
   await browser.close();
 
   return {
     type: "studying",
+    image: imageLocalURL,
     title,
     author,
     url,

@@ -1,9 +1,9 @@
 import { chromium } from "playwright";
-import path, { dirname } from "path";
+import { dirname } from "path";
 import { fileURLToPath } from "url";
 import type { Playing } from "./types";
-import { createWriteStream, fstat } from "fs";
 import { writeFile } from "fs/promises";
+import { fetchImage } from "./fetchImage.ts";
 
 /**
  * Project top-level directory.
@@ -38,24 +38,18 @@ export async function getPlaying(id: string): Promise<Playing> {
 
   const title = await page.locator("#appHubAppName").innerText();
   const developer = await page.locator(".dev_row > a").first().innerText();
-  const image = await page
+  const imageRemoteURL = await page
     .locator(".game_header_image_full")
     .getAttribute("src");
 
-  // Refactor into image fetching generic function.
-  if (image) {
-    const res = await fetch(image);
-    const data = await res.arrayBuffer();
-
-    await writeFile(`${__dirname}/public/game.jpg`, Buffer.from(data));
-  }
+  const imageLocalURL = await fetchImage(imageRemoteURL, "game");
 
   await context.close();
   await browser.close();
 
   return {
     type: "playing",
-    image: "/game.jpg",
+    image: imageLocalURL,
     title,
     developer,
     url,
