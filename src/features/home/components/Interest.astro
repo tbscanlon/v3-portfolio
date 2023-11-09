@@ -25,7 +25,7 @@ const icons: Record<InterestType, string> = {
 ---
 
 <portfolio-interest
-  class="relative before:w-full before:h-full before:absolute before:-skew-x-[30deg] before:top-0 py-1"
+  class="relative before:w-full before:h-full before:absolute before:-skew-x-[30deg] before:top-0 py-2 lg:py-1"
   class:list={{
     "before:bg-yellow-light": colour === "yellow",
     "before:bg-green-light": colour === "green",
@@ -34,6 +34,30 @@ const icons: Record<InterestType, string> = {
     "before:bg-purple-light": colour === "purple",
   }}
 >
+  <button
+    class="flex text-base text-grey-1 items-center z-10 relative px-3 sm:px-4 md:px-8 lg:px-4 hover:underline"
+  >
+    <svg
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width={interest.type === "playing" ? "1" : "1.5"}
+      class="w-6 h-6 lg:mr-2 shrink-0"
+      class:list={{
+        "stroke-yellow-dark": colour === "yellow",
+        "stroke-green-dark": colour === "green",
+        "stroke-blue-dark": colour === "blue",
+        "stroke-red-dark": colour === "red",
+        "stroke-purple-dark": colour === "purple",
+      }}
+    >
+      <path d={icons[interest.type]}></path>
+    </svg>
+    <span class="sr-only lg:not-sr-only capitalize after:content-['_→']"
+      >{interest.type} {interest.type === "listening" && " to"}</span
+    >
+  </button>
   <dialog
     class="w-full relative lg:absolute container mx-auto lg:-top-48 lg:-left-[50%] p-4 bg-grey-1 border border-grey-11 rounded-lg text-grey-11 lg:w-80 xl:w-96 backdrop:bg-grey-1/75"
     aria-label={interest.type}
@@ -69,6 +93,7 @@ const icons: Record<InterestType, string> = {
             src={interest.image}
             alt=""
             class="max-h-16 object-contain mr-2"
+            loading="lazy"
           />
         )
       }
@@ -93,30 +118,6 @@ const icons: Record<InterestType, string> = {
       {interest.cta.text}
     </TextLink>
   </dialog>
-  <button
-    class="flex text-base text-grey-1 items-center z-10 relative mx-4 hover:underline"
-  >
-    <svg
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width={interest.type === "playing" ? "1" : "1.5"}
-      class="w-6 h-6 lg:mr-2 shrink-0"
-      class:list={{
-        "stroke-yellow-dark": colour === "yellow",
-        "stroke-green-dark": colour === "green",
-        "stroke-blue-dark": colour === "blue",
-        "stroke-red-dark": colour === "red",
-        "stroke-purple-dark": colour === "purple",
-      }}
-    >
-      <path d={icons[interest.type]}></path>
-    </svg>
-    <span class="sr-only lg:not-sr-only capitalize after:content-['_→']"
-      >{interest.type} {interest.type === "listening" && " to"}</span
-    >
-  </button>
 </portfolio-interest>
 
 <script>

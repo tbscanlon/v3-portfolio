@@ -8,14 +8,16 @@ const interests = collection.map((item) => item.data);
 const colours = ["red", "yellow", "green", "blue", "purple"] as const;
 ---
 
-<footer
-  class="bg-grey-1 container mx-auto border border-grey-11 rounded-lg px-4 md:px-6 xl:px-8 mb-4 flex justify-center"
->
-  {
-    interests.map((interest, index) => (
-      <Interest interest={interest} colour={colours[index]} />
-    ))
-  }
+<footer class="px-4">
+  <div
+    class="container mx-auto bg-grey-1 border border-grey-11 rounded-lg px-4 md:px-6 xl:px-8 mb-4 flex justify-center"
+  >
+    {
+      interests.map((interest, index) => (
+        <Interest interest={interest} colour={colours[index]} />
+      ))
+    }
+  </div>
 </footer>
 
 <style>

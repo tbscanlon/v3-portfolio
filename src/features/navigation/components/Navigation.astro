@@ -6,10 +6,10 @@ import logo from "../images/logo.svg";
 import { links } from "../lib/links";
 ---
 
-<>
-  <nav
+<nav class="px-4">
+  <div
     aria-label="Main"
-    class="sticky mx-auto container top-4 mt-4 border border-grey-11 rounded-lg z-40 flex flex-row bg-grey-1 items-center pl-10 pr-4 md:pr-6 xl:pr-8"
+    class="mx-auto container sticky top-4 mt-4 border border-grey-11 rounded-lg z-40 flex flex-row bg-grey-1 items-center pl-10 pr-4 md:pr-6 xl:pr-8"
   >
     <a href="/" class="py-2" aria-label="Home">
       <Monogram />
@@ -49,8 +49,8 @@ import { links } from "../lib/links";
         ))
       }
     </ul>
-  </nav>
-</>
+  </div>
+</nav>
 <!-- Mobile nav -->
 <dialog
   id="mobile-nav-container"
@@ -128,14 +128,14 @@ import { links } from "../lib/links";
     }
   }
 
-  nav {
+  nav > div {
     background-image: url("/navBg.svg");
     background-repeat: no-repeat;
     background-position: left bottom;
     box-shadow: 4px 4px 0px theme(colors.grey.5);
   }
 
-  nav > a {
+  nav li > a {
     text-shadow: 1px 1px 0px theme(colors.grey.5);
   }
 
