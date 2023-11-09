@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "astro/types";
 interface Props extends HTMLAttributes<"a"> {
   class?: string;
   isExternal?: boolean;
-  color: "blue" | "red" | "green" | "yellow" | "grey";
+  color: "blue" | "red" | "green" | "yellow" | "purple" | "grey";
   children: any;
 }
 
@@ -26,6 +26,8 @@ const { children, color, class: className, ...props } = Astro.props;
         color === "green",
       "border-grey-2 text-grey-2 bg-yellow-light hover:bg-yellow focus:bg-yellow":
         color === "yellow",
+      "border-grey-2 text-grey-2 bg-purple-light hover:bg-purple focus:bg-purple":
+        color === "purple",
       "bg-grey-2 border-grey-11 text-grey-11 hover:bg-grey-4 focus:bg-grey-4":
         color === "grey",
     },

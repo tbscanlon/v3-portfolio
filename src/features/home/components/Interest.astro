@@ -1,9 +1,11 @@
 ---
-import type { Interest, InterestType } from "@features/interests/lib/types";
+import IconButton from "@components/IconButton.astro";
+import TextLink from "@components/TextLink.astro";
+import type { InterestType, Interest } from "@features/interests/lib/types";
 
 interface Props {
   interest: Interest;
-  colour: "orange" | "teal" | "purple" | "yellow" | "green";
+  colour: "blue" | "yellow" | "green" | "blue" | "red" | "purple";
 }
 
 const { interest, colour } = Astro.props;
@@ -22,33 +24,117 @@ const icons: Record<InterestType, string> = {
 };
 ---
 
-<button
-  class="flex text-base text-grey-1 items-center truncate before:bg-red-dark before:w-4 before:h-full before:-skew-x-12 before:right-[-10%]"
+<portfolio-interest
+  class="relative before:w-full before:h-full before:absolute before:-skew-x-[30deg] before:top-0 py-1"
   class:list={{
-    "bg-orange-light": colour === "orange",
-    "bg-teal-light": colour === "teal",
-    "bg-purple-light": colour === "purple",
-    "bg-yellow-light": colour === "yellow",
-    "bg-green-light": colour === "green",
+    "before:bg-yellow-light": colour === "yellow",
+    "before:bg-green-light": colour === "green",
+    "before:bg-blue-light": colour === "blue",
+    "before:bg-red-light": colour === "red",
+    "before:bg-purple-light": colour === "purple",
   }}
 >
-  <svg
-    aria-hidden="true"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke-width={interest.type === "playing" ? "1" : "1.5"}
-    class="w-6 h-6 mr-2 shrink-0"
-    class:list={{
-      "stroke-orange-dark": colour === "orange",
-      "stroke-teal-dark": colour === "teal",
-      "stroke-purple-dark": colour === "purple",
-      "stroke-yellow-dark": colour === "yellow",
-      "stroke-green-dark": colour === "green",
-    }}
+  <dialog
+    class="absolute -top-64 p-4 bg-grey-1 border border-grey-11 rounded-lg text-grey-11 w-64"
   >
-    <path d={icons[interest.type]}></path>
-  </svg>
-  <span class="sr-only">{interest.type}:</span>
-  <span class="truncate">{interest.title}</span>
-</button>
+    <IconButton
+      label={`close dialog for ${interest.type}`}
+      class="absolute right-2 top-2"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </IconButton>
+    <h2 class="text-sm mb-4">
+      I'm
+      {interest.type}
+      {interest.type === "listening" && " to"}
+    </h2>
+    <ul class="italic text-base">
+      <li class="not-italic font-semibold truncate">{interest.title}</li>
+      {interest.artist && <li>{interest.artist}</li>}
+      {interest.developer && <li>{interest.developer}</li>}
+      {interest.author && <li>{interest.author}</li>}
+      {interest.genres && <li>{interest.genres}</li>}
+    </ul>
+    <TextLink isExternal color={colour} class="text-base" href={interest.url}>
+      Learn more <span class="sr-only">about {interest.title}</span>
+    </TextLink>
+  </dialog>
+  <button
+    class="flex text-base text-grey-1 items-center z-10 relative mx-4 hover:underline"
+  >
+    <svg
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width={interest.type === "playing" ? "1" : "1.5"}
+      class="w-6 h-6 mr-2 shrink-0"
+      class:list={{
+        "stroke-yellow-dark": colour === "yellow",
+        "stroke-green-dark": colour === "green",
+        "stroke-blue-dark": colour === "blue",
+        "stroke-red-dark": colour === "red",
+        "stroke-purple-dark": colour === "purple",
+      }}
+    >
+      <path d={icons[interest.type]}></path>
+    </svg>
+    <span class="capitalize after:content-['_→']"
+      >{interest.type} {interest.type === "listening" && " to"}</span
+    >
+  </button>
+</portfolio-interest>
+
+<script>
+  class Interest extends HTMLElement {
+    private toggle: HTMLButtonElement | null;
+    private closeButton: HTMLButtonElement | null;
+    private dialog: HTMLDialogElement | null;
+    private isExpanded = false;
+
+    constructor() {
+      super();
+
+      this.toggle = this.querySelector("& > button");
+      this.closeButton = this.querySelector("dialog > button");
+      this.dialog = this.querySelector("dialog") as HTMLDialogElement;
+
+      this.toggle?.addEventListener("click", () => this.toggleDialog());
+      this.closeButton?.addEventListener("click", () => this.toggleDialog());
+    }
+
+    private show() {
+      this.dialog?.show();
+      this.isExpanded = true;
+    }
+
+    private hide() {
+      this.dialog?.close();
+      this.isExpanded = false;
+    }
+
+    private toggleDialog() {
+      this.isExpanded ? this.hide() : this.show();
+    }
+  }
+
+  customElements.define("portfolio-interest", Interest);
+</script>
+
+<style>
+  dialog {
+    box-shadow: 4px 4px 0px theme(colors.grey.5);
+  }
+</style>
