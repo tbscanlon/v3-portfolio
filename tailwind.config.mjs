@@ -66,6 +66,9 @@ module.exports = {
         sans: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
         serif: ["Bungee Shade", ...defaultTheme.fontFamily.serif],
       },
+      gridTemplateColumns: {
+        "project-summary": "1fr 2fr",
+      },
     },
   },
   plugins: [],

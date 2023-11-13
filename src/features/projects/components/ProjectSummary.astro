@@ -1,0 +1,74 @@
+---
+import Container from "@components/Container.astro";
+import type { ProjectSummary } from "../lib/types";
+import { getWorkPeriod } from "../lib/dates";
+import LinkButton from "@components/LinkButton.astro";
+
+type Props = ProjectSummary & { color: "blue" | "red" | "yellow" };
+
+const { title, stack, url, description, startDate, endDate, image, color } =
+  Astro.props;
+
+// Add colour support to h2's here
+// Investigate adding colour support to page header?
+---
+
+<Container>
+  <div
+    class="grid md:grid-cols-2 lg:grid-cols-project-summary gap-8 items-center"
+  >
+    <ul class="bg-grey-1 p-4 rounded-lg border space-y-8">
+      <li>
+        <h2 class="text-xl text-blue-light mb-1">Project title</h2>
+        <p>{title}</p>
+      </li>
+      <li>
+        <h2 class="text-xl text-blue-light mb-1">Summary</h2>
+        <p>{description}</p>
+      </li>
+      <li>
+        <h2 class="text-xl text-blue-light mb-1">Tech stack</h2>
+        <ul class="flex flex-wrap">
+          {
+            stack.map((tech) => (
+              <li class="text-base mr-2 mb-2 bg-grey-3 rounded-md px-2">
+                {tech}
+              </li>
+            ))
+          }
+        </ul>
+      </li>
+      <li>
+        <h2 class="text-xl text-blue-light mb-1">Work Period</h2>
+        <p>{getWorkPeriod(startDate, endDate)}</p>
+      </li>
+      <li class="grid grid-cols-5 gap-4">
+        <LinkButton
+          color={color}
+          href={url}
+          target="_blank"
+          class="after:content-['_↗'] col-span-3"
+        >
+          Visit project website <span class="sr-only">for {title}</span>
+        </LinkButton>
+        <LinkButton color="grey" href="#long-description" class="col-span-2">
+          Read more <span class="sr-only">about my work on {title}</span>
+        </LinkButton>
+      </li>
+    </ul>
+    <a href={url} target="_blank">
+      <img
+        src={image}
+        alt=`A screenshot of ${title}`
+        class="rounded-lg border"
+      />
+    </a>
+  </div>
+</Container>
+
+<style>
+  img,
+  div > ul {
+    box-shadow: 4px 4px 0px theme(colors.grey.5);
+  }
+</style>
