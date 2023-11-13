@@ -1,0 +1,47 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import BaseLayout from "./BaseLayout.astro";
+import PageHeading from "../components/PageHeading.astro";
+
+interface Meta {
+  title: string;
+}
+
+interface Props extends HTMLAttributes<"main"> {
+  children?: any;
+  title: string;
+  class?: string;
+  meta: Meta;
+}
+
+const { class: className, title, meta, ...attrs } = Astro.props;
+---
+
+<BaseLayout title={meta.title}>
+  <PageHeading>
+    {title}
+  </PageHeading>
+  <main
+    class="min-h-screen relative z-10 bg-grey-2"
+    class:list={className}
+    {...attrs}
+  >
+    <slot />
+  </main>
+</BaseLayout>
+
+<style>
+  header {
+    position: fixed;
+  }
+
+  main {
+    margin-top: calc((74px + theme(space.24)) * 2);
+  }
+
+  @media screen(xl) {
+    main {
+      margin-top: calc((74px + theme(space.32)) * 2);
+    }
+  }
+</style>
