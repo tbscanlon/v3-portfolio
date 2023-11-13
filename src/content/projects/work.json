@@ -1,102 +1,116 @@
-[
-  {
-    "title": "BBC Sounds",
-    "type": "work",
-    "slug": "bbc-sounds",
-    "url": "https://www.bbc.co.uk/sounds",
-    "image": "/portfolio/sounds.png",
-    "description": "The BBC masterbrand for music, radio and podcasts",
-    "longDescription": [
-      "BBC Sounds is the home for all of the BBC's audio content - music, radio and podcasts. Launched in October 2018, BBC Sounds has since grown to provide live radio and audio-on-demand content to millions of monthly active users.",
-      "The BBC Sounds website is a critical part of the platform, as the website can provide instant access to the entire catalogue of audio available on Sounds without any app installation. It's critical that the site is performant, accessible and internationalised to ensure that as many people as possible can access the service.",
-      "My work on BBC Sounds has touched the entire stack of the website, from monitoring, to analytics, to API refactors, to accessibility, to testing, to user-facing features and to server performance. Some of my major contributions include the dark theme on the site, auto-localisation logic for regional language visitors and radio stations, schedule pages and web-to-app conversions.",
-      "My time working on BBC Sounds has exposed me to the challenges of running a live service at scale, and how feature delivery, architectural concerns, legal regulations, agile process, security and leadership interact with that challenge."
-    ],
-    "stack": [
-      "react",
-      "redux",
-      "redux-thunk",
-      "SCSS",
-      "express",
-      "AWS",
-      "Typescript"
-    ]
-  },
-  {
-    "title": "Engaging Works",
-    "type": "work",
-    "slug": "engaging-works",
-    "url": "https://engaging.works",
-    "image": "/portfolio/ew.png",
-    "description": "A consumer-facing site offering a variety of services to improve workplace happiness",
-    "longDescription": [
-      "Engaging Works is the consumer-facing workplace happiness service, alongside Engaging Business for business-to-business workplace happiness.",
-      "Engaging Works is provided as a web platform, with access to a variety of interconnected services aimed to improve the happiness and engagement of a employee. Some features include surveys, instant messaging, job matching and user-generated content libraries.",
-      "I worked as the de facto lead front-end developer for Engaging Works. I was responsible for everything client-side, including feature delivery, establishing processes and patterns for constructing new features, testing and bug-fixing, and more. I created architectural patterns and created tools to help enable rapid delivery of new features and enhancements to existing features, and enabled a velocity that would otherwise only be achieved by a team of a much larger size.",
-      "Beyond technical work, I held responsibility for communicating with non-technical stakeholders - internal and external - leading agile ceremonies, mentoring and upskilling other developers, and creating workflows between designers, developers and testers.",
-      "My work on Engaging Works was critical in re-launching the brand, and the code I wrote & patterns I designed are still in use to this day."
-    ],
-    "stack": [
-      "react",
-      "redux",
-      "redux-saga",
-      "styled-components",
-      "express",
-      "graphQL",
-      "JWT"
-    ]
-  },
-  {
-    "title": "Engaging Business",
-    "slug": "engaging-business",
-    "type": "work",
-    "url": "https://engaging.business",
-    "image": "/portfolio/eb.png",
-    "description": "A business-facing site offering a variety of services to improve workplace happiness amongst a company's employees",
-    "longDescription": [
-      "Engaging Business is the business-facing workplace happiness service, alongside Engaging Works for consumer-facing workplace happiness.",
-      "Engaging Business is provided as a web platform, with access to a variety of interconnected services aimed to improve the happiness and engagement of a workforce. Some features include surveys, job posting and purchasing content for employees.",
-      "I worked as the de facto lead front-end developer for Engaging Business. I was responsible for everything client-side, including feature delivery, establishing processes and patterns for constructing new features, testing and bug-fixing, and more. I created architectural patterns and created tools to help enable rapid delivery of new features and enhancements to existing features, and enabled a velocity that would otherwise only be achieved by a team of a much larger size.",
-      "Beyond technical work, I held responsibility for communicating with non-technical stakeholders - internal and external - leading agile ceremonies, mentoring and upskilling other developers, and creating workflows between designers, developers and testers.",
-      "My work on Engaging Business was critical in re-launching the brand, and the code I wrote & patterns I designed are still in use to this day."
-    ],
-    "stack": [
-      "react",
-      "redux",
-      "redux-saga",
-      "styled-components",
-      "express",
-      "graphQL",
-      "JWT"
-    ]
-  },
-  {
-    "title": "B&Q",
-    "slug": "b-and-q",
-    "type": "work",
-    "url": "https://www.diy.com",
-    "image": "/portfolio/diy.png",
-    "description": "The e-commerce front-end for B&Q",
-    "longDescription": [
-      "The B&Q website provides an e-commerce platform for millions of shoppers each month.",
-      "I worked as part of the team re-building the website for its re-launch in 2018, to provide a modern and responsive platform for shoppers.",
-      "My contributions to the site were all user-facing; I helped to build the page furniture (navigation and footer), product description pages and checkout experience.",
-      "In my work on the B&Q website I championed close collaboration with stakeholders, especially with designers to produce pixel-perfect recreations of wireframes and mockups."
-    ],
-    "stack": ["react", "redux", "redux-saga", "postCSS", "TypeScript"]
-  },
-  {
-    "title": "Design my Space (defunct)",
-    "slug": "design-my-space",
-    "type": "work",
-    "url": "https://www.designmyspace.co.uk",
-    "image": "/portfolio/dms.png",
-    "description": "An experimental web app to provide a single destination for home improvement",
-    "longDescription": [
-      "Design My Space was an experimental home improvement platform built as part of an exploration into Kingfisher's digital transformation. The platform was discontinued, but the branding was adapted to be used in the Goodhome line of products and Kingfisher's corporate brand.",
-      "I worked across the front-end of the platform, primarily working on user authentication and authorisation concerns. Towards the end of the project, I collaborated extensively with lead developers to help establish patterns to re-use the innovations built in the platform across Kingfisher's digital estate.",
-      "I used my time on this project to hone my communication and agile participation skills, with a particular focus on engaging with non-technical team members and stakeholders."
-    ],
-    "stack": ["angular", "ngrx", "scss", "rxJS", "TypeScript"]
-  }
-]
+{
+  "title": "Work projects",
+  "introduction": "Projects I've worked on professionally as part of my career.",
+  "projects": [
+    {
+      "title": "BBC Sounds",
+      "type": "work",
+      "slug": "bbc-sounds",
+      "url": "https://www.bbc.co.uk/sounds",
+      "image": "/portfolio/sounds.png",
+      "description": "The BBC masterbrand for music, radio and podcasts",
+      "longDescription": [
+        "BBC Sounds is the home for all of the BBC's audio content - music, radio and podcasts. Launched in October 2018, BBC Sounds has since grown to provide live radio and audio-on-demand content to millions of monthly active users.",
+        "The BBC Sounds website is a critical part of the platform, as the website can provide instant access to the entire catalogue of audio available on Sounds without any app installation. It's critical that the site is performant, accessible and internationalised to ensure that as many people as possible can access the service.",
+        "My work on BBC Sounds has touched the entire stack of the website, from monitoring, to analytics, to API refactors, to accessibility, to testing, to user-facing features and to server performance. Some of my major contributions include the dark theme on the site, auto-localisation logic for regional language visitors and radio stations, schedule pages and web-to-app conversions.",
+        "My time working on BBC Sounds has exposed me to the challenges of running a live service at scale, and how feature delivery, architectural concerns, legal regulations, agile process, security and leadership interact with that challenge."
+      ],
+      "stack": [
+        "react",
+        "redux",
+        "redux-thunk",
+        "SCSS",
+        "express",
+        "AWS",
+        "Typescript"
+      ],
+      "startDate": "2020-02-01T00:00:00Z",
+      "endDate": "2022-12-01T00:00:00Z"
+    },
+    {
+      "title": "Engaging Works",
+      "type": "work",
+      "slug": "engaging-works",
+      "url": "https://engaging.works",
+      "image": "/portfolio/ew.png",
+      "description": "A consumer-facing site offering a variety of services to improve workplace happiness",
+      "longDescription": [
+        "Engaging Works is the consumer-facing workplace happiness service, alongside Engaging Business for business-to-business workplace happiness.",
+        "Engaging Works is provided as a web platform, with access to a variety of interconnected services aimed to improve the happiness and engagement of a employee. Some features include surveys, instant messaging, job matching and user-generated content libraries.",
+        "I worked as the de facto lead front-end developer for Engaging Works. I was responsible for everything client-side, including feature delivery, establishing processes and patterns for constructing new features, testing and bug-fixing, and more. I created architectural patterns and created tools to help enable rapid delivery of new features and enhancements to existing features, and enabled a velocity that would otherwise only be achieved by a team of a much larger size.",
+        "Beyond technical work, I held responsibility for communicating with non-technical stakeholders - internal and external - leading agile ceremonies, mentoring and upskilling other developers, and creating workflows between designers, developers and testers.",
+        "My work on Engaging Works was critical in re-launching the brand, and the code I wrote & patterns I designed are still in use to this day."
+      ],
+      "stack": [
+        "react",
+        "redux",
+        "redux-saga",
+        "styled-components",
+        "express",
+        "graphQL",
+        "JWT"
+      ],
+      "startDate": "2018-10-01T00:00:00Z",
+      "endDate": "2020-01-01T00:00:00Z"
+    },
+    {
+      "title": "Engaging Business",
+      "slug": "engaging-business",
+      "type": "work",
+      "url": "https://engaging.business",
+      "image": "/portfolio/eb.png",
+      "description": "A business-facing site offering a variety of services to improve workplace happiness amongst a company's employees",
+      "longDescription": [
+        "Engaging Business is the business-facing workplace happiness service, alongside Engaging Works for consumer-facing workplace happiness.",
+        "Engaging Business is provided as a web platform, with access to a variety of interconnected services aimed to improve the happiness and engagement of a workforce. Some features include surveys, job posting and purchasing content for employees.",
+        "I worked as the de facto lead front-end developer for Engaging Business. I was responsible for everything client-side, including feature delivery, establishing processes and patterns for constructing new features, testing and bug-fixing, and more. I created architectural patterns and created tools to help enable rapid delivery of new features and enhancements to existing features, and enabled a velocity that would otherwise only be achieved by a team of a much larger size.",
+        "Beyond technical work, I held responsibility for communicating with non-technical stakeholders - internal and external - leading agile ceremonies, mentoring and upskilling other developers, and creating workflows between designers, developers and testers.",
+        "My work on Engaging Business was critical in re-launching the brand, and the code I wrote & patterns I designed are still in use to this day."
+      ],
+      "stack": [
+        "react",
+        "redux",
+        "redux-saga",
+        "styled-components",
+        "express",
+        "graphQL",
+        "JWT"
+      ],
+      "startDate": "2018-10-01T00:00:00Z",
+      "endDate": "2020-01-01T00:00:00Z"
+    },
+    {
+      "title": "B&Q",
+      "slug": "b-and-q",
+      "type": "work",
+      "url": "https://www.diy.com",
+      "image": "/portfolio/diy.png",
+      "description": "The e-commerce front-end for B&Q",
+      "longDescription": [
+        "The B&Q website provides an e-commerce platform for millions of shoppers each month.",
+        "I worked as part of the team re-building the website for its re-launch in 2018, to provide a modern and responsive platform for shoppers.",
+        "My contributions to the site were all user-facing; I helped to build the page furniture (navigation and footer), product description pages and checkout experience.",
+        "In my work on the B&Q website I championed close collaboration with stakeholders, especially with designers to produce pixel-perfect recreations of wireframes and mockups."
+      ],
+      "stack": ["react", "redux", "redux-saga", "postCSS", "TypeScript"],
+      "startDate": "2017-10-01T00:00:00Z",
+      "endDate": "2018-10-01T00:00:00Z"
+    },
+    {
+      "title": "Design my Space (defunct)",
+      "slug": "design-my-space",
+      "type": "work",
+      "url": "https://www.designmyspace.co.uk",
+      "image": "/portfolio/dms.png",
+      "description": "An experimental web app to provide a single destination for home improvement",
+      "longDescription": [
+        "Design My Space was an experimental home improvement platform built as part of an exploration into Kingfisher's digital transformation. The platform was discontinued, but the branding was adapted to be used in the Goodhome line of products and Kingfisher's corporate brand.",
+        "I worked across the front-end of the platform, primarily working on user authentication and authorisation concerns. Towards the end of the project, I collaborated extensively with lead developers to help establish patterns to re-use the innovations built in the platform across Kingfisher's digital estate.",
+        "I used my time on this project to hone my communication and agile participation skills, with a particular focus on engaging with non-technical team members and stakeholders."
+      ],
+      "stack": ["angular", "ngrx", "scss", "rxJS", "TypeScript"],
+      "startDate": "2017-10-01T00:00:00Z",
+      "endDate": "2018-10-01T00:00:00Z"
+    }
+  ]
+}
