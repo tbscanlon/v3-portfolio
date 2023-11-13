@@ -35,7 +35,7 @@ const { title, introduction, cta, projects, color } = Astro.props;
     {
       cta && (
         <>
-          <TextLink as="a" href={cta.url} color={color}>
+          <TextLink as="a" href={cta.url} color={color} class="py-0">
             {cta.text}
           </TextLink>
           .
@@ -43,7 +43,7 @@ const { title, introduction, cta, projects, color } = Astro.props;
       )
     }
   </p>
-  <div class="grid gap-4 md:gap-8 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
+  <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
     {projects.map((project) => <ProjectCard color={color} {...project} />)}
   </div>
 </Container>
