@@ -14,19 +14,28 @@ interface Props {
   introduction: string;
   cta?: CallToAction;
   projects: ProjectSummary[];
+  color: "blue" | "red" | "yellow";
 }
 
-const { title, introduction, cta, projects } = Astro.props;
+const { title, introduction, cta, projects, color } = Astro.props;
 ---
 
 <Container>
-  <h2 class="text-2xl md:text-4xl font-bold mb-4">{title}</h2>
+  <h2 class="text-2xl md:text-4xl font-bold mb-4">
+    <span
+      class:list={{
+        "text-blue-light": color === "blue",
+        "text-red-light": color === "red",
+        "text-yellow-light": color === "yellow",
+      }}>{title}</span
+    > projects
+  </h2>
   <p class="mb-8 max-w-[90ch]">
     <span>{introduction}</span>
     {
       cta && (
         <>
-          <TextLink as="a" href={cta.url} color="blue">
+          <TextLink as="a" href={cta.url} color={color}>
             {cta.text}
           </TextLink>
           .
@@ -35,6 +44,12 @@ const { title, introduction, cta, projects } = Astro.props;
     }
   </p>
   <div class="grid gap-4 md:gap-8 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3">
-    {projects.map((project) => <ProjectCard {...project} />)}
+    {projects.map((project) => <ProjectCard color={color} {...project} />)}
   </div>
 </Container>
+
+<style>
+  h2 {
+    text-shadow: 2px 2px 0px theme(colors.grey.5);
+  }
+</style>

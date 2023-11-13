@@ -8,6 +8,7 @@ const [freelance, student, work] = await getCollection("projects");
 
 <PageLayout title="Projects" meta={{ title: "Projects" }}>
   <ProjectCollection
+    color="blue"
     title={work.data.title}
     introduction={work.data.introduction}
     projects={work.data.projects.map((project) => ({
@@ -19,6 +20,7 @@ const [freelance, student, work] = await getCollection("projects");
     }))}
   />
   <ProjectCollection
+    color="red"
     title={freelance.data.title}
     introduction={freelance.data.introduction}
     cta={freelance.data.cta}
@@ -31,6 +33,7 @@ const [freelance, student, work] = await getCollection("projects");
     }))}
   />
   <ProjectCollection
+    color="yellow"
     title={student.data.title}
     introduction={student.data.introduction}
     projects={student.data.projects.map((project) => ({

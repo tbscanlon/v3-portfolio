@@ -2,13 +2,19 @@
 import type { ProjectSummary } from "../lib/types";
 import { format } from "date-fns";
 
-type Props = ProjectSummary;
+type Props = ProjectSummary & { color: "blue" | "red" | "yellow" };
 
-const { title, description, startDate, endDate, slug } = Astro.props;
+const { title, description, startDate, endDate, slug, color } = Astro.props;
 
 const getWorkPeriod = () => {
   const start = format(new Date(startDate), "MMMM yyyy");
   const end = endDate ? format(new Date(endDate), "MMMM yyyy") : "present";
+
+  // Don't show same date twice (e.g., June 17 - June 17)
+  // because it doesn't read great.
+  if (start === end) {
+    return start;
+  }
 
   return `${start} - ${end}`;
 };
@@ -16,7 +22,15 @@ const getWorkPeriod = () => {
 
 <a class="group flex flex-col border p-4 rounded-lg" href={`/projects/${slug}`}>
   <h3
-    class="after:content-['_→'] underline underline-offset-4 decoration-2 duration-300 group-hover:decoration-4 group-focus:decoration-4 decoration-blue-light group-hover:text-blue-light group-focus:text-blue-light"
+    class="underline underline-offset-4 decoration-2 duration-300 group-hover:decoration-4 group-focus:decoration-4"
+    class:list={{
+      "after:content-['_→'] decoration-blue-light group-hover:text-blue-light group-focus:text-blue-light":
+        color === "blue",
+      "after:content-['_→'] decoration-red-light group-hover:text-red-light group-focus:text-red-light":
+        color === "red",
+      "after:content-['_→'] decoration-yellow-light group-hover:text-yellow-light group-focus:text-yellow-light":
+        color === "yellow",
+    }}
   >
     {title}
   </h3>
