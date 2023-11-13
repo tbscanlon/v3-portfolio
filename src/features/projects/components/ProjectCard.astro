@@ -1,0 +1,33 @@
+---
+import type { ProjectSummary } from "../lib/types";
+import { format } from "date-fns";
+
+type Props = ProjectSummary;
+
+const { title, description, startDate, endDate, slug } = Astro.props;
+
+const getWorkPeriod = () => {
+  const start = format(new Date(startDate), "MMMM yyyy");
+  const end = endDate ? format(new Date(endDate), "MMMM yyyy") : "present";
+
+  return `${start} - ${end}`;
+};
+---
+
+<a class="group flex flex-col border p-4 rounded-lg" href={`/projects/${slug}`}>
+  <h3
+    class="after:content-['_→'] underline underline-offset-4 decoration-2 duration-300 group-hover:decoration-4 group-focus:decoration-4 decoration-blue-light group-hover:text-blue-light group-focus:text-blue-light"
+  >
+    {title}
+  </h3>
+  <span class="text-base italic mb-4 mt-1">
+    {getWorkPeriod()}
+  </span>
+  <p class="mt-auto text-base">{description}</p>
+</a>
+
+<style>
+  a {
+    box-shadow: 4px 4px 0px theme(colors.grey.5);
+  }
+</style>
