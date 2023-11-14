@@ -2,23 +2,10 @@
 import { getCollection } from "astro:content";
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import TextLink from "@components/TextLink.astro";
 import ProjectSummary from "@features/projects/components/ProjectSummary.astro";
 import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths = (async () => {
-  const getColour = (projectType: "work" | "freelance" | "student") => {
-    switch (projectType) {
-      case "work":
-        return "blue";
-      case "freelance":
-        return "red";
-      case "student":
-        return "yellow";
-      default:
-        return "blue";
-    }
-  };
   const projectEntries = await getCollection("projects");
 
   const paths = projectEntries.flatMap((category) =>
@@ -26,10 +13,7 @@ export const getStaticPaths = (async () => {
       params: {
         slug: project.slug,
       },
-      props: {
-        ...project,
-        color: getColour(category.id),
-      },
+      props: project,
     }))
   );
 
@@ -45,35 +29,19 @@ const {
   startDate,
   endDate,
   image,
-  color,
 } = Astro.props;
 ---
 
-<PageLayout title={title} meta={{ title: `${title} | Projects` }}>
+<PageLayout meta={{ title: `${title} | Projects` }}>
+  <h1 class="sr-only">{title}</h1>
   <ProjectSummary
     title={title}
     description={description}
+    longDescription={longDescription}
     stack={stack}
     url={url}
     startDate={startDate}
     endDate={endDate}
     image={image}
-    color={color as "blue" | "red" | "yellow"}
   />
-  <Container>
-    <article
-      id="long-description"
-      class="max-w-prose space-y-4 mb-8 mx-auto scroll-m-32"
-    >
-      {longDescription.map((paragraph) => <p class="">{paragraph}</p>)}
-      <TextLink
-        as="a"
-        href="/projects"
-        color={color as "blue" | "red" | "yellow"}
-        class="before:content-['_←'] after:content-none mb-16"
-      >
-        Back to projects
-      </TextLink>
-    </article>
-  </Container>
 </PageLayout>

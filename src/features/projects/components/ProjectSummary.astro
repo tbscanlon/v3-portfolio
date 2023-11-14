@@ -3,21 +3,40 @@ import Container from "@components/Container.astro";
 import type { ProjectSummary } from "../lib/types";
 import { getWorkPeriod } from "../lib/dates";
 import LinkButton from "@components/LinkButton.astro";
+import Button from "@components/Button.astro";
+import TextLink from "@components/TextLink.astro";
 
-type Props = ProjectSummary & { color: "blue" | "red" | "yellow" };
+type Props = ProjectSummary;
 
-const { title, stack, url, description, startDate, endDate, image, color } =
-  Astro.props;
-
-// Add colour support to h2's here
-// Investigate adding colour support to page header?
+const {
+  title,
+  stack,
+  url,
+  description,
+  longDescription,
+  startDate,
+  endDate,
+  image,
+} = Astro.props;
 ---
 
 <Container>
-  <div
-    class="grid md:grid-cols-2 lg:grid-cols-project-summary gap-8 items-center"
+  <project-summary
+    class="grid lg:grid-cols-2 xl:grid-cols-project-summary gap-8"
   >
-    <ul class="bg-grey-1 p-4 rounded-lg border space-y-8">
+    <ul
+      class="bg-grey-1 px-4 py-8 rounded-lg border space-y-8 place-self-start w-full order-1 lg:order-first"
+    >
+      <li>
+        <TextLink
+          as="a"
+          href="/projects"
+          color="blue"
+          class="before:content-['_←'] after:content-none text-base pt-0"
+        >
+          Back to projects
+        </TextLink>
+      </li>
       <li>
         <h2 class="text-xl text-blue-light mb-1">Project title</h2>
         <p>{title}</p>
@@ -42,18 +61,37 @@ const { title, stack, url, description, startDate, endDate, image, color } =
         <h2 class="text-xl text-blue-light mb-1">Work Period</h2>
         <p>{getWorkPeriod(startDate, endDate)}</p>
       </li>
-      <li class="grid grid-cols-5 gap-4">
+      <li class="grid grid-cols-12 gap-4">
         <LinkButton
-          color={color}
+          color="blue"
           href={url}
           target="_blank"
-          class="after:content-['_↗'] col-span-3"
+          class="col-span-full sm:col-span-6 2xl:col-span-7"
         >
-          Visit project website <span class="sr-only">for {title}</span>
+          <span>Visit website <span class="sr-only">for {title}</span></span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-4 h-4 ml-1"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+          </svg>
         </LinkButton>
-        <LinkButton color="grey" href="#long-description" class="col-span-2">
+        <Button color="grey" class="col-span-full sm:col-span-6 2xl:col-span-5">
           Read more <span class="sr-only">about my work on {title}</span>
-        </LinkButton>
+        </Button>
+      </li>
+      <li id="expanded" class="hidden">
+        <article class="space-y-4 leading-relaxed">
+          {longDescription.map((paragraph) => <p class="">{paragraph}</p>)}
+        </article>
       </li>
     </ul>
     <a href={url} target="_blank">
@@ -63,7 +101,7 @@ const { title, stack, url, description, startDate, endDate, image, color } =
         class="rounded-lg border"
       />
     </a>
-  </div>
+  </project-summary>
 </Container>
 
 <style>
@@ -72,3 +110,43 @@ const { title, stack, url, description, startDate, endDate, image, color } =
     box-shadow: 4px 4px 0px theme(colors.grey.5);
   }
 </style>
+
+<script>
+  class ProjectSummary extends HTMLElement {
+    private readMore: HTMLButtonElement | null;
+    private content: HTMLElement | null;
+
+    constructor() {
+      super();
+
+      this.readMore = this.querySelector("button");
+      this.content = this.querySelector("#expanded");
+
+      this.readMore?.addEventListener("click", () => this.toggle());
+    }
+
+    private toggle() {
+      const isClosed = this.content?.classList.contains("hidden");
+
+      isClosed ? this.show() : this.hide();
+    }
+
+    private show() {
+      this.content?.classList.remove("hidden");
+
+      if (this.readMore) {
+        this.readMore.innerText = "Read less";
+      }
+    }
+
+    private hide() {
+      this.content?.classList.add("hidden");
+
+      if (this.readMore) {
+        this.readMore.innerText = "Read more";
+      }
+    }
+  }
+
+  customElements.define("project-summary", ProjectSummary);
+</script>

@@ -5,7 +5,7 @@ import PageHeading from "../components/PageHeading.astro";
 
 interface Props extends HTMLAttributes<"main"> {
   children?: any;
-  title: string;
+  title?: string;
   class?: string;
   meta: Meta;
 }
@@ -14,12 +14,16 @@ const { class: className, title, meta, ...attrs } = Astro.props;
 ---
 
 <BaseLayout meta={meta}>
-  <PageHeading>
-    {title}
-  </PageHeading>
+  {title && <PageHeading>{title}</PageHeading>}
   <main
     class="min-h-screen relative z-10 bg-grey-2"
-    class:list={className}
+    class:list={[
+      className,
+      {
+        "mt-main xl:mt-main-lg": !!title,
+        "mt-32": !title,
+      },
+    ]}
     {...attrs}
   >
     <slot />
@@ -29,15 +33,5 @@ const { class: className, title, meta, ...attrs } = Astro.props;
 <style>
   header {
     position: fixed;
-  }
-
-  main {
-    margin-top: calc((74px + theme(space.24)) * 2);
-  }
-
-  @media screen(xl) {
-    main {
-      margin-top: calc((74px + theme(space.32)) * 2);
-    }
   }
 </style>

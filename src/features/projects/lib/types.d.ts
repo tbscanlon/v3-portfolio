@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   url: string;
   description: string;
-  longDescription: string;
+  longDescription: string[];
   stack: string[];
   startDate: string;
   endDate?: string;
@@ -15,7 +15,4 @@ export type ProjectCard = Pick<
   "title" | "description" | "startDate" | "endDate" | "slug"
 >;
 
-export type ProjectSummary = Pick<
-  Project,
-  "title" | "description" | "url" | "stack" | "startDate" | "endDate" | "image"
->;
+export type ProjectSummary = Omit<Project, "slug">;

@@ -69,6 +69,10 @@ module.exports = {
       gridTemplateColumns: {
         "project-summary": "1fr 2fr",
       },
+      margin: {
+        main: "calc((74px + theme(space.24)) * 2)",
+        "main-lg": "calc((74px + theme(space.32)) * 2)",
+      },
     },
   },
   plugins: [],
