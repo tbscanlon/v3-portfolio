@@ -1,5 +1,5 @@
 ---
-import { Image, getImage } from "astro:assets";
+import { Image } from "astro:assets";
 import Container from "@components/Container.astro";
 import { getWorkPeriod } from "../lib/dates";
 import type { ProjectSummary } from "../lib/types";
@@ -21,14 +21,7 @@ const {
 } = Astro.props;
 
 // Make sure we're optimising portfolio screenshots.
-const rawImage = await import(/* @vite-ignore */ `../../../../public${image}`);
-
-const loadedImage = await getImage({
-  src: rawImage.default,
-  widths: [240, 540, 720],
-  height: 720,
-  format: "webp",
-});
+const { default: loadedImage } = await import(`../images/${image}.png`);
 ---
 
 <Container>
@@ -105,13 +98,20 @@ const loadedImage = await getImage({
         </article>
       </li>
     </ul>
-    <Image
+    <!-- <Image
       alt=`A screenshot of ${title}`
       class="rounded-lg border"
       src={loadedImage.src}
       width={loadedImage.attributes.width}
       height={loadedImage.attributes.height}
       srcset={loadedImage.srcSet.attribute}
+      loading="eager"
+    /> -->
+    <Image
+      alt=`A screenshot of ${title}`
+      class="rounded-lg border"
+      src={loadedImage}
+      widths={[240, 540, 720]}
       loading="eager"
     />
   </project-summary>

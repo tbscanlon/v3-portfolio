@@ -10,7 +10,7 @@
       "title": "RapidWage",
       "slug": "rapidwage",
       "url": "https://www.rapidwage.com",
-      "image": "/portfolio/rapidwage.png",
+      "image": "rapidwage",
       "description": "A marketing site for a SaaS employee payment platform",
       "longDescription": [
         "RapidWage is a SaaS platform enabling employees to claim their wages earned immediately, rather than waiting for their next salary payment. Its mission is to enable employees to escape cycles of debt by allowing them to claim what they have earned immediately.",
@@ -35,7 +35,7 @@
       "title": "Irish Heritage",
       "slug": "irish-heritage",
       "url": "https://www.irishheritage.org.uk",
-      "image": "/portfolio/irish-heritage.png",
+      "image": "irish-heritage",
       "description": "A site for a music charity awarding bursaries to young people with an interest in Irish music",
       "longDescription": [
         "Full disclosure: I sit as a member on the Irish heritage committee providing advice about technology and digital strategy.",

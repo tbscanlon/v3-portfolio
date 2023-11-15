@@ -7,7 +7,7 @@
       "slug": "the-percepticon",
       "type": "student",
       "url": "https://the-percepticon.firebaseapp.com/",
-      "image": "/portfolio/percepticon.png",
+      "image": "percepticon",
       "description": "A hand-written implementation of the perceptron algorithm that has been trained to detemine if an article is clickbait or not, based on its title",
       "longDescription": [
         "The PERCEPTICON is a full-stack application built for my final project at Makers Academy.",
@@ -24,7 +24,7 @@
       "slug": "ping",
       "type": "student",
       "url": "https://ping-js.firebaseapp.com/",
-      "image": "/portfolio/ping.png",
+      "image": "ping",
       "description": "A pure JavaScript implementation of the classic game Pong",
       "longDescription": [
         "Ping is a pure JavaScript implementation of the classic game Pong.",
@@ -42,7 +42,7 @@
       "slug": "chitter",
       "type": "student",
       "url": "https://chitter-june2017.herokuapp.com/",
-      "image": "/portfolio/chitter.png",
+      "image": "chitter",
       "description": "A REALLY GOOD twitter clone",
       "longDescription": [
         "Chitter is a clone of Twitter, built from scratch over the course of one weekend. I built this as my Week 4 challenge whilst attending Makers Academy.",
@@ -58,7 +58,7 @@
       "type": "student",
       "slug": "cyber-rps",
       "url": "https://github.com/tbscanlon/rps-challenge",
-      "image": "/portfolio/cyber-rps.png",
+      "image": "cyber-rps",
       "description": "Rock Paper Scissors",
       "longDescription": [
         "CYPER RPS was my take on Rock Paper Scissors, built as a web site in which visitors could play against a computer opponent. I built this project as my Week 3 challenge at Makers Academy.",
