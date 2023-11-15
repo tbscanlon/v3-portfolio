@@ -1,7 +1,8 @@
 ---
+import { Image, getImage } from "astro:assets";
 import Container from "@components/Container.astro";
-import type { ProjectSummary } from "../lib/types";
 import { getWorkPeriod } from "../lib/dates";
+import type { ProjectSummary } from "../lib/types";
 import LinkButton from "@components/LinkButton.astro";
 import Button from "@components/Button.astro";
 import TextLink from "@components/TextLink.astro";
@@ -18,6 +19,16 @@ const {
   endDate,
   image,
 } = Astro.props;
+
+// Make sure we're optimising portfolio screenshots.
+const rawImage = await import(/* @vite-ignore */ `../../../../public${image}`);
+
+const loadedImage = await getImage({
+  src: rawImage.default,
+  widths: [240, 540, 720],
+  height: 720,
+  format: "webp",
+});
 ---
 
 <Container>
@@ -94,19 +105,21 @@ const {
         </article>
       </li>
     </ul>
-    <a href={url} target="_blank">
-      <img
-        src={image}
-        alt=`A screenshot of ${title}`
-        class="rounded-lg border"
-      />
-    </a>
+    <Image
+      alt=`A screenshot of ${title}`
+      class="rounded-lg border"
+      src={loadedImage.src}
+      width={loadedImage.attributes.width}
+      height={loadedImage.attributes.height}
+      srcset={loadedImage.srcSet.attribute}
+      loading="eager"
+    />
   </project-summary>
 </Container>
 
 <style>
   img,
-  div > ul {
+  project-summary > ul {
     box-shadow: 4px 4px 0px theme(colors.grey.5);
   }
 </style>
