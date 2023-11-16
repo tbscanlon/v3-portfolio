@@ -9,11 +9,7 @@ interface Props extends HTMLAttributes<"div"> {
 const { class: className, ...attrs } = Astro.props;
 ---
 
-<div
-  class="bg-grey-1 border border-grey-11 rounded-lg p-4 md:p-6 xl:p-8 space-y-4 xl:space-y-8"
-  class:list={className}
-  {...attrs}
->
+<div class="space-y-4 xl:space-y-8" class:list={className} {...attrs}>
   <p>
     I'm available to work <span class="text-yellow-light">full-time</span>
      or as a <span class="text-yellow-light">freelancer</span>.
@@ -29,5 +25,7 @@ const { class: className, ...attrs } = Astro.props;
     would like some <span class="text-yellow-light">expertise</span> in web or
     software development, I can assist you on a pro bono basis.
   </p>
-  <TextLink href="/contact" color="yellow">Get in touch with me</TextLink>
+  <TextLink as="a" href="/contact" color="yellow">
+    Get in touch with me
+  </TextLink>
 </div>
