@@ -30,12 +30,12 @@ const { title, introduction, cta, projects, color } = Astro.props;
       }}>{title}</span
     > projects
   </h2>
-  <p class="mb-8 max-w-[90ch]">
+  <p class="mb-8 max-w-[90ch] leading-relaxed">
     <span>{introduction}</span>
     {
       cta && (
         <>
-          <TextLink as="a" href={cta.url} color={color} class="py-0">
+          <TextLink as="a" href={cta.url} color={color} class="pt-0">
             {cta.text}
           </TextLink>
           .
