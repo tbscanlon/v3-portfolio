@@ -50,6 +50,11 @@ const { isRelative = false } = Astro.props;
           <li>
             <a
               class="block px-1 xl:py-0.5 ml-6 xl:ml-8 hover:text-blue-light focus:bg-grey-4 rounded-lg duration-300"
+              class:list={{
+                "hover:text-blue-light": link.color === "blue",
+                "hover:text-green-light": link.color === "green",
+                "hover:text-yellow-light": link.color === "yellow",
+              }}
               href={link.href}
             >
               {link.text}

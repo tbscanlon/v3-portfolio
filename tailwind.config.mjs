@@ -17,7 +17,7 @@ const palette = {
     light: "#fadb2f",
   },
   green: {
-    dark: "#97940e",
+    dark: "#79740e",
     DEFAULT: "#98971a",
     light: "#b8bb26",
   },
