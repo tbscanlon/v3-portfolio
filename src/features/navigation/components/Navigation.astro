@@ -9,6 +9,7 @@ interface Props {
   isRelative?: boolean;
 }
 
+const activeRoute = links.find((link) => link.href === Astro.url.pathname);
 const { isRelative = false } = Astro.props;
 ---
 
@@ -54,6 +55,7 @@ const { isRelative = false } = Astro.props;
                 "hover:text-blue-light": link.color === "blue",
                 "hover:text-green-light": link.color === "green",
                 "hover:text-yellow-light": link.color === "yellow",
+                "underline underline-offset-4": activeRoute?.href === link.href,
               }}
               href={link.href}
             >
