@@ -1,9 +1,8 @@
 ---
 import { Image } from "astro:assets";
-
-import SocialMedia from "./SocialMedia.astro";
-import logo from "../images/logo.svg";
 import { links } from "../lib/links";
+import SocialMedia from "@components/SocialMedia.astro";
+import logo from "../images/logo.svg";
 ---
 
 <footer class="relative bg-grey-1 px-4 md:px-6 xl:px-8 py-12 md:py-18 xl:py-24">
@@ -13,7 +12,7 @@ import { links } from "../lib/links";
     <Image src={logo} alt="" quality="max" class="w-24 md:col-span-full" />
     <div>
       <p>Making the world a better place, one line of code at a time.</p>
-      <SocialMedia />
+      <SocialMedia class="mt-4" />
     </div>
     <div class="grid grid-cols-2 md:col-span-2 md:gap-16 mb-8 md:mb-0">
       <nav aria-label="Footer">

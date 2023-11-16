@@ -1,11 +1,12 @@
 ---
 import LinkButton from "@components/LinkButton.astro";
+import SocialMedia from "@components/SocialMedia.astro";
 ---
 
 <header class="p-4 md:p-6 xl:p-8">
   <div class="container relative mx-auto grid items-center">
     <div>
-      <h1 class="text-lg lg:text-xl font-semibold text-blue-light">
+      <h1 class="text-lg lg:text-xl text-blue-light">
         Tom Scanlon | Web Developer
       </h1>
       <h2 class="text-4xl md:text-6xl pb-6 md:pb-8">
@@ -17,9 +18,10 @@ import LinkButton from "@components/LinkButton.astro";
         </span>
         <span class="block leading-normal"> one line of code at a time.</span>
       </h2>
-      <div class="space-x-4">
+      <div class="space-x-4 flex items-center">
         <LinkButton color="blue" href="/contact">Get in touch</LinkButton>
         <LinkButton color="grey" href="/projects">See my work</LinkButton>
+        <SocialMedia class="inline-flex" />
       </div>
     </div>
   </div>
