@@ -9,7 +9,10 @@ interface Props {
   isRelative?: boolean;
 }
 
-const activeRoute = links.find((link) => link.href === Astro.url.pathname);
+const activeRoute = links.find((link) =>
+  Astro.url.pathname.includes(link.href)
+);
+
 const { isRelative = false } = Astro.props;
 ---
 
