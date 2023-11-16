@@ -51,18 +51,18 @@ export async function getListeningTo(id: string): Promise<Listening> {
   );
 
   const data = await response.json();
-
   const imageResponse = await fetch(`http://coverartarchive.org/release/${id}`);
+  const streamingURL = getStreamingURL(data.relations);
+
   const imageData = await imageResponse.json();
   const imageRemoteURL = imageData.images[0].thumbnails.small;
-  const imageLocalURL = await fetchImage(imageRemoteURL, "album");
-  const streamingURL = getStreamingURL(data.relations);
+
+  await fetchImage(imageRemoteURL, "listening");
 
   return {
     type: "listening",
     title: data.title,
     artist: data["artist-credit"][0].name,
-    image: imageLocalURL,
     cta: {
       url: streamingURL,
       text: "Listen on Spotify",

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Interest from "./Interest.astro";
+import Interest from "@features/interests/components/Interest.astro";
 
 const collection = await getCollection("interests");
 const interests = collection.map((item) => item.data);

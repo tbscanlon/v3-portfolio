@@ -12,30 +12,14 @@ export interface Interest {
   developer?: string;
   author?: string;
   genres?: string;
-  image: string;
   cta: {
     url: string;
     text: string;
   };
 }
 
-export type Listening = Pick<
-  Interest,
-  "type" | "cta" | "title" | "image" | "artist"
->;
-export type Playing = Pick<
-  Interest,
-  "type" | "cta" | "title" | "image" | "developer"
->;
-export type Reading = Pick<
-  Interest,
-  "type" | "cta" | "title" | "image" | "author"
->;
-export type Studying = Pick<
-  Interest,
-  "type" | "cta" | "title" | "image" | "author"
->;
-export type Watching = Pick<
-  Interest,
-  "type" | "cta" | "title" | "image" | "genres"
->;
+export type Listening = Pick<Interest, "type" | "cta" | "title" | "artist">;
+export type Playing = Pick<Interest, "type" | "cta" | "title" | "developer">;
+export type Reading = Pick<Interest, "type" | "cta" | "title" | "author">;
+export type Studying = Pick<Interest, "type" | "cta" | "title" | "author">;
+export type Watching = Pick<Interest, "type" | "cta" | "title" | "genres">;

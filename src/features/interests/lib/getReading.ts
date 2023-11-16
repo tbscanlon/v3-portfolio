@@ -20,18 +20,15 @@ export async function getReading(id: string): Promise<Reading> {
   // the info we need.
   const book = data[`ISBN:${id}`];
 
-  // https://covers.openlibrary.org/b/isbn/9781800182813-M.jpg&default=false
-
-  const imageLocalURL = await fetchImage(
+  await fetchImage(
     `https://covers.openlibrary.org/b/isbn/${id}-M.jpg&default=false`,
-    "book"
+    "reading"
   );
 
   return {
     type: "reading",
     title: book.details.title,
     author: book.details.authors[0].name,
-    image: imageLocalURL,
     cta: {
       url: book.info_url,
       text: "View on OpenLibrary",

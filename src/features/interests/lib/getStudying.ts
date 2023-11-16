@@ -37,14 +37,13 @@ export async function getStudying(slug: string): Promise<Studying> {
     .first()
     .getAttribute("src");
 
-  const imageLocalURL = await fetchImage(imageRemoteURL, "course");
+  await fetchImage(imageRemoteURL, "studying");
 
   await context.close();
   await browser.close();
 
   return {
     type: "studying",
-    image: imageLocalURL,
     title,
     author,
     cta: {

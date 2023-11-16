@@ -31,11 +31,10 @@ export async function getWatching(id: string): Promise<Watching> {
   const genres = data.genres.join(" | ");
   const imageRemoteURL = data.image.medium;
 
-  const imageLocalURL = await fetchImage(imageRemoteURL, "show");
+  await fetchImage(imageRemoteURL, "watching");
 
   return {
     type: "watching",
-    image: imageLocalURL,
     title,
     genres,
     cta: {

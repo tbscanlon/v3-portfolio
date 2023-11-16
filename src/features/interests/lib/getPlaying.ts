@@ -41,14 +41,13 @@ export async function getPlaying(id: string): Promise<Playing> {
     .locator(".game_header_image_full")
     .getAttribute("src");
 
-  const imageLocalURL = await fetchImage(imageRemoteURL, "game");
+  await fetchImage(imageRemoteURL, "playing");
 
   await context.close();
   await browser.close();
 
   return {
     type: "playing",
-    image: imageLocalURL,
     title,
     developer,
     cta: {
