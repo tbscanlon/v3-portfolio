@@ -2,26 +2,29 @@
 import { Image } from "astro:assets";
 import Container from "@components/Container.astro";
 import { getWorkPeriod } from "../lib/dates";
-import type { ProjectSummary } from "../lib/types";
+import type { Project } from "../lib/types";
 import LinkButton from "@components/LinkButton.astro";
 import Button from "@components/Button.astro";
 import TextLink from "@components/TextLink.astro";
 
-type Props = ProjectSummary;
+type Props = { project: Project };
+
+const { project } = Astro.props;
 
 const {
   title,
-  stack,
-  url,
   description,
   longDescription,
+  stack,
+  slug,
   startDate,
   endDate,
-  image,
-} = Astro.props;
+  url,
+} = project;
 
-// Make sure we're optimising portfolio screenshots.
-const { default: loadedImage } = await import(`../images/${image}.png`);
+// Make sure we're optimising portfolio screenshots,
+// because some of them are >2MB.
+const { default: loadedImage } = await import(`../images/${slug}.png`);
 ---
 
 <Container>

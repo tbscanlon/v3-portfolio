@@ -7,12 +7,9 @@ export interface Project {
   stack: string[];
   startDate: string;
   endDate?: string;
-  image: string;
 }
 
 export type ProjectCard = Pick<
   Project,
   "title" | "description" | "startDate" | "endDate" | "slug"
 >;
-
-export type ProjectSummary = Omit<Project, "slug">;

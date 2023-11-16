@@ -33,7 +33,6 @@ const projectsCollection = defineCollection({
         slug: z.string(),
         title: z.string(),
         url: z.string().url(),
-        image: z.string(),
         description: z.string(),
         longDescription: z.array(z.string()),
         stack: z.array(z.string()),

@@ -20,28 +20,10 @@ export const getStaticPaths = (async () => {
   return paths;
 }) satisfies GetStaticPaths;
 
-const {
-  title,
-  description,
-  stack,
-  longDescription,
-  url,
-  startDate,
-  endDate,
-  image,
-} = Astro.props;
+const project = Astro.props;
 ---
 
-<PageLayout meta={{ title: `${title} | Projects` }}>
-  <h1 class="sr-only">{title}</h1>
-  <ProjectSummary
-    title={title}
-    description={description}
-    longDescription={longDescription}
-    stack={stack}
-    url={url}
-    startDate={startDate}
-    endDate={endDate}
-    image={image}
-  />
+<PageLayout meta={{ title: `${project.title} | Projects` }}>
+  <h1 class="sr-only">{project.title}</h1>
+  <ProjectSummary project={project} />
 </PageLayout>

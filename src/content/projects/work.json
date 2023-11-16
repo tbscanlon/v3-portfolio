@@ -7,7 +7,6 @@
       "type": "work",
       "slug": "bbc-sounds",
       "url": "https://www.bbc.co.uk/sounds",
-      "image": "sounds",
       "description": "The BBC masterbrand for music, radio and podcasts",
       "longDescription": [
         "BBC Sounds is the home for all of the BBC's audio content - music, radio and podcasts. Launched in October 2018, BBC Sounds has since grown to provide live radio and audio-on-demand content to millions of monthly active users.",
@@ -16,13 +15,16 @@
         "My time working on BBC Sounds has exposed me to the challenges of running a live service at scale, and how feature delivery, architectural concerns, legal regulations, agile process, security and leadership interact with that challenge."
       ],
       "stack": [
+        "Typescript",
         "react",
         "redux",
         "redux-thunk",
+        "NextJS",
+        "react-query",
         "SCSS",
+        "TailwindCSS",
         "express",
-        "AWS",
-        "Typescript"
+        "AWS"
       ],
       "startDate": "2020-02-01T00:00:00Z",
       "endDate": "2022-12-01T00:00:00Z"
@@ -32,7 +34,6 @@
       "type": "work",
       "slug": "engaging-works",
       "url": "https://workl.co/home",
-      "image": "ew",
       "description": "A consumer-facing site offering a variety of services to improve workplace happiness",
       "longDescription": [
         "Engaging Works is the consumer-facing workplace happiness service, alongside Engaging Business for business-to-business workplace happiness.",
@@ -58,7 +59,6 @@
       "slug": "engaging-business",
       "type": "work",
       "url": "https://business.workl.co/",
-      "image": "eb",
       "description": "A business-facing site offering a variety of services to improve workplace happiness amongst a company's employees",
       "longDescription": [
         "Engaging Business is the business-facing workplace happiness service, alongside Engaging Works for consumer-facing workplace happiness.",
@@ -84,7 +84,6 @@
       "slug": "b-and-q",
       "type": "work",
       "url": "https://www.diy.com",
-      "image": "diy",
       "description": "The e-commerce front-end for B&Q",
       "longDescription": [
         "The B&Q website provides an e-commerce platform for millions of shoppers each month.",
@@ -100,8 +99,7 @@
       "title": "Design my Space (defunct)",
       "slug": "design-my-space",
       "type": "work",
-      "url": "https://www.designmyspace.co.uk",
-      "image": "dms",
+      "url": "https://www.kingfisher.com/en/own-exclusive-brand/Deep-dive-on-brands/goodhome.html",
       "description": "An experimental web app to provide a single destination for home improvement",
       "longDescription": [
         "Design My Space was an experimental home improvement platform built as part of an exploration into Kingfisher's digital transformation. The platform was discontinued, but the branding was adapted to be used in the Goodhome line of products and Kingfisher's corporate brand.",
