@@ -8,20 +8,14 @@ import Grid from "@features/about/components/Grid.astro";
 import Introduction from "@features/about/components/Introduction.astro";
 import MyWork from "@features/about/components/MyWork.astro";
 import MyApproach from "@features/about/components/MyApproach.astro";
+import MySkillset from "@features/about/components/MySkillset.astro";
 ---
 
 <PageLayout meta={{ title: "About" }} title="About">
   <Introduction />
   <MyWork />
-  <!-- <Container>
-    <h2>My approach and mindset</h2>
-    <Grid>Stuff about how I build things and what's important to me here</Grid>
-  </Container> -->
   <MyApproach />
-  <Container>
-    <h2>My skillset</h2>
-    <Grid>Stuff about skills here</Grid>
-  </Container>
+  <MySkillset />
   <Container>
     <h2>Getting in touch with me</h2>
     <Grid>

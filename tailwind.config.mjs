@@ -73,6 +73,9 @@ module.exports = {
         main: "calc((74px + theme(space.24)) * 2)",
         "main-lg": "calc((74px + theme(space.32)) * 2)",
       },
+      boxShadow: {
+        highlight: "4px 4px 0px theme(colors.grey.5)",
+      },
     },
   },
   plugins: [],
