@@ -22,7 +22,12 @@ import logo from "../images/logo.svg";
             links.map((link) => (
               <li>
                 <a
-                  class="block py-2 hover:text-blue-light focus:bg-grey-4 rounded-lg duration-300"
+                  class="inline-block py-2 focus:bg-grey-4 rounded-lg duration-300"
+                  class:list={{
+                    "hover:text-blue-light": link.color === "blue",
+                    "hover:text-green-light": link.color === "green",
+                    "hover:text-yellow-light": link.color === "yellow",
+                  }}
                   href={link.href}
                 >
                   {link.text}

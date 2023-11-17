@@ -1,41 +1,23 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
 import Container from "@components/Container.astro";
-import AboutMe from "@features/about/components/AboutMe.astro";
 import ContactMe from "@features/about/components/ContactMe.astro";
 import Facts from "@features/about/components/Facts.astro";
-import FeaturedProject from "@features/about/components/FeaturedProject.astro";
 import Grid from "@features/about/components/Grid.astro";
-import Projects from "@features/about/components/Projects.astro";
 
-import imageOfMe from "@features/about/images/me.png";
-import { Image } from "astro:assets";
+import Introduction from "@features/about/components/Introduction.astro";
+import MyWork from "@features/about/components/MyWork.astro";
+import MyApproach from "@features/about/components/MyApproach.astro";
 ---
 
 <PageLayout meta={{ title: "About" }} title="About">
-  <Container>
-    <h2>Hello, I'm Tom</h2>
-    <Grid>
-      <AboutMe />
-      <Image
-        src={imageOfMe}
-        alt="Picture of me looking way more important than I actually am"
-        class="rounded-lg border border-grey-11 max-w-md place-self-center"
-        widths={[300, 350, 720, 1280]}
-      />
-    </Grid>
-  </Container>
-  <Container>
-    <h2>My work</h2>
-    <Grid>
-      <Projects />
-      <FeaturedProject />
-    </Grid>
-  </Container>
-  <Container>
+  <Introduction />
+  <MyWork />
+  <!-- <Container>
     <h2>My approach and mindset</h2>
     <Grid>Stuff about how I build things and what's important to me here</Grid>
-  </Container>
+  </Container> -->
+  <MyApproach />
   <Container>
     <h2>My skillset</h2>
     <Grid>Stuff about skills here</Grid>

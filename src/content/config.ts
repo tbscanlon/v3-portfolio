@@ -42,7 +42,16 @@ const projectsCollection = defineCollection({
   }),
 });
 
+const aboutCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    color: z.enum(["blue", "yellow", "green", "purple", "orange", "teal"]),
+  }),
+});
+
 export const collections = {
   interests: interestsCollection,
   projects: projectsCollection,
+  about: aboutCollection,
 };

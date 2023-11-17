@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
+import AboutSection from "./AboutSection.astro";
+
+import introImg from "../images/me.png";
+
+const intro = await getEntry("about", "introduction");
+const { Content } = await intro.render();
+---
+
+<AboutSection title={intro.data.title} color={intro.data.color}>
+  <Content slot="content" />
+  <Image
+    slot="aside"
+    src={introImg}
+    alt="Me looking way more important than I actually am"
+    class="rounded-lg border border-grey-11 max-w-md place-self-center"
+    widths={[300, 350, 720, 1280]}
+  />
+</AboutSection>

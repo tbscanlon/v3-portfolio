@@ -1,0 +1,51 @@
+---
+import Container from "@components/Container.astro";
+import Grid from "./Grid.astro";
+
+interface Props {
+  title: string;
+  color: string;
+  children?: any;
+  class?: string;
+  id?: string;
+}
+
+const { title, color, class: className, id } = Astro.props;
+---
+
+<Container class:list={className} id={id}>
+  <h2
+    class="text-2xl lg:text-4xl pb-8 md:pb-16"
+    class:list={{
+      "[&>span]:text-blue-light": color === "blue",
+      "[&>span]:text-yellow-light": color === "yellow",
+      "[&>span]:text-green-light": color === "green",
+      "[&>span]:text-purple-light": color === "purple",
+      "[&>span]:text-orange-light": color === "orange",
+      "[&>span]:text-teal-light": color === "teal",
+    }}
+    set:html={title}
+  />
+  <Grid>
+    <article
+      class="space-y-4 xl:space-y-8 max-w-prose leading-relaxed"
+      class:list={{
+        "[&>p>span]:text-blue-light": color === "blue",
+        "[&>p>span]:text-yellow-light": color === "yellow",
+        "[&>p>span]:text-green-light": color === "green",
+        "[&>p>span]:text-purple-light": color === "purple",
+        "[&>p>span]:text-orange-light": color === "orange",
+        "[&>p>span]:text-teal-light": color === "teal",
+      }}
+    >
+      <slot name="content" />
+    </article>
+    <slot name="aside" />
+  </Grid>
+</Container>
+
+<style>
+  h2 {
+    text-shadow: 2px 2px 0px theme(colors.grey.5);
+  }
+</style>

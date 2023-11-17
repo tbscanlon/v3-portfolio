@@ -1,0 +1,18 @@
+---
+import { getEntry } from "astro:content";
+import AboutSection from "./AboutSection.astro";
+import FeaturedProject from "./FeaturedProject.astro";
+
+const work = await getEntry("about", "work");
+const { Content } = await work.render();
+---
+
+<AboutSection
+  title={work.data.title}
+  color={work.data.color}
+  class="bg-grey-1"
+  id="work"
+>
+  <Content slot="content" />
+  <FeaturedProject slot="aside" />
+</AboutSection>
