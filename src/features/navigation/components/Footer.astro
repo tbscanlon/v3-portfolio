@@ -35,6 +35,14 @@ import logo from "../images/logo.svg";
               </li>
             ))
           }
+          <li>
+            <button
+              id="open-chat-footer"
+              class="inline-block py-2 focus:bg-grey-4 hover:text-green-light rounded-lg duration-300"
+            >
+              Contact
+            </button>
+          </li>
         </ul>
       </nav>
       <div>
@@ -52,3 +60,11 @@ import logo from "../images/logo.svg";
     </div>
   </div>
 </footer>
+
+<script>
+  import { $isChatVisible } from "@features/contact/lib/chatToggle";
+
+  document
+    .getElementById("open-chat-footer")
+    ?.addEventListener("click", () => $isChatVisible.set(true));
+</script>

@@ -4,7 +4,9 @@ interface Link {
   color: "blue" | "green" | "yellow";
 }
 
-export const links: Link[] = [
+type Route = Link;
+
+export const links: Route[] = [
   {
     href: "/projects",
     text: "Projects",
@@ -14,11 +16,5 @@ export const links: Link[] = [
     href: "/about",
     text: "About",
     color: "yellow",
-  },
-  // Turn this into a button somehow
-  {
-    href: "/contact",
-    text: "Contact",
-    color: "green",
   },
 ];
