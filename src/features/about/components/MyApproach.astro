@@ -1,7 +1,7 @@
 ---
 import { getEntry } from "astro:content";
 import AboutSection from "./AboutSection.astro";
-import FeaturedProject from "./FeaturedProject.astro";
+import Facts from "./Facts.astro";
 
 const approach = await getEntry("about", "approach");
 const { Content } = await approach.render();
@@ -13,5 +13,5 @@ const { Content } = await approach.render();
   id="approach"
 >
   <Content slot="content" />
-  <FeaturedProject slot="aside" class="md:order-first" />
+  <Facts slot="aside" class="md:order-first" />
 </AboutSection>

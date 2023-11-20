@@ -9,38 +9,22 @@ const { Content } = await skillset.render();
 <Container id="skillset" class="bg-grey-1">
   <h2 class="text-2xl lg:text-4xl pb-8 md:pb-16">{skillset.data.title}</h2>
   <div
-    class="relative"
     class:list={[
-      // CSS for MDX content
-      // Typography
-      "text-grey-1 [&>ul>li>ul]:text-base [&>ul>li>ul]:mt-2 [&>ul>li>ul]:space-y-1",
+      // Cursed CSS for MDX content
       // Grid layout
-      "[&>ul]:grid [&>ul]:grid-rows-2 [&>ul]:grid-cols-4 [&>ul]:gap-8",
-      // Row alignment for timeline
-      "[&>ul>li:nth-of-type(2n)]:row-start-2",
-      // Column alignment for timeline
-      "[&>ul>li:nth-of-type(2)]:col-start-2",
-      "[&>ul>li:nth-of-type(3)]:col-start-3",
-      "[&>ul>li:nth-of-type(4)]:col-start-4",
-      // Spacing & border
-      "[&>ul>li]:p-4 [&>ul>li]:my-1 [&>ul>li]:bg-grey-1 [&>ul>li]:rounded-lg [&>ul>li]:border [&>ul>li]:border-grey-11",
-      // Color
-      "[&>ul>li:nth-of-type(1)]:bg-green-light [&>ul>li:nth-of-type(1)]:before:bg-green-light",
-      "[&>ul>li:nth-of-type(2)]:bg-yellow-light [&>ul>li:nth-of-type(2)]:before:bg-yellow-light",
-      "[&>ul>li:nth-of-type(3)]:bg-orange-light [&>ul>li:nth-of-type(3)]:before:bg-orange-light",
-      "[&>ul>li:nth-of-type(4)]:bg-red-light [&>ul>li:nth-of-type(4)]:before:bg-red-light",
-      "[&>ul>li]:shadow-highlight",
-      // Speech bubble
-      "[&>ul>li]:relative [&>ul>li]:before:absolute [&>ul>li]:before:w-4 [&>ul>li]:before:h-4 [&>ul>li]:before:rotate-45 [&>ul>li]:before:border-grey-11 [&>ul>li]:before:left-[50%]",
-      "[&>ul>li:nth-of-type(odd)]:before:-bottom-2 [&>ul>li:nth-of-type(odd)]:before:border-b [&>ul>li:nth-of-type(odd)]:before:border-r",
-      "[&>ul>li:nth-of-type(2n)]:before:-top-2 [&>ul>li:nth-of-type(2n)]:before:border-t [&>ul>li:nth-of-type(2n)]:before:border-l",
+      "[&>ul]:grid [&>ul]:grid-cols-1 [&>ul]:md:grid-cols-2 [&>ul]:gap-4 [&>ul]:md:gap-8 [&>ul]:xl:gap-16",
+      // Typography
+      "[&>ul>li>ul]:mt-2 [&>ul>li>ul]:space-y-4 [&>ul>li>h3]:text-xl [&>ul>li>h3]:lg:text-2xl [&>ul>li>ul>li>ul]:text-base [&>ul>li>ul>li>ul]:italic",
+      // Border and spacing
+      "[&>ul>li]:border-l-2 [&>ul>li]:pl-4 [&>ul>li]:place-self-stretch [&>ul>li]:w-full [&>ul>li]:py-4 [&>ul>li>h3]:pb-4",
+      // Border and highlight colors
+      "[&>ul>li:nth-of-type(1)]:border-green-light [&>ul>li:nth-of-type(1)>h3>span]:text-green-light [&>ul>li:nth-of-type(1)>ul>li>span]:text-green-light",
+      "[&>ul>li:nth-of-type(2)]:border-yellow-light [&>ul>li:nth-of-type(2)>h3>span]:text-yellow-light [&>ul>li:nth-of-type(2)>ul>li>span]:text-yellow-light",
+      "[&>ul>li:nth-of-type(3)]:border-orange-light [&>ul>li:nth-of-type(3)>h3>span]:text-orange-light [&>ul>li:nth-of-type(3)>ul>li>span]:text-orange-light",
+      "[&>ul>li:nth-of-type(4)]:border-red-light [&>ul>li:nth-of-type(4)>h3>span]:text-red-light [&>ul>li:nth-of-type(4)>ul>li>span]:text-red-light",
     ]}
   >
     <Content />
-    <div
-      class="bg-gradient-to-r from-green via-yellow to-red w-full h-1 absolute bottom-[49%] rounded-full"
-    >
-    </div>
   </div>
 </Container>
 
