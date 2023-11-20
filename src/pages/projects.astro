@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import PageLayout from "../layouts/PageLayout.astro";
+import PageLayout from "@layouts/PageLayout.astro";
 import ProjectCollection from "@features/projects/components/ProjectCollection.astro";
 
 const [freelance, student, work] = await getCollection("projects");
