@@ -1,31 +1,15 @@
 ---
-import type { HTMLAttributes } from "astro/types";
-import TextLink from "@components/TextLink.astro";
+import { getEntry } from "astro:content";
+import AboutSection from "./AboutSection.astro";
 
-interface Props extends HTMLAttributes<"div"> {
-  class?: string;
-}
-
-const { class: className, ...attrs } = Astro.props;
+const contact = await getEntry("about", "contact");
+const { Content } = await contact.render();
 ---
 
-<div class="space-y-4 xl:space-y-8" class:list={className} {...attrs}>
-  <p>
-    I'm available to work <span class="text-yellow-light">full-time</span>
-     or as a <span class="text-yellow-light">freelancer</span>.
-  </p>
-  <p>
-    I can work fully <span class="text-yellow-light">remotely</span>, or on a <span
-      class="text-yellow-light">hybrid</span
-    > basis with your team in any major European city.
-  </p>
-  <p>
-    If you're working on a <span class="text-yellow-light">non-profit</span>
-     or <span class="text-yellow-light">social enterprise</span> venture and you
-    would like some <span class="text-yellow-light">expertise</span> in web or
-    software development, I can assist you on a pro bono basis.
-  </p>
-  <TextLink as="a" href="/contact" color="yellow">
-    Get in touch with me
-  </TextLink>
-</div>
+<AboutSection
+  title={contact.data.title}
+  color={contact.data.color}
+  id="contact"
+>
+  <Content slot="content" />
+</AboutSection>

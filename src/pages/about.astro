@@ -1,10 +1,6 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-import Container from "@components/Container.astro";
 import ContactMe from "@features/about/components/ContactMe.astro";
-import Facts from "@features/about/components/Facts.astro";
-import Grid from "@features/about/components/Grid.astro";
-
 import Introduction from "@features/about/components/Introduction.astro";
 import MyWork from "@features/about/components/MyWork.astro";
 import MyApproach from "@features/about/components/MyApproach.astro";
@@ -16,11 +12,5 @@ import MySkillset from "@features/about/components/MySkillset.astro";
   <MyWork />
   <MyApproach />
   <MySkillset />
-  <Container>
-    <h2>Getting in touch with me</h2>
-    <Grid>
-      <ContactMe />
-      <Facts />
-    </Grid>
-  </Container>
+  <ContactMe />
 </PageLayout>

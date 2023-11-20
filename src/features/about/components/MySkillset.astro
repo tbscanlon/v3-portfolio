@@ -7,7 +7,9 @@ const { Content } = await skillset.render();
 ---
 
 <Container id="skillset" class="bg-grey-1">
-  <h2 class="text-2xl lg:text-4xl pb-8 md:pb-16">{skillset.data.title}</h2>
+  <h2 class="text-2xl md:text-3xl lg:text-4xl pb-8 md:pb-12 lg:pb-16">
+    {skillset.data.title}
+  </h2>
   <div
     class:list={[
       // Cursed CSS for MDX content
