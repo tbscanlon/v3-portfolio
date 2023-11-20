@@ -2,6 +2,7 @@
 import "@fontsource/ibm-plex-sans";
 
 import Navigation from "@features/navigation/components/Navigation.astro";
+import Chat from "@features/contact/components/Chat";
 ---
 
 <html lang="en">
@@ -16,6 +17,7 @@ import Navigation from "@features/navigation/components/Navigation.astro";
   >
     <Navigation isRelative />
     <slot />
+    <Chat client:only />
   </body>
 </html>
 
