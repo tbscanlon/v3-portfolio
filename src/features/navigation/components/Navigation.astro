@@ -67,13 +67,6 @@ const { isRelative = false } = Astro.props;
           </li>
         ))
       }
-      <li>
-        <button
-          id="open-contact-chat"
-          class="block px-1 xl:py-0.5 ml-6 xl:ml-8 hover:text-green-light focus:bg-grey-4 rounded-lg duration-300"
-          >Contact</button
-        >
-      </li>
     </ul>
   </div>
 </nav>
@@ -131,13 +124,6 @@ const { isRelative = false } = Astro.props;
           </li>
         ))
       }
-      <li>
-        <button
-          id="open-contact-chat-mobile"
-          class="block py-6 px-4 w-full hover:bg-grey-4 focus:bg-grey-4 rounded-lg duration-300 text-left"
-          >Contact</button
-        >
-      </li>
     </ul>
   </div>
 </dialog>
@@ -168,8 +154,7 @@ const { isRelative = false } = Astro.props;
     box-shadow: 4px 4px 0px theme(colors.grey.5);
   }
 
-  nav li > a,
-  nav li > button {
+  nav li > a {
     text-shadow: 1px 1px 0px theme(colors.grey.5);
   }
 
@@ -197,15 +182,9 @@ const { isRelative = false } = Astro.props;
 </style>
 
 <script>
-  import { $isChatVisible } from "@features/contact/lib/chatToggle";
-
   const body = document.querySelector("body");
   const openMobileNav = document.getElementById("show-mobile-nav");
   const closeMobileNav = document.getElementById("hide-mobile-nav");
-  const contactButton = document.getElementById("open-contact-chat");
-  const mobileContactButton = document.getElementById(
-    "open-contact-chat-mobile"
-  );
   const mobileNav = document.getElementById(
     "mobile-nav-container"
   ) as HTMLDialogElement;
@@ -240,9 +219,4 @@ const { isRelative = false } = Astro.props;
 
   openMobileNav?.addEventListener("click", showNav);
   closeMobileNav?.addEventListener("click", hideNav);
-  contactButton?.addEventListener("click", () => $isChatVisible.set(true));
-  mobileContactButton?.addEventListener("click", () => {
-    $isChatVisible.set(true);
-    hideNav();
-  });
 </script>
