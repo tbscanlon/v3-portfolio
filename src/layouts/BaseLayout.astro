@@ -3,6 +3,7 @@ import "@fontsource/ibm-plex-sans";
 
 import Navigation from "@features/navigation/components/Navigation.astro";
 import Footer from "@features/navigation/components/Footer.astro";
+import Chat from "@features/contact/components/Chat.svelte";
 
 export interface Meta {
   title: string;
@@ -27,5 +28,6 @@ const { meta } = Astro.props;
     <Navigation />
     <slot />
     <Footer />
+    <Chat />
   </body>
 </html>
