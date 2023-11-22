@@ -1,6 +1,7 @@
 ---
 import LinkButton from "@components/LinkButton.astro";
 import SocialMedia from "@components/SocialMedia.astro";
+import HeroContactButton from "@features/contact/components/HeroContactButton.astro";
 ---
 
 <header class="p-4 md:p-6 xl:p-8">
@@ -20,7 +21,7 @@ import SocialMedia from "@components/SocialMedia.astro";
       </h2>
       <div class="flex flex-col sm:flex-row sm:items-center">
         <div class="flex space-x-4">
-          <LinkButton color="blue" href="/contact">Get in touch</LinkButton>
+          <HeroContactButton />
           <LinkButton color="grey" href="/projects">See my work</LinkButton>
         </div>
         <SocialMedia class="inline-flex mt-8 sm:mt-0 sm:ml-4" />

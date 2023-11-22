@@ -1,0 +1,24 @@
+<hero-contact-toggle>
+  <button
+    class="inline-flex border rounded-lg p-3 lg:px-6 duration-300 justify-center items-center border-grey-3 text-grey-2 bg-blue-light hover:bg-blue focus:bg-blue shadow-highlight"
+  >
+    Get in touch
+  </button>
+</hero-contact-toggle>
+
+<script>
+  import { openChat } from "../lib/chat.store";
+
+  class HeroContactToggle extends HTMLElement {
+    private toggle: HTMLButtonElement | null;
+
+    constructor() {
+      super();
+
+      this.toggle = this.querySelector("button");
+      this.toggle?.addEventListener("click", () => openChat());
+    }
+  }
+
+  customElements.define("hero-contact-toggle", HeroContactToggle);
+</script>

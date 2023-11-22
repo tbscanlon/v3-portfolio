@@ -1,0 +1,24 @@
+<contact-toggle>
+  <button
+    class="block px-1 xl:py-0.5 ml-6 xl:ml-8 hover:text-green-light focus:bg-grey-4 rounded-lg duration-300"
+  >
+    Contact
+  </button>
+</contact-toggle>
+
+<script>
+  import { openChat } from "../lib/chat.store";
+
+  class ContactToggle extends HTMLElement {
+    private toggle: HTMLButtonElement | null;
+
+    constructor() {
+      super();
+
+      this.toggle = this.querySelector("button");
+      this.toggle?.addEventListener("click", () => openChat());
+    }
+  }
+
+  customElements.define("contact-toggle", ContactToggle);
+</script>
