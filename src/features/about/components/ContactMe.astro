@@ -13,11 +13,3 @@ const { Content } = await contact.render();
 >
   <Content slot="content" />
 </AboutSection>
-
-<script>
-  import { $isChatVisible } from "@features/contact/lib/chatToggle";
-
-  document
-    .getElementById("contact")
-    ?.addEventListener("click", () => $isChatVisible.set(true));
-</script>

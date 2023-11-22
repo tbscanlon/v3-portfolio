@@ -1,5 +1,4 @@
 ---
-import Button from "@components/Button.astro";
 import LinkButton from "@components/LinkButton.astro";
 import SocialMedia from "@components/SocialMedia.astro";
 ---
@@ -21,7 +20,7 @@ import SocialMedia from "@components/SocialMedia.astro";
       </h2>
       <div class="flex flex-col sm:flex-row sm:items-center">
         <div class="flex space-x-4">
-          <Button id="contact" color="blue">Get in touch</Button>
+          <LinkButton color="blue" href="/contact">Get in touch</LinkButton>
           <LinkButton color="grey" href="/projects">See my work</LinkButton>
         </div>
         <SocialMedia class="inline-flex mt-8 sm:mt-0 sm:ml-4" />
@@ -56,15 +55,3 @@ import SocialMedia from "@components/SocialMedia.astro";
     }
   }
 </style>
-
-<script>
-  import { $isChatVisible } from "@features/contact/lib/chatToggle";
-
-  const button = document.getElementById("contact");
-
-  const toggle = () => {
-    $isChatVisible.set(true);
-  };
-
-  button?.addEventListener("click", toggle);
-</script>

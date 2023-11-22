@@ -15,7 +15,6 @@ export const links: Link[] = [
     text: "About",
     color: "yellow",
   },
-  // Turn this into a button somehow
   {
     href: "/contact",
     text: "Contact",
