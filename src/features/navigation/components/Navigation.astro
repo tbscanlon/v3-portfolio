@@ -4,6 +4,7 @@ import IconButton from "@components/IconButton.astro";
 import Monogram from "./Monogram.astro";
 import logo from "../images/logo.svg";
 import { links } from "../lib/links";
+import NavContactButton from "@features/contact/components/NavContactButton.astro";
 
 interface Props {
   isRelative?: boolean;
@@ -67,6 +68,9 @@ const { isRelative = false } = Astro.props;
           </li>
         ))
       }
+      <li>
+        <NavContactButton />
+      </li>
     </ul>
   </div>
 </nav>
@@ -125,6 +129,9 @@ const { isRelative = false } = Astro.props;
         ))
       }
     </ul>
+    <li>
+      <NavContactButton />
+    </li>
   </div>
 </dialog>
 

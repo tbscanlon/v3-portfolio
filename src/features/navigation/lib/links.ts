@@ -15,9 +15,4 @@ export const links: Link[] = [
     text: "About",
     color: "yellow",
   },
-  {
-    href: "/contact",
-    text: "Contact",
-    color: "green",
-  },
 ];
