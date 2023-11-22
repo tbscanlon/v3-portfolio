@@ -1,19 +1,11 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "/home/tom/Projects/v3-portfolio",
+    "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@features/*": [
-        "src/features/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ]
-    },
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+      "@components/*": ["src/components/*"],
+      "@features/*": ["src/features/*"],
+      "@layouts/*": ["src/layouts/*"]
+    }
   }
 }
