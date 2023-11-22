@@ -12,7 +12,7 @@
 </script>
 
 <div
-  class="h-full px-4 pt-4 text-base flex flex-col overflow-scroll"
+  class="h-full px-4 pt-4 text-base flex flex-col overflow-y-scroll"
   bind:this={wrapper}
 >
   {#each $chat as segment}

@@ -23,6 +23,7 @@
         src={avatar.src}
         class="h-12 w-12 border-2 border-grey-1 rounded-full p-0.5"
         alt=""
+        loading="lazy"
       />
       <div class="ml-2">
         <span class="block text-base font-semibold leading-none mb-1"
