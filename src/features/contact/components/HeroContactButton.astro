@@ -7,18 +7,9 @@
 </hero-contact-toggle>
 
 <script>
-  import { openChat } from "../lib/chat.store";
+  import { ContactToggle } from "../lib/ContactToggle";
 
-  class HeroContactToggle extends HTMLElement {
-    private toggle: HTMLButtonElement | null;
-
-    constructor() {
-      super();
-
-      this.toggle = this.querySelector("button");
-      this.toggle?.addEventListener("click", () => openChat());
-    }
-  }
+  class HeroContactToggle extends ContactToggle {}
 
   customElements.define("hero-contact-toggle", HeroContactToggle);
 </script>

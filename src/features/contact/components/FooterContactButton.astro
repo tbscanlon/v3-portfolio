@@ -1,0 +1,15 @@
+<footer-contact-toggle>
+  <button
+    class="inline-block py-2 focus:bg-grey-4 rounded-lg duration-300 hover:text-green-light"
+  >
+    Contact
+  </button>
+</footer-contact-toggle>
+
+<script>
+  import { ContactToggle } from "../lib/ContactToggle";
+
+  class FooterContactToggle extends ContactToggle {}
+
+  customElements.define("footer-contact-toggle", FooterContactToggle);
+</script>

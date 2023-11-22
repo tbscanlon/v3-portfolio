@@ -128,10 +128,10 @@ const { isRelative = false } = Astro.props;
           </li>
         ))
       }
+      <li>
+        <NavContactButton />
+      </li>
     </ul>
-    <li>
-      <NavContactButton />
-    </li>
   </div>
 </dialog>
 
@@ -196,6 +196,9 @@ const { isRelative = false } = Astro.props;
     "mobile-nav-container"
   ) as HTMLDialogElement;
 
+  // Run closing animation when clicking contact button on mobile
+  const contactButtons = document.querySelectorAll("contact-toggle > button");
+
   function showNav() {
     mobileNav.showModal();
     body?.classList.add("overflow-hidden");
@@ -226,4 +229,5 @@ const { isRelative = false } = Astro.props;
 
   openMobileNav?.addEventListener("click", showNav);
   closeMobileNav?.addEventListener("click", hideNav);
+  contactButtons.forEach((button) => button.addEventListener("click", hideNav));
 </script>

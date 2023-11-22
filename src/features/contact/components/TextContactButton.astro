@@ -1,0 +1,17 @@
+---
+import TextLink from "@components/TextLink.astro";
+---
+
+<text-contact-toggle>
+  <TextLink as="button" color="purple" class="mt-4">
+    Get in touch with me
+  </TextLink>
+</text-contact-toggle>
+
+<script>
+  import { ContactToggle } from "../lib/ContactToggle";
+
+  class TextContactToggle extends ContactToggle {}
+
+  customElements.define("text-contact-toggle", TextContactToggle);
+</script>
