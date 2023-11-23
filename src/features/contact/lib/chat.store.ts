@@ -53,6 +53,10 @@ export const startChat = async () => {
   simulateTyping(segments.root);
 };
 
+export const endChat = () => {
+  chat.set([]);
+};
+
 export const answer = async (answer: string) => {
   const current = chat.get();
   const options = current[current.length - 1] as Option[];

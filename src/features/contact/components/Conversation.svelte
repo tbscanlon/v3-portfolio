@@ -1,11 +1,21 @@
 <script lang="ts">
-  import { afterUpdate, onMount } from "svelte";
-  import { chat, startChat, answer, isTyping } from "../lib/chat.store";
+  import { afterUpdate, onDestroy, onMount } from "svelte";
+  import {
+    chat,
+    startChat,
+    answer,
+    isTyping,
+    endChat,
+  } from "../lib/chat.store";
 
   let wrapper: HTMLDivElement;
 
   onMount(() => {
     startChat();
+  });
+
+  onDestroy(() => {
+    endChat();
   });
 
   afterUpdate(() => {
@@ -41,8 +51,18 @@
 {/if}
 
 <style lang="postcss">
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   .segment {
     @apply mb-4 flex;
+    animation: fadeIn 300ms;
   }
 
   .segment > span,
