@@ -9,7 +9,11 @@
 <script>
   import { ContactToggle } from "../lib/ContactToggle";
 
-  class FooterContactToggle extends ContactToggle {}
+  class FooterContactToggle extends ContactToggle {
+    constructor() {
+      super("footer-contact-toggle > button");
+    }
+  }
 
   customElements.define("footer-contact-toggle", FooterContactToggle);
 </script>

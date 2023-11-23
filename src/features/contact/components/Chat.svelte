@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { isChatOpen } from "../lib/chat.store";
+  import { isChatOpen, openingElement } from "../lib/chat.store";
   import avatar from "../images/avatar.svg";
   import Conversation from "./Conversation.svelte";
   import { afterUpdate } from "svelte";
@@ -11,11 +11,30 @@
       dialog.focus();
     }
   });
+
+  function thing(node: HTMLDialogElement) {
+    node.focus();
+
+    return {
+      // When closed, return focus to the button that
+      // was clicked to open the contact experience.
+      destroy() {
+        const el = document.querySelector(
+          openingElement.get()
+        ) as HTMLButtonElement;
+
+        if (el) {
+          el.focus();
+        }
+      },
+    };
+  }
 </script>
 
 {#if $isChatOpen}
   <dialog
     bind:this={dialog}
+    use:thing
     class="fixed flex flex-col z-50 bg-grey-1 md:border border-grey-11 shadow-highlight md:rounded-lg bottom-0 md:bottom-8 md:right-8 left-auto top-auto w-full md:max-w-md text-grey-1 h-[100vh] md:h-[80vh] md:max-h-[600px]"
   >
     <div class="bg-green-light flex items-center p-4 md:rounded-t-lg">

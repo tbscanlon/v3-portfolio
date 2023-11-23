@@ -9,7 +9,11 @@
 <script>
   import { ContactToggle } from "../lib/ContactToggle";
 
-  class HeroContactToggle extends ContactToggle {}
+  class HeroContactToggle extends ContactToggle {
+    constructor() {
+      super("hero-contact-toggle > button");
+    }
+  }
 
   customElements.define("hero-contact-toggle", HeroContactToggle);
 </script>

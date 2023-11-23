@@ -197,7 +197,9 @@ const { isRelative = false } = Astro.props;
   ) as HTMLDialogElement;
 
   // Run closing animation when clicking contact button on mobile
-  const contactButtons = document.querySelectorAll("contact-toggle > button");
+  const contactButtons = document.querySelectorAll(
+    "nav-contact-toggle > button"
+  );
 
   function showNav() {
     mobileNav.showModal();
