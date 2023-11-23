@@ -41,7 +41,7 @@ const freelance: Segment = {
     {
       type: "option",
       text: "Fill out form",
-      next: () => alert("Form goes here"),
+      next: () => window.location.assign("/contact/freelance"),
     },
     {
       type: "option",
@@ -62,7 +62,7 @@ const charity: Segment = {
     {
       type: "option",
       text: "Fill out form",
-      next: () => alert("Form goes here"),
+      next: () => window.location.assign("/contact/charity"),
     },
     {
       type: "option",
@@ -99,7 +99,7 @@ const work: Segment = {
     {
       type: "option",
       text: "Fill out form",
-      next: () => alert("Form goes here"),
+      next: () => window.location.assign("/contact/hire"),
     },
     {
       type: "option",
