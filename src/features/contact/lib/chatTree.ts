@@ -1,23 +1,37 @@
-export interface Conversation {
+export interface Segment {
   question: string[];
   answer?: string;
   options: Option[];
 }
 
 export interface Option {
+  type: "option";
   text: string;
-  next: (() => Conversation) | (() => void);
+  next: (() => Segment) | (() => void);
 }
 
-export let root: Conversation;
-export let freelance: Conversation;
-export let charity: Conversation;
-export let collaborate: Conversation;
-export let work: Conversation;
-export let hello: Conversation;
-export let back: Conversation;
+export interface Question {
+  type: "question";
+  text: string;
+}
 
-freelance = {
+export interface Answer {
+  type: "answer";
+  text: string;
+}
+
+export type Conversation = (Question | Answer | Option[])[];
+
+export function toConversation(segment: Segment): Conversation {
+  const questions: Question[] = segment.question.map((q) => ({
+    type: "question",
+    text: q,
+  }));
+
+  return [...questions, segment.options];
+}
+
+const freelance: Segment = {
   question: [
     "Excellent, let's chat further!",
     "I have a quick form you can fill out to let me know about your project",
@@ -25,17 +39,19 @@ freelance = {
   ],
   options: [
     {
+      type: "option",
       text: "Fill out form",
       next: () => alert("Form goes here"),
     },
     {
+      type: "option",
       text: "Other options?",
       next: () => back,
     },
   ],
 };
 
-charity = {
+const charity: Segment = {
   question: [
     "Great!",
     "I love helping out good causes",
@@ -44,31 +60,35 @@ charity = {
   ],
   options: [
     {
+      type: "option",
       text: "Fill out form",
       next: () => alert("Form goes here"),
     },
     {
+      type: "option",
       text: "Other options?",
       next: () => back,
     },
   ],
 };
 
-collaborate = {
+const collaborate: Segment = {
   question: ["Ok, sounds great!", "What sort of project do you have?"],
   options: [
     {
+      type: "option",
       text: "Freelance",
       next: () => freelance,
     },
     {
+      type: "option",
       text: "Charity",
       next: () => charity,
     },
   ],
 };
 
-work = {
+const work: Segment = {
   question: [
     "Great!",
     "Sounds exciting, let's talk further",
@@ -77,17 +97,19 @@ work = {
   ],
   options: [
     {
+      type: "option",
       text: "Fill out form",
       next: () => alert("Form goes here"),
     },
     {
+      type: "option",
       text: "Other options?",
       next: () => back,
     },
   ],
 };
 
-hello = {
+const hello: Segment = {
   question: [
     "Hello!",
     "Thanks for taking the time to take a look at my portfolio",
@@ -96,13 +118,14 @@ hello = {
   ],
   options: [
     {
+      type: "option",
       text: "Other options?",
       next: () => back,
     },
   ],
 };
 
-root = {
+const root: Segment = {
   question: [
     "Hello!",
     "I'm Tom Bot. I'm here to help you with any questions you may have about Tom's work",
@@ -110,21 +133,33 @@ root = {
   ],
   options: [
     {
+      type: "option",
       text: "We want to work with you",
       next: () => collaborate,
     },
     {
+      type: "option",
       text: "We'd like to hire you",
       next: () => work,
     },
     {
+      type: "option",
       text: "Just saying hello",
       next: () => hello,
     },
   ],
 };
 
-back = {
+const back: Segment = {
   question: ["Sure, here you go!"],
   options: [...root.options],
+};
+
+export const segments = {
+  root,
+  back,
+  freelance,
+  charity,
+  work,
+  hello,
 };
