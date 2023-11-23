@@ -1,22 +1,57 @@
 import { atom } from "nanostores";
 import { segments, toConversation } from "./chatTree";
-import type { Conversation, Option } from "./chatTree";
+import type { Conversation, Option, Segment } from "./chatTree";
 
+export const isTyping = atom<boolean>(true);
 export const isChatOpen = atom<boolean>(false);
 export const openingElement = atom<string>("");
 export const chat = atom<Conversation>([]);
 
 export const openChat = () => isChatOpen.set(true);
-export const startChat = () => chat.set(toConversation(segments.root));
 
 export const setOpeningElement = (selector: string) =>
   openingElement.set(selector);
 
-async function throttle(delay: number, func: () => any) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  }).then(func);
+async function simulateTyping(segment: Segment) {
+  function simulateTypingTimer(text: string) {
+    const TYPING_TIME_PER_WORD = 150;
+    const wordCount = text.split(" ").length;
+    return wordCount * TYPING_TIME_PER_WORD;
+  }
+
+  async function throttle(delay: number, func: () => any) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, delay);
+    }).then(func);
+  }
+
+  let delay = 250;
+
+  toConversation(segment).forEach(async (entry) => {
+    if (!Array.isArray(entry)) {
+      delay += simulateTypingTimer(entry.text);
+    }
+
+    await throttle(delay, () => {
+      const current = chat.get();
+      chat.set([...current, entry]);
+    });
+  });
 }
+
+export const startChat = async () => {
+  chat.listen((entries) => {
+    const last = entries[entries.length - 1];
+
+    if (Array.isArray(last)) {
+      isTyping.set(false);
+    } else {
+      isTyping.set(true);
+    }
+  });
+
+  simulateTyping(segments.root);
+};
 
 export const answer = async (answer: string) => {
   const current = chat.get();
@@ -31,13 +66,6 @@ export const answer = async (answer: string) => {
       { type: "answer", text: answer },
     ]);
 
-    console.log(toConversation(nextSegment));
-
-    toConversation(nextSegment).forEach(async (entry, index) => {
-      await throttle(index * 1000, () => {
-        const current = chat.get();
-        chat.set([...current, entry]);
-      });
-    });
+    await simulateTyping(nextSegment);
   }
 };

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { afterUpdate, onMount } from "svelte";
-  import { chat, startChat, answer } from "../lib/chat.store";
+  import { chat, startChat, answer, isTyping } from "../lib/chat.store";
 
   let wrapper: HTMLDivElement;
 
@@ -34,6 +34,11 @@
     </div>
   {/each}
 </div>
+{#if $isTyping}
+  <p class="text-grey-9 text-sm px-4 pb-2 animate-pulse">
+    Tom Bot v1.0 is typing...
+  </p>
+{/if}
 
 <style lang="postcss">
   .segment {
@@ -53,7 +58,10 @@
     @apply text-grey-11 bg-grey-3;
   }
 
-  .segment.option,
+  .segment.option {
+    @apply flex-col items-end space-y-4;
+  }
+
   .segment.answer {
     @apply flex-row-reverse;
   }
