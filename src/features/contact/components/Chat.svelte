@@ -1,8 +1,10 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import { isChatOpen, openingElement } from "../lib/chat.store";
+  import { actions, selectors } from "../lib/chat.store";
   import avatar from "../images/avatar.svg";
   import Conversation from "./Conversation.svelte";
+
+  const { isChatOpen, openingElement } = selectors;
 
   function focus(node: HTMLDialogElement) {
     node.focus();
@@ -44,7 +46,7 @@
       </div>
       <button
         class="rounded-full p-1 hover:bg-green-dark focus:bg-green-dark duration-300 shrink-0 ml-auto flex items-center justify-center"
-        on:click={() => isChatOpen.set(false)}
+        on:click={() => actions.close()}
       >
         <span class="sr-only">Close chat</span>
         <svg

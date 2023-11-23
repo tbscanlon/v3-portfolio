@@ -1,4 +1,4 @@
-import { openChat, setOpeningElement } from "../lib/chat.store";
+import { actions } from "../lib/chat.store";
 
 export class ContactToggle extends HTMLElement {
   private toggle: HTMLButtonElement | null;
@@ -13,7 +13,6 @@ export class ContactToggle extends HTMLElement {
   }
 
   private open() {
-    setOpeningElement(this.selector);
-    openChat();
+    actions.open(this.selector);
   }
 }

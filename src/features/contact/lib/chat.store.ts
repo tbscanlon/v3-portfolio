@@ -1,16 +1,39 @@
-import { atom } from "nanostores";
+import { computed, map } from "nanostores";
 import { segments, toConversation } from "./chatTree";
 import type { Conversation, Option, Segment } from "./chatTree";
 
-export const isTyping = atom<boolean>(true);
-export const isChatOpen = atom<boolean>(false);
-export const openingElement = atom<string>("");
-export const chat = atom<Conversation>([]);
+interface State {
+  isChatOpen: boolean;
+  openingElement: string;
+  chat: Conversation;
+}
 
-export const openChat = () => isChatOpen.set(true);
+export const store = map<State>({
+  isChatOpen: false,
+  openingElement: "",
+  chat: [],
+});
 
-export const setOpeningElement = (selector: string) =>
-  openingElement.set(selector);
+export const selectors = {
+  isChatOpen: computed(store, ({ isChatOpen }) => isChatOpen),
+  openingElement: computed(store, ({ openingElement }) => openingElement),
+  isTyping: computed(
+    store,
+    ({ chat }) => !Array.isArray(chat[chat.length - 1])
+  ),
+  chat: computed(store, ({ chat }) => chat),
+};
+
+export const actions = {
+  open: (from: string) => {
+    store.setKey("isChatOpen", true);
+    store.setKey("openingElement", from);
+  },
+  close: () => store.setKey("isChatOpen", false),
+  start: () => simulateTyping(segments.root),
+  answer: (answer: string) => handleAnswer(answer),
+  reset: () => store.setKey("chat", []),
+};
 
 async function simulateTyping(segment: Segment) {
   function simulateTypingTimer(text: string) {
@@ -33,39 +56,21 @@ async function simulateTyping(segment: Segment) {
     }
 
     await throttle(delay, () => {
-      const current = chat.get();
-      chat.set([...current, entry]);
+      const current = selectors.chat.get();
+      store.setKey("chat", [...current, entry]);
     });
   });
 }
 
-export const startChat = async () => {
-  chat.listen((entries) => {
-    const last = entries[entries.length - 1];
-
-    if (Array.isArray(last)) {
-      isTyping.set(false);
-    } else {
-      isTyping.set(true);
-    }
-  });
-
-  simulateTyping(segments.root);
-};
-
-export const endChat = () => {
-  chat.set([]);
-};
-
-export const answer = async (answer: string) => {
-  const current = chat.get();
+export const handleAnswer = async (answer: string) => {
+  const current = selectors.chat.get();
   const options = current[current.length - 1] as Option[];
   const selected = options.find((entry) => entry.text === answer) as Option;
 
   const nextSegment = selected.next();
 
   if (nextSegment) {
-    chat.set([
+    store.setKey("chat", [
       ...current.filter((entry) => !Array.isArray(entry)),
       { type: "answer", text: answer },
     ]);

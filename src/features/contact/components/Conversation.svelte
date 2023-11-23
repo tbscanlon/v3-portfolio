@@ -1,21 +1,18 @@
 <script lang="ts">
   import { afterUpdate, onDestroy, onMount } from "svelte";
-  import {
-    chat,
-    startChat,
-    answer,
-    isTyping,
-    endChat,
-  } from "../lib/chat.store";
+  import { actions, selectors } from "../lib/chat.store";
 
+  let { chat, isTyping } = selectors;
   let wrapper: HTMLDivElement;
 
   onMount(() => {
-    startChat();
+    // Disable body scroll on sm/md
+    actions.start();
   });
 
   onDestroy(() => {
-    endChat();
+    // Enable body scroll on sm/md
+    actions.reset();
   });
 
   afterUpdate(() => {
@@ -35,7 +32,7 @@
         {#each entry as option}
           <button
             class="hover:bg-grey-3 focus:bg-grey-3"
-            on:click={() => answer(option.text)}>{option.text}</button
+            on:click={() => actions.answer(option.text)}>{option.text}</button
           >
         {/each}
       {:else}
@@ -45,7 +42,7 @@
   {/each}
 </div>
 {#if $isTyping}
-  <p class="text-grey-9 text-sm px-4 pb-2 animate-pulse">
+  <p class="text-grey-9 text-sm px-4 pb-2 md:animate-pulse">
     Tom Bot v1.0 is typing...
   </p>
 {/if}
