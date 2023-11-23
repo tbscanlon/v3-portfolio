@@ -63,7 +63,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
+        sans: ["Poppins", ...defaultTheme.fontFamily.sans],
         serif: ["Bungee Shade", ...defaultTheme.fontFamily.serif],
       },
       gridTemplateColumns: {

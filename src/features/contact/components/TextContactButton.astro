@@ -1,10 +1,18 @@
 ---
 import TextLink from "@components/TextLink.astro";
+
+interface Props {
+  color: "blue" | "red" | "purple";
+  children: any;
+  class?: string;
+}
+
+const { class: className, color } = Astro.props;
 ---
 
 <text-contact-toggle>
-  <TextLink as="button" color="purple" class="mt-4">
-    Get in touch with me
+  <TextLink as="button" color={color} class={className}>
+    <slot />
   </TextLink>
 </text-contact-toggle>
 

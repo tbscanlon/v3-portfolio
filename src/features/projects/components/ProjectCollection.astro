@@ -3,6 +3,7 @@ import Container from "@components/Container.astro";
 import TextLink from "@components/TextLink.astro";
 import type { ProjectCard as ProjectCardType } from "../lib/types";
 import ProjectCard from "./ProjectCard.astro";
+import TextContactButton from "@features/contact/components/TextContactButton.astro";
 
 interface CallToAction {
   text: string;
@@ -21,7 +22,7 @@ const { title, introduction, cta, projects, color } = Astro.props;
 ---
 
 <Container>
-  <h2 class="text-2xl md:text-4xl font-bold mb-4">
+  <h2 class="text-2xl md:text-4xl font-medium mb-4">
     <span
       class:list={{
         "text-blue-light": color === "blue",
@@ -35,9 +36,9 @@ const { title, introduction, cta, projects, color } = Astro.props;
     {
       cta && (
         <>
-          <TextLink as="a" href={cta.url} color={color} class="pt-0">
+          <TextContactButton class="pt-0" color="red">
             {cta.text}
-          </TextLink>
+          </TextContactButton>
           .
         </>
       )

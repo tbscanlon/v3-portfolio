@@ -28,26 +28,25 @@ const { isRelative = false } = Astro.props;
     <a href="/" class="py-2" aria-label="Home">
       <Monogram />
     </a>
-    <!-- Mobile nav button -->
-    <IconButton
-      id="show-mobile-nav"
-      label="Open main menu"
-      class="ml-auto md:hidden"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-      </svg>
-    </IconButton>
+    <!-- Mobile nav buttons -->
+    <div class="flex ml-auto md:hidden items-center space-x-4">
+      <NavContactButton />
+      <IconButton id="show-mobile-nav" label="Open main menu">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        </svg>
+      </IconButton>
+    </div>
     <!-- Desktop nav -->
     <ul class="hidden md:flex flex-row ml-auto">
       {
@@ -128,9 +127,6 @@ const { isRelative = false } = Astro.props;
           </li>
         ))
       }
-      <li>
-        <NavContactButton />
-      </li>
     </ul>
   </div>
 </dialog>
@@ -196,11 +192,6 @@ const { isRelative = false } = Astro.props;
     "mobile-nav-container"
   ) as HTMLDialogElement;
 
-  // Run closing animation when clicking contact button on mobile
-  const contactButtons = document.querySelectorAll(
-    "nav-contact-toggle > button"
-  );
-
   function showNav() {
     mobileNav.showModal();
     body?.classList.add("overflow-hidden");
@@ -231,5 +222,4 @@ const { isRelative = false } = Astro.props;
 
   openMobileNav?.addEventListener("click", showNav);
   closeMobileNav?.addEventListener("click", hideNav);
-  contactButtons.forEach((button) => button.addEventListener("click", hideNav));
 </script>
