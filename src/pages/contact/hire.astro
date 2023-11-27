@@ -1,11 +1,31 @@
 ---
+import Container from "@components/Container.astro";
+import TextLink from "@components/TextLink.astro";
+import HiringForm from "@features/contact/components/HiringForm.svelte";
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
   meta={{
-    title: "Hiring Contact Form",
+    title: "Contact",
   }}
 >
-  Hiring contact form
+  <Container class="min-h-screen max-w-prose mx-auto">
+    <TextLink
+      as="a"
+      href="/projects"
+      color="green"
+      class="before:content-['_←'] after:content-none mb-8"
+    >
+      Back to homepage
+    </TextLink>
+    <h1 class="sr-only">Hiring contact form</h1>
+    <HiringForm client:idle />
+  </Container>
 </BaseLayout>
+
+<style is:global>
+  h2 {
+    text-shadow: 2px 2px 0px theme(colors.grey.5);
+  }
+</style>
