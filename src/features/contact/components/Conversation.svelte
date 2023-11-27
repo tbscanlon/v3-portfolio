@@ -6,12 +6,10 @@
   let wrapper: HTMLDivElement;
 
   onMount(() => {
-    // Disable body scroll on sm/md
     actions.start();
   });
 
   onDestroy(() => {
-    // Enable body scroll on sm/md
     actions.reset();
   });
 

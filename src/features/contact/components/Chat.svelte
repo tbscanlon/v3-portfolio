@@ -6,6 +6,30 @@
 
   const { isChatOpen, openingElement } = selectors;
 
+  /**
+   * Locks body scroll on small screens when chat is open.
+   */
+  function lockScrolling(node: HTMLDialogElement) {
+    const body = document.querySelector("body");
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (isMobile) {
+      body?.classList.add("overflow-hidden");
+    }
+
+    return {
+      destroy() {
+        if (isMobile) {
+          body?.classList.remove("overflow-hidden");
+        }
+      },
+    };
+  }
+
+  /**
+   * Handles moving keyboard focus between the chat experience
+   * and the button which triggered it.
+   */
   function focus(node: HTMLDialogElement) {
     node.focus();
 
@@ -28,6 +52,7 @@
 {#if $isChatOpen}
   <dialog
     use:focus
+    use:lockScrolling
     transition:fade={{ duration: 200 }}
     class="fixed flex flex-col z-50 bg-grey-1 md:border border-grey-11 shadow-highlight md:rounded-lg bottom-0 md:bottom-8 md:right-8 left-auto top-auto w-full md:max-w-md text-grey-1 h-[100vh] md:h-[80vh] md:max-h-[600px]"
   >

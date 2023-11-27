@@ -1,35 +1,4 @@
-export interface Segment {
-  question: string[];
-  answer?: string;
-  options: Option[];
-}
-
-export interface Option {
-  type: "option";
-  text: string;
-  next: (() => Segment) | (() => void);
-}
-
-export interface Question {
-  type: "question";
-  text: string;
-}
-
-export interface Answer {
-  type: "answer";
-  text: string;
-}
-
-export type Conversation = (Question | Answer | Option[])[];
-
-export function toConversation(segment: Segment): Conversation {
-  const questions: Question[] = segment.question.map((q) => ({
-    type: "question",
-    text: q,
-  }));
-
-  return [...questions, segment.options];
-}
+import type { Segment } from "./types";
 
 const freelance: Segment = {
   question: [

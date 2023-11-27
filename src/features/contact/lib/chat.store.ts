@@ -1,54 +1,17 @@
 import { computed, map } from "nanostores";
-import { segments, toConversation } from "./chatTree";
-import type { Conversation, Option, Segment } from "./chatTree";
+import { segments } from "./chatTree";
+import { throttle, toConversation, simulateTypingTimer } from "./helpers";
+import type { State, Option, Segment } from "./types";
 
-interface State {
-  isChatOpen: boolean;
-  openingElement: string;
-  chat: Conversation;
-}
-
-export const store = map<State>({
-  isChatOpen: false,
-  openingElement: "",
-  chat: [],
-});
-
-export const selectors = {
-  isChatOpen: computed(store, ({ isChatOpen }) => isChatOpen),
-  openingElement: computed(store, ({ openingElement }) => openingElement),
-  isTyping: computed(
-    store,
-    ({ chat }) => !Array.isArray(chat[chat.length - 1])
-  ),
-  chat: computed(store, ({ chat }) => chat),
-};
-
-export const actions = {
-  open: (from: string) => {
-    store.setKey("isChatOpen", true);
-    store.setKey("openingElement", from);
-  },
-  close: () => store.setKey("isChatOpen", false),
-  start: () => simulateTyping(segments.root),
-  answer: (answer: string) => handleAnswer(answer),
-  reset: () => store.setKey("chat", []),
-};
-
+/**
+ * Simulates a typed response to a question in the chat experience
+ * via throttling. This creates an effect like the chatbot is "typing"
+ * responses to visitor queries.
+ *
+ * @param segment The conversation segment to "type" out.
+ */
 async function simulateTyping(segment: Segment) {
-  function simulateTypingTimer(text: string) {
-    const TYPING_TIME_PER_WORD = 150;
-    const wordCount = text.split(" ").length;
-    return wordCount * TYPING_TIME_PER_WORD;
-  }
-
-  async function throttle(delay: number, func: () => any) {
-    return new Promise((resolve) => {
-      setTimeout(resolve, delay);
-    }).then(func);
-  }
-
-  let delay = 250;
+  let delay = 0;
 
   toConversation(segment).forEach(async (entry) => {
     if (!Array.isArray(entry)) {
@@ -62,11 +25,17 @@ async function simulateTyping(segment: Segment) {
   });
 }
 
-export const handleAnswer = async (answer: string) => {
+/**
+ * Handles the logic for grabbing a visitor's selection (answer)
+ * in the chat experience and returning the correct set of responses.
+ * These responses are directly pushed to chat state.
+ *
+ * @param answer The response chosen by the visitor, as a string.
+ */
+const handleAnswer = async (answer: string) => {
   const current = selectors.chat.get();
   const options = current[current.length - 1] as Option[];
   const selected = options.find((entry) => entry.text === answer) as Option;
-
   const nextSegment = selected.next();
 
   if (nextSegment) {
@@ -77,4 +46,31 @@ export const handleAnswer = async (answer: string) => {
 
     await simulateTyping(nextSegment);
   }
+};
+
+export const store = map<State>({
+  isChatOpen: false,
+  openingElement: "",
+  chat: [],
+});
+
+export const actions = {
+  open: (from: string) => {
+    store.setKey("isChatOpen", true);
+    store.setKey("openingElement", from);
+  },
+  close: () => store.setKey("isChatOpen", false),
+  start: () => simulateTyping(segments.root),
+  answer: (answer: string) => handleAnswer(answer),
+  reset: () => store.setKey("chat", []),
+};
+
+export const selectors = {
+  isChatOpen: computed(store, ({ isChatOpen }) => isChatOpen),
+  openingElement: computed(store, ({ openingElement }) => openingElement),
+  isTyping: computed(
+    store,
+    ({ chat }) => !Array.isArray(chat[chat.length - 1])
+  ),
+  chat: computed(store, ({ chat }) => chat),
 };
