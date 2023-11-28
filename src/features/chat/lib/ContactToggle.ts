@@ -1,4 +1,4 @@
-import { actions } from "../lib/chat.store";
+import { actions } from "./chat.store";
 
 export class ContactToggle extends HTMLElement {
   private toggle: HTMLButtonElement | null;
