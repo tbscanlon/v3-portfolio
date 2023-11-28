@@ -1,49 +1,20 @@
 <script lang="ts">
   import { writable } from "svelte/store";
+  import {
+    COMPANY_SIZES,
+    INDUSTRIES,
+    JOB_TYPES,
+    LOCATION_TYPES,
+    validators,
+  } from "../lib/formHelpers";
 
-  function validate() {
-    console.log("validation goes here");
+  function handleSubmit() {
+    const isValid = validators.hire($content);
+
+    if (isValid) {
+      console.log("submit form response here");
+    }
   }
-
-  const jobTypes = ["full-time", "part-time", "contract"];
-  const locationTypes = ["on-site", "hybrid", "remote"];
-
-  const industries = [
-    "Aerospace",
-    "Automotive",
-    "Aviation",
-    "Banking, insurance and other financial services",
-    "Chemicals",
-    "Construction and Housing",
-    "Consumer goods",
-    "Creative, cultural, tourism and sport",
-    "Defence",
-    "Digital, technology and computer services",
-    "E-commerce",
-    "Education",
-    "Energy",
-    "Food",
-    "Health and care",
-    "Manufacturing",
-    "Media and broadcasting",
-    "Professional business services",
-    "Retail",
-    "Research and innovation",
-    "Telecoms",
-    "Transport",
-    "Other",
-  ];
-
-  const companySizes = [
-    "1-10 employees",
-    "11-50 employees",
-    "51-200 employees",
-    "201-500 employees",
-    "501-1000 employees",
-    "1001-5000 employees",
-    "5001-10,000 employees",
-    "10,001+ employees",
-  ];
 
   const content = writable({
     contactName: "",
@@ -59,7 +30,7 @@
   });
 </script>
 
-<form on:submit|preventDefault={validate}>
+<form on:submit|preventDefault={handleSubmit}>
   <h2 class="text-2xl md:text-4xl font-medium mb-4">Get in touch with me</h2>
   <p>
     Thanks for thinking of me for your hiring opportunity! Please fill out this
@@ -104,13 +75,13 @@
     <label>
       How many people work at the company?
       <select bind:value={$content.companySize} name="companySize">
-        {#each companySizes as size}
+        {#each COMPANY_SIZES as size}
           <option value={size}>{size}</option>
         {/each}
       </select>
     </label>
     <h3>Work type</h3>
-    {#each jobTypes as job}
+    {#each JOB_TYPES as job}
       <label>
         <input
           type="radio"
@@ -125,7 +96,7 @@
       Which of the following sectors best describes the industry the company is
       within?
       <select bind:value={$content.industry} name="industry">
-        {#each industries as industry}
+        {#each INDUSTRIES as industry}
           <option value={industry}>{industry}</option>
         {/each}
       </select>
@@ -142,11 +113,11 @@
     <h3>
       Which of the following ways of working best describes the opportunity?
     </h3>
-    {#each locationTypes as way}
+    {#each LOCATION_TYPES as way}
       <label>
         <input
           type="radio"
-          bind:group={$content.jobType}
+          bind:group={$content.locationType}
           value={way}
           name={`locationType-${way}`}
         />
