@@ -1,20 +1,29 @@
 <script lang="ts">
   import { writable } from "svelte/store";
+  import { validators } from "../lib/validators";
   import {
     COMPANY_SIZES,
-    INDUSTRIES,
     JOB_TYPES,
     LOCATION_TYPES,
-    validators,
-  } from "../lib/formHelpers";
+    INDUSTRIES,
+  } from "../lib/formValues";
+  import SuccessDialog from "./SuccessDialog.svelte";
+  import ErrorDialog from "./ErrorDialog.svelte";
+  import { submit } from "../lib/submit";
 
-  function handleSubmit() {
-    const isValid = validators.hire($content);
-
-    if (isValid) {
-      console.log("submit form response here");
-    }
+  async function handleSubmit() {
+    await submit({
+      validator: validators.hire,
+      content: $content,
+      onSubmit: () => status.set("loading"),
+      onSuccess: () => status.set("success"),
+      onError: () => status.set("error"),
+    });
   }
+
+  const status = writable<"waiting" | "loading" | "success" | "error">(
+    "waiting"
+  );
 
   const content = writable({
     contactName: "",
@@ -22,6 +31,7 @@
     companyName: "",
     website: "",
     companySize: "",
+    jobTitle: "",
     jobType: "",
     industry: "",
     location: "",
@@ -29,6 +39,9 @@
     privacy: false,
   });
 </script>
+
+<SuccessDialog isVisible={$status === "success"} />
+<ErrorDialog isVisible={$status === "error"} />
 
 <form on:submit|preventDefault={handleSubmit}>
   <h2 class="text-2xl md:text-4xl font-medium mb-4">Get in touch with me</h2>
@@ -79,6 +92,16 @@
           <option value={size}>{size}</option>
         {/each}
       </select>
+    </label>
+    <label
+      >What is the job title for this opportunity? (e.g. Front-end Web
+      Developer)
+      <input
+        type="text"
+        name="jobTitle"
+        required
+        bind:value={$content.jobTitle}
+      />
     </label>
     <h3>Work type</h3>
     {#each JOB_TYPES as job}
@@ -135,5 +158,3 @@
   </fieldset>
   <input type="submit" value="Get in touch" />
 </form>
-
-<p class="text-sm">{JSON.stringify($content)}</p>
