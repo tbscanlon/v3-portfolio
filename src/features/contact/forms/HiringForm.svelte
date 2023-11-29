@@ -32,6 +32,7 @@
   );
 
   const content = writable({
+    type: "hire",
     contactName: "",
     contactEmail: "",
     companyName: "",

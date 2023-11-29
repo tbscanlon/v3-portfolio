@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import type { Hire } from "@features/contact/lib/types";
+import type { Submission } from "@features/contact/lib/types";
 import nodemailer from "nodemailer";
 import * as aws from "@aws-sdk/client-ses";
 import { createEmail } from "@features/contact/lib/email";
@@ -9,16 +9,23 @@ export const prerender = false;
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const submission: Hire = await request.json();
+    const submission: Submission = await request.json();
 
-    if (!validators.hire(submission)) {
+    const [validate, makeEmail] = [
+      validators[submission.type],
+      createEmail[submission.type],
+    ];
+
+    if (!validate(submission)) {
       console.log("Validation failed");
       return new Response(null, { status: 500 });
     }
 
+    const email = makeEmail(submission as any);
+
     if (import.meta.env.MODE === "development") {
       console.log("Skipping email in dev environment");
-      console.log(createEmail.hire(submission));
+      console.log(email);
 
       return new Response(null, { status: 204 });
     }
@@ -36,7 +43,6 @@ export const POST: APIRoute = async ({ request }) => {
       SES: { ses, aws },
     });
 
-    const email = createEmail.hire(submission);
     await transporter.sendMail(email);
 
     return new Response(null, { status: 204 });

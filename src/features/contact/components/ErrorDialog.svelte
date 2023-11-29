@@ -19,7 +19,7 @@
   <dialog
     bind:this={dialog}
     transition:fade={{ duration: 200 }}
-    class="mx-4 backdrop:bg-grey-1/75 bg-grey-1 rounded-lg shadow-highlight w-full max-w-prose border border-grey-11"
+    class="mx-4 md:mx-auto backdrop:bg-grey-1/75 bg-grey-1 rounded-lg shadow-highlight w-full md:max-w-prose border border-grey-11"
   >
     <div class="p-4 bg-orange-light text-grey-1 flex items-center">
       <svg
@@ -39,7 +39,7 @@
 
       <h2 class="text-xl md:text-2xl font-medium">There's been a problem</h2>
     </div>
-    <div class="px-4 py-8 text-grey-11 space-y-4 leading-relaxed">
+    <div class="px-4 py-8 text-grey-11 space-y-4 md:space-y-6 leading-relaxed">
       <p>Sorry, but there seems to be a problem with the form.</p>
       <p>
         If you would like, you can contact me directly via email at <a

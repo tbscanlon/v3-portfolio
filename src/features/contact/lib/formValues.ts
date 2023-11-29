@@ -38,3 +38,36 @@ export const INDUSTRIES = [
   "Transport",
   "Other",
 ] as const;
+
+export const BUDGET_RANGES = [
+  "Below €1000",
+  "€1000 - €4999",
+  "€5000 - €9999",
+  "Above €10,000",
+] as const;
+
+export const SKILLS = [
+  "Front-end web development",
+  "Back-end web development",
+  "Mobile app development",
+  "Other software development",
+  "UI/UX design",
+  "Graphic design and branding",
+  "IT Administration",
+  "Something else",
+] as const;
+
+export const FEATURES = [
+  "Blog",
+  "E-commerce",
+  "Payments (one-off)",
+  "Payments (subscription)",
+  "User accounts",
+  "Third-party integrations",
+  "Social media",
+  "Image or video galleries",
+  "News",
+  "Editable content",
+  "Contact forms or visitor submissions",
+  "Something else",
+] as const;

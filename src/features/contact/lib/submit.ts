@@ -18,7 +18,7 @@ export async function submit({
   if (isValid) {
     onSubmit();
 
-    const res = await fetch("/api/hire", {
+    const res = await fetch("/api/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

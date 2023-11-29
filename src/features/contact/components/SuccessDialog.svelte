@@ -19,7 +19,7 @@
   <dialog
     bind:this={dialog}
     transition:fade={{ duration: 200 }}
-    class="mx-4 backdrop:bg-grey-1/75 bg-grey-1 rounded-lg shadow-highlight w-full max-w-prose border border-grey-11"
+    class="mx-4 md:mx-auto backdrop:bg-grey-1/75 bg-grey-1 rounded-lg shadow-highlight w-full md:max-w-prose border border-grey-11"
   >
     <div class="p-4 bg-green-light text-grey-1 flex items-center">
       <svg
@@ -40,7 +40,7 @@
         Thanks for getting in touch!
       </h2>
     </div>
-    <div class="px-4 py-8 text-grey-11 space-y-4 leading-relaxed">
+    <div class="px-4 py-8 text-grey-11 space-y-4 md:space-y-6 leading-relaxed">
       <p>
         I'll be in touch as soon as I can. Please give me up to 3 working days
         to respond to you.
