@@ -24,7 +24,7 @@
     {/if}
   </span>
   <input
-    class="bg-grey-1 hover:bg-grey-3 focus:bg-grey-3 text-xl py-2 pl-3 rounded-t-lg border-b-2 border-grey-11 duration-300"
+    class="bg-grey-1 hover:bg-grey-3 focus:bg-grey-3 text-xl py-2 pl-3 rounded-t-lg border-b-2 border-grey-11 duration-300 w-full"
     {type}
     {required}
     {name}

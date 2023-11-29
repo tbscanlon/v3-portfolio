@@ -54,7 +54,8 @@
     <h2 class="text-2xl md:text-4xl font-medium mb-4">Get in touch with me</h2>
     <p>
       Thanks for thinking of me for your hiring opportunity! Please fill out
-      this quick form to let me know about your opportunity.
+      this quick form to let me know about your opportunity, and I'll respond as
+      soon as I can!
     </p>
   </header>
 
@@ -82,6 +83,12 @@
       label="Company name"
       bind:value={$content.companyName}
     />
+    <Input
+      type="text"
+      name="companyWebsite"
+      label="Company website"
+      bind:value={$content.website}
+    />
     <Select
       name="companySize"
       label="How many people work at the company?"
@@ -92,6 +99,7 @@
       type="text"
       name="jobTitle"
       label="What is the job title for this opportunity?"
+      hint="e.g. Front-end Web Developer"
       required
       bind:value={$content.jobTitle}
     />

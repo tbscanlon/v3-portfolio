@@ -9,7 +9,7 @@
   <span class="text-base mb-1">{label}</span>
   <div class="flex justify-between mt-4 accent-green-light">
     {#each options as option}
-      <label>
+      <label class="py-2 md:py-0">
         <input
           class="w-4 h-4"
           type="radio"
