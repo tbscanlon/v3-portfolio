@@ -51,7 +51,7 @@ const collaborate: Segment = {
     },
     {
       type: "option",
-      text: "Charity",
+      text: "Charity or non-profit",
       next: () => charity,
     },
   ],
@@ -94,6 +94,29 @@ const hello: Segment = {
   ],
 };
 
+const website: Segment = {
+  question: [
+    "Thanks so much!",
+    "I made this site using Astro and Svelte",
+    "This site is open source and you can check out the source code on GitHub",
+    "(it's a bit messy, sorry)",
+  ],
+  options: [
+    {
+      type: "option",
+      text: "See website source code",
+      next: () => {
+        window.open("https://github.com/tbscanlon/v3-portfolio");
+      },
+    },
+    {
+      type: "option",
+      text: "Other options?",
+      next: () => back,
+    },
+  ],
+};
+
 const root: Segment = {
   question: [
     "Hello!",
@@ -110,6 +133,11 @@ const root: Segment = {
       type: "option",
       text: "We'd like to hire you",
       next: () => work,
+    },
+    {
+      type: "option",
+      text: "I like your website",
+      next: () => website,
     },
     {
       type: "option",
