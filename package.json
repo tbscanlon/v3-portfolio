@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "get-interests": "ts-node --esm ./src/features/interests/lib/getAllInterests.ts"
+    "get-interests": "node --loader ts-node/esm ./src/features/interests/lib/getAllInterests.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^1.1.5",

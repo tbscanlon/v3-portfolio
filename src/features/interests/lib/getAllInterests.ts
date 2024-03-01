@@ -51,13 +51,13 @@ const ids = {
    * ID of a game from Steam.
    * @see https://store.steampowered.com/
    */
-  game: "1091500",
+  game: "1086940",
 
   /**
    * ISBN-13 of a book.
    * @see https://isbnsearch.org
    */
-  book: "9781800182813",
+  book: "9781680509298",
 
   /**
    * Slug of a particular course on Udemy.

@@ -21,7 +21,7 @@ export async function getReading(id: string): Promise<Reading> {
   const book = data[`ISBN:${id}`];
 
   await fetchImage(
-    `https://covers.openlibrary.org/b/isbn/${id}-M.jpg&default=false`,
+    `https://covers.openlibrary.org/b/isbn/${id}-M.jpg`,
     "reading"
   );
 
