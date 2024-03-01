@@ -1,15 +1,6 @@
 import { chromium } from "playwright";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 import type { Playing } from "./types";
 import { fetchImage } from "./fetchImage.ts";
-
-/**
- * Project top-level directory.
- */
-const __dirname = dirname(
-  fileURLToPath(import.meta.url + "../" + "../" + "../" + "../" + "../")
-);
 
 /**
  * Gets the current game I'm playing on Steam. Uses the game's app ID from
