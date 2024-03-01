@@ -1,0 +1,27 @@
+<nav-contact-toggle>
+  <button
+    class="block w-auto py-1 px-2 md:px-1 md:py-0 xl:py-0.5 md:ml-6 xl:ml-8 md:hover:text-green-light hover:bg-grey-4 md:hover:bg-transparent focus:bg-grey-4 rounded-lg duration-300"
+  >
+    Contact
+  </button>
+</nav-contact-toggle>
+
+<style>
+  @media screen(md) {
+    button {
+      text-shadow: 1px 1px 0px theme(colors.grey.5);
+    }
+  }
+</style>
+
+<script>
+  import { ContactToggle } from "../lib/ContactToggle";
+
+  class NavContactToggle extends ContactToggle {
+    constructor() {
+      super("nav-contact-toggle > button");
+    }
+  }
+
+  customElements.define("nav-contact-toggle", NavContactToggle);
+</script>

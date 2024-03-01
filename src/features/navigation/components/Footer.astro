@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { links } from "../lib/links";
 import SocialMedia from "@components/SocialMedia.astro";
 import logo from "../images/logo.svg";
+import FooterContactButton from "@features/chat/components/FooterContactButton.astro";
 ---
 
 <footer class="relative bg-grey-1 px-4 md:px-6 xl:px-8 py-12 md:py-18 xl:py-24">
@@ -16,7 +17,7 @@ import logo from "../images/logo.svg";
     </div>
     <div class="grid grid-cols-2 md:col-span-2 md:gap-16 mb-8 md:mb-0">
       <nav aria-label="Footer">
-        <h2 class="mb-4 font-semibold">Navigation</h2>
+        <h2 class="mb-4 font-medium">Navigation</h2>
         <ul>
           {
             links.map((link) => (
@@ -35,10 +36,13 @@ import logo from "../images/logo.svg";
               </li>
             ))
           }
+          <li>
+            <FooterContactButton />
+          </li>
         </ul>
       </nav>
       <div>
-        <h2 class="mb-4 font-semibold">Where I am</h2>
+        <h2 class="mb-4 font-medium">Where I am</h2>
         <p class="mb-4">I'm currently in:</p>
         <a
           class="px-3 py-1 bg-grey-2 rounded-full hover:bg-grey-4 focus:bg-grey-4 duration-300 border border-grey-11"

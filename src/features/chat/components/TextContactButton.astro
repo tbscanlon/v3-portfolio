@@ -1,0 +1,29 @@
+---
+import TextLink from "@components/TextLink.astro";
+
+interface Props {
+  color: "blue" | "red" | "purple";
+  children: any;
+  class?: string;
+}
+
+const { class: className, color } = Astro.props;
+---
+
+<text-contact-toggle>
+  <TextLink as="button" color={color} class={className}>
+    <slot />
+  </TextLink>
+</text-contact-toggle>
+
+<script>
+  import { ContactToggle } from "../lib/ContactToggle";
+
+  class TextContactToggle extends ContactToggle {
+    constructor() {
+      super("text-contact-toggle > button");
+    }
+  }
+
+  customElements.define("text-contact-toggle", TextContactToggle);
+</script>
