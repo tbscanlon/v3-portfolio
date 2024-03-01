@@ -50,10 +50,13 @@ export const SKILLS = [
   "Front-end web development",
   "Back-end web development",
   "Mobile app development",
+  "Desktop app development",
   "Other software development",
   "UI/UX design",
   "Graphic design and branding",
+  "Search engine optimisation (SEO)",
   "IT Administration",
+  "Email administration",
   "Something else",
 ] as const;
 
