@@ -19,7 +19,7 @@
 
   async function handleSubmit() {
     await submit({
-      validator: validators.hire,
+      validator: validators.freelance,
       content: $content,
       onSubmit: () => status.set("loading"),
       onSuccess: () => status.set("success"),
@@ -54,7 +54,7 @@
     <p>
       Thanks for thinking of me for your freelance opportunity! Please fill out
       this quick form to let me know about your opportunity, and I'll respond as
-      soon as I can!
+      soon as I can.
     </p>
   </header>
 
@@ -119,5 +119,5 @@
     <Privacy bind:checked={$content.privacy} />
   </Fieldset>
 
-  <Submit label="Get in touch" disabled={!validators.hire($content)} />
+  <Submit label="Get in touch" disabled={!validators.freelance($content)} />
 </form>

@@ -1,25 +1,19 @@
 <script lang="ts">
   import { writable } from "svelte/store";
   import { validators } from "../lib/validators";
-  import {
-    COMPANY_SIZES,
-    JOB_TYPES,
-    LOCATION_TYPES,
-    INDUSTRIES,
-  } from "../lib/formValues";
+  import { FEATURES, SKILLS } from "../lib/formValues";
   import SuccessDialog from "../components/SuccessDialog.svelte";
   import ErrorDialog from "../components/ErrorDialog.svelte";
   import { submit } from "../lib/submit";
   import Input from "../components/Input.svelte";
-  import Select from "../components/Select.svelte";
-  import Radio from "../components/Radio.svelte";
   import Privacy from "../components/Privacy.svelte";
   import Submit from "../components/Submit.svelte";
   import Fieldset from "../components/Fieldset.svelte";
+  import CheckboxGroup from "../components/CheckboxGroup.svelte";
 
   async function handleSubmit() {
     await submit({
-      validator: validators.hire,
+      validator: validators.charity,
       content: $content,
       onSubmit: () => status.set("loading"),
       onSuccess: () => status.set("success"),
@@ -32,17 +26,13 @@
   );
 
   const content = writable({
-    type: "hire",
+    type: "charity",
     contactName: "",
     contactEmail: "",
     companyName: "",
     website: "",
-    companySize: "",
-    jobTitle: "",
-    jobType: "",
-    industry: "",
-    location: "",
-    locationType: "",
+    skills: [],
+    features: [],
     privacy: false,
   });
 </script>
@@ -54,9 +44,9 @@
   <header>
     <h2 class="text-2xl md:text-4xl font-medium mb-4">Get in touch with me</h2>
     <p>
-      Thanks for thinking of me for your hiring opportunity! Please fill out
-      this quick form to let me know about your opportunity, and I'll respond as
-      soon as I can.
+      Thanks for thinking of me for your charity or non-profit opportunity!
+      Please fill out this quick form to let me know about your opportunity, and
+      I'll respond as soon as I can.
     </p>
   </header>
 
@@ -81,55 +71,26 @@
     <Input
       type="text"
       name="companyName"
-      label="Company name"
+      label="Charity or non-profit organisation name"
       bind:value={$content.companyName}
     />
     <Input
       type="text"
       name="companyWebsite"
-      label="Company website"
+      label="Company or project website"
       bind:value={$content.website}
     />
-    <Select
-      name="companySize"
-      label="How many people work at the company?"
-      options={COMPANY_SIZES}
-      bind:value={$content.companySize}
+    <CheckboxGroup
+      name="skills"
+      label="Which of the following services are you interested in?"
+      options={SKILLS}
+      bind:group={$content.skills}
     />
-    <Input
-      type="text"
-      name="jobTitle"
-      label="What is the job title for this opportunity?"
-      hint="e.g. Front-end Web Developer"
-      required
-      bind:value={$content.jobTitle}
-    />
-    <Radio
-      label="What type of role best describes this opportunity?"
-      name="jobType"
-      options={JOB_TYPES}
-      bind:group={$content.jobType}
-    />
-    <Select
-      name="industry"
-      label="Which of the following sectors best describes the industry the company is
-    within?"
-      options={INDUSTRIES}
-      bind:value={$content.industry}
-    />
-    <Input
-      type="text"
-      name="location"
-      label="Where is the company located?"
-      hint="just the name of the city is enough"
-      required
-      bind:value={$content.location}
-    />
-    <Radio
-      label="Which of the following ways of working best describes the opportunity?"
-      name="locationType"
-      options={LOCATION_TYPES}
-      bind:group={$content.locationType}
+    <CheckboxGroup
+      name="skills"
+      label="Which of the following features would you want within your project?"
+      options={FEATURES}
+      bind:group={$content.features}
     />
   </Fieldset>
 
@@ -137,5 +98,5 @@
     <Privacy bind:checked={$content.privacy} />
   </Fieldset>
 
-  <Submit label="Get in touch" disabled={!validators.hire($content)} />
+  <Submit label="Get in touch" disabled={!validators.charity($content)} />
 </form>

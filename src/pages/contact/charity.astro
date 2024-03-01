@@ -1,11 +1,31 @@
 ---
+import Container from "@components/Container.astro";
+import TextLink from "@components/TextLink.astro";
+import CharityForm from "@features/contact/forms/CharityForm.svelte";
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
   meta={{
-    title: "Non-profit Contact Form",
+    title: "Contact",
   }}
 >
-  Non-profit contact form
+  <Container class="min-h-screen max-w-prose mx-auto mt-24">
+    <TextLink
+      as="a"
+      href="/"
+      color="green"
+      class="before:content-['_←'] after:content-none mb-8"
+    >
+      Back to homepage
+    </TextLink>
+    <h1 class="sr-only">Non-profit project contact form</h1>
+    <CharityForm client:idle />
+  </Container>
 </BaseLayout>
+
+<style is:global>
+  form h2 {
+    text-shadow: 2px 2px 0px theme(colors.grey.5);
+  }
+</style>

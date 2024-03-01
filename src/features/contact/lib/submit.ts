@@ -31,5 +31,7 @@ export async function submit({
     }
 
     onSuccess();
+  } else {
+    onError();
   }
 }
