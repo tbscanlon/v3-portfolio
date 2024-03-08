@@ -12,6 +12,7 @@ const { Content } = await intro.render();
 <AboutSection title={intro.data.title} color={intro.data.color}>
   <Content slot="content" />
   <Image
+    loading="eager"
     slot="aside"
     src={introImg}
     alt="Me looking way more important than I actually am"
