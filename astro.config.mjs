@@ -7,6 +7,7 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://www.scanlon.international/",
   integrations: [tailwind(), mdx(), svelte()],
   output: "hybrid",
   adapter: vercel(),
