@@ -54,7 +54,7 @@
     use:focus
     use:lockScrolling
     transition:fade={{ duration: 200 }}
-    class="fixed flex flex-col z-50 bg-grey-1 md:border border-grey-11 shadow-highlight md:rounded-lg bottom-0 md:bottom-8 md:right-8 left-auto top-auto w-full md:max-w-md text-grey-1 h-[100vh] md:h-[80vh] md:max-h-[600px]"
+    class="fixed flex flex-col z-50 bg-grey-1 md:border border-grey-11 shadow-highlight md:rounded-lg bottom-0 md:bottom-8 md:right-8 left-auto top-auto w-full md:max-w-md text-grey-1 h-dvh md:h-[80vh] md:max-h-[600px]"
   >
     <div class="bg-green-light flex items-center p-4 md:rounded-t-lg">
       <img
