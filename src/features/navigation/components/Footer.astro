@@ -10,7 +10,13 @@ import FooterContactButton from "@features/chat/components/FooterContactButton.a
   <div
     class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16"
   >
-    <Image src={logo} alt="" quality="max" class="w-24 md:col-span-full" />
+    <Image
+      src={logo}
+      alt=""
+      quality="max"
+      class="w-24 md:col-span-full"
+      loading="eager"
+    />
     <div>
       <p>Making the world a better place, one line of code at a time.</p>
       <SocialMedia class="mt-4" />
@@ -23,7 +29,7 @@ import FooterContactButton from "@features/chat/components/FooterContactButton.a
             links.map((link) => (
               <li>
                 <a
-                  class="inline-block py-2 focus:bg-grey-4 rounded-lg duration-300"
+                  class="inline-block py-2 underline underline-offset-4 focus:bg-grey-4 rounded-lg duration-300"
                   class:list={{
                     "hover:text-blue-light": link.color === "blue",
                     "hover:text-green-light": link.color === "green",
