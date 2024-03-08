@@ -63,7 +63,7 @@ const ids = {
    * Slug of a particular course on Udemy.
    * @see https://www.udemy.com/
    */
-  course: "100-days-of-code",
+  course: "sql-and-postgresql",
 
   /**
    * ID of a show on IMDB.

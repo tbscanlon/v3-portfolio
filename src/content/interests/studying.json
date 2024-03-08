@@ -1,9 +1,9 @@
 {
   "type": "studying",
-  "title": "100 Days of Code: The Complete Python Pro Bootcamp",
-  "author": "Dr. Angela Yu",
+  "title": "SQL and PostgreSQL: The Complete Developer's Guide",
+  "author": "Stephen Grider",
   "cta": {
-    "url": "https://www.udemy.com/course/100-days-of-code/",
+    "url": "https://www.udemy.com/course/sql-and-postgresql/",
     "text": "View on Udemy"
   }
 }
