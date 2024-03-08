@@ -56,7 +56,9 @@
     transition:fade={{ duration: 200 }}
     class="fixed flex flex-col z-50 bg-grey-1 md:border border-grey-11 shadow-highlight md:rounded-lg bottom-0 md:bottom-8 md:right-8 left-auto top-auto w-full md:max-w-md text-grey-1 h-dvh md:h-[80vh] md:max-h-[600px]"
   >
-    <div class="bg-green-light flex items-center p-4 md:rounded-t-lg">
+    <div
+      class="relative bg-green-light flex items-center p-4 md:rounded-t-lg after:w-full after:h-4 after:bg-gradient-to-t after:from-transparent after:to-grey-1 after:absolute after:-bottom-4 after:left-0"
+    >
       <img
         src={avatar.src}
         class="h-12 w-12 border-2 border-grey-1 rounded-full p-0.5"
