@@ -5,6 +5,7 @@ import "@fontsource/poppins/500.css";
 import Navigation from "@features/navigation/components/Navigation.astro";
 import Footer from "@features/navigation/components/Footer.astro";
 import Chat from "@features/chat/components/Chat.svelte";
+import Meta from "@components/Meta.astro";
 
 export interface Meta {
   title: string;
@@ -20,10 +21,7 @@ const { meta } = Astro.props;
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{meta.title} | Tom Scanlon</title>
+    <Meta title={meta.title} />
   </head>
   <body class="antialiased bg-grey-2 text-grey-11 text-md md:text-lg">
     <Navigation />

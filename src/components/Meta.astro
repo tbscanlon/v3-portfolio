@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "The portfolio of Tom Scanlon, a web developer based in Milan.",
+} = Astro.props;
+
+const baseURL = Astro.site ?? Astro.url;
+
+const pageTitle =
+  title && title !== "Home" ? `${title} | Tom Scanlon` : "Tom Scanlon";
+
+const url = baseURL.href;
+const ogImage = `${baseURL.origin}/og.png`;
+
+const og = {
+  "og:title": pageTitle,
+  "og:url": url,
+  "og:image": ogImage,
+  "og:image:alt": "Tom Scanlon, a web developer based in Milan",
+  "og:type": "website",
+  "og:description": description,
+  "og:locale": "en-GB",
+};
+---
+
+<>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="”twitter:card”" content={description} />
+  <title>
+    {pageTitle}
+  </title>
+  <meta name="description" content={description} />
+  {
+    Object.entries(og).map(([property, content]) => (
+      <meta property={property} content={content} />
+    ))
+  }
+</>
