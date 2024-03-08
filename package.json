@@ -11,29 +11,29 @@
     "get-interests": "node --loader ts-node/esm ./src/features/interests/lib/getAllInterests.ts"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.1.5",
-    "@astrojs/svelte": "^4.0.4",
-    "@astrojs/tailwind": "^5.0.2",
-    "@astrojs/vercel": "^5.2.0",
-    "@aws-sdk/client-ses": "^3.460.0",
-    "@fontsource/bungee-shade": "^5.0.17",
-    "@fontsource/poppins": "^5.0.8",
-    "astro": "^3.5.7",
-    "date-fns": "^2.30.0",
-    "nanostores": "^0.9.5",
-    "nodemailer": "^6.9.7",
-    "svelte": "^4.2.7",
-    "tailwindcss": "^3.3.5"
+    "@astrojs/mdx": "^2.1.1",
+    "@astrojs/svelte": "^5.2.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/vercel": "^7.3.5",
+    "@aws-sdk/client-ses": "^3.529.1",
+    "@fontsource/bungee-shade": "^5.0.19",
+    "@fontsource/poppins": "^5.0.12",
+    "astro": "^4.4.15",
+    "date-fns": "^3.3.1",
+    "nanostores": "^0.10.0",
+    "nodemailer": "^6.9.11",
+    "svelte": "^4.2.12",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
-    "@types/node": "^20.9.4",
+    "@types/node": "^20.11.25",
     "@types/nodemailer": "^6.4.14",
-    "jimp": "^0.22.10",
-    "playwright": "^1.40.0",
-    "prettier": "3.1.0",
-    "svgo": "^3.0.4",
-    "ts-node": "^10.9.1",
+    "jimp": "^0.22.12",
+    "playwright": "^1.42.1",
+    "prettier": "3.2.5",
+    "svgo": "^3.2.0",
+    "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "vercel": "^32.5.6"
+    "vercel": "^33.5.4"
   }
 }
