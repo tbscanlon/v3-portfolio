@@ -7,6 +7,30 @@
   },
   "projects": [
     {
+      "title": "Dr. Hayley Scanlon",
+      "slug": "dr-hayley-scanlon",
+      "url": "https://www.hayleyscanlon.doctor",
+      "description": "A promotional and booking site for Dr. Hayley Scanlon, a clinical psychologist",
+      "longDescription": [
+        "Dr. Hayley Scanlon is a clinical psychologist that provides psychological consultation to individuals and groups, both in-person and remotely. I was engaged to help create a brand identity and web presence for her, aiming to build trust and promote her services.",
+        "We started from zero - no name, no identity, no website. I was responsible for finding answers to everything. I put together a simple brand from creative commons-licensed materials, and iterated on that until we had a simple message that could be used in promotions as a call to action: 'find yourself here'. Alongside that work I decided upon a colour and typographic scheme, and started scaffolding a simple one-page site that could be used as a canonical source of info about Dr. Hayley.",
+        "We did not have any hard requirements around using a particular tech stack or including specific pieces of functionality. With the freedom this gave me, I decided to use Astro to build the site, using React where needed to create more custom pieces of UI.",
+        "Alongside this work, I provided general technology consultation for Dr. Hayley, including setting up business accounts for e-mail and instant messaging services anc configuring a domain to ensure sent messages are considered trustworthy.",
+        "I consider this project to be very successful because I focused entirely on creating value for Dr. Hayley. From the choice of tech stack for the website through to the file type of the exported brand assets, every choice I made was to create value and reduce friction. Through this ethos of value creation, I was able to achieve near-perfect lighthouse scores on the website's landing page and create a custom-built contact experience that is tailored to generate leads for Dr. Hayley by providing the exact information she needs to secure bookings.",
+        "Full disclosure: Dr. Hayley Scanlon is my sister."
+      ],
+      "stack": [
+        "Astro",
+        "react",
+        "Tailwind CSS",
+        "Playwright",
+        "Vercel",
+        "AWS SES",
+        "Figma"
+      ],
+      "startDate": "2023-09-01T00:00:00Z"
+    },
+    {
       "title": "RapidWage",
       "slug": "rapidwage",
       "url": "https://www.rapidwage.com",
@@ -36,11 +60,11 @@
       "url": "https://www.irishheritage.org.uk",
       "description": "A site for a music charity awarding bursaries to young people with an interest in Irish music",
       "longDescription": [
-        "Full disclosure: I sit as a member on the Irish heritage committee providing advice about technology and digital strategy.",
         "Irish Heritage is a registered charity, established to continue the musical legacy of Ireland by providing funding and exposure to performers of Irish descent. Irish Heritage also provides outreach to the Irish community in the UK through performances and recitals.",
         "A new website was requested as part of a larger rebranding of the charity, and over the course of a few months I built and iterated upon a site that tells the story of the charity and provides a platform for the charity to communicate with the public.",
         "I was repsonsible for the entirety of the charity's web presence. This ranges from SEO, to content management, to all technical concerns involved with running a live website. I engaged extensively with senior stakeholders within the charity to produce a website fitting of the charity's objectives, and I continue to build and maintain the site to this day.",
-        "I built a site using modern tooling because of the various integrations with third party services that were required. The site I built supports integrations with a content management system, ticketing system and archive system. The tooling I use and the architecture I've chosen allow work done across the charity to be promoted on the website without any changes in workflow for non-technical staff."
+        "I built a site using modern tooling because of the various integrations with third party services that were required. The site I built supports integrations with a content management system, ticketing system and archive system. The tooling I use and the architecture I've chosen allow work done across the charity to be promoted on the website without any changes in workflow for non-technical staff.",
+        "Full disclosure: I sit as a member on the Irish heritage committee providing advice about technology and digital strategy."
       ],
       "stack": [
         "react",

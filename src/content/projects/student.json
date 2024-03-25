@@ -1,7 +1,22 @@
 {
-  "title": "Student",
+  "title": "Personal",
   "introduction": "Projects I've built whilst studying web development, or for personal development.",
   "projects": [
+    {
+      "title": "Portfolio (version 3)",
+      "slug": "portfolio-v3",
+      "type": "student",
+      "url": "https://github.com/tbscanlon/v3-portfolio",
+      "description": "My portfolio website",
+      "longDescription": [
+        "My portfolio website is where I catalogue my work and try to promote myself.",
+        "My portfolio has gone through 3 major iterations over the past 6 years. This website which you're using right now is the third iteration.",
+        "I wanted to create a website which showcases my work and serves as the best example of my abilities that I could possibly make. Everything on this site has been created from scratch (bar the colour scheme) with a focus on user experience, performance and accessibility.",
+        "I'm proud of this site, and I have open-sourced it to help illustrate my capabilities as a web developer."
+      ],
+      "stack": ["Astro", "Svelte", "Tailwind CSS", "AWS SES", "Vercel", "Figma"],
+      "startDate": "2023-08-01T00:00:00Z"
+    },
     {
       "title": "The PERCEPTICON",
       "slug": "the-percepticon",
