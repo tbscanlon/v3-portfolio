@@ -74,7 +74,8 @@
         "AWS SES",
         "headless CMS"
       ],
-      "startDate": "2020-08-01T00:00:00Z"
+      "startDate": "2020-08-01T00:00:00Z",
+      "endDate": "2024-03-01T00:00:00Z"
     }
   ]
 }

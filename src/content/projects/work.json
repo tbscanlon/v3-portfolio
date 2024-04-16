@@ -3,6 +3,31 @@
   "introduction": "Projects I've worked on professionally as part of my career.",
   "projects": [
     {
+      "title": "Doctolib",
+      "type": "work",
+      "slug": "doctolib",
+      "url": "https://www.doctolib.fr",
+      "description": "Europe's largest healthcare platform",
+      "longDescription": [
+        "Doctolib is among Europe's largest healthcare platforms, with over 80 million registered patients and 900,000 professional users. Doctolib is a household name in France, and a major healthtech provider in Germany and Italy. Launched in 2013, Doctolib has grown to nearly 3,000 staff as of 2023. ",
+        "Doctolib's missions are to empower healthcare teams to deliver better care to patients and improve health for everyone. Under these missions, staff at Doctolib work continuously to develop software solutions for pain points in the medical industry.",
+        "Doctolib's software estate is large and complex - we're required to operate a service scaled to millions of monthly active users (MAUs) whilst remaining compliant with a web of national and international regulations.",
+        "Within Doctolib, I've worked on the patient messaging feature, which acts as a communication channel between a healthcare professional and their patients. We deal with highly sensitive data and stringent regulations on a daily basis. My contributions to the feature have touched the entire stack, from database backfilling to mobile app UI work."
+      ],
+      "stack": [
+        "Typescript",
+        "react",
+        "react-query",
+        "TailwindCSS",
+        "Ruby",
+        "Ruby on Rails",
+        "PostgreSQL",
+        "Redis",
+        "MongoDB"
+      ],
+      "startDate": "2023-12-01T00:00:00Z"
+    },
+    {
       "title": "BBC Sounds",
       "type": "work",
       "slug": "bbc-sounds",
