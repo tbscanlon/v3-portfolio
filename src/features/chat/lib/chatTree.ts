@@ -99,7 +99,7 @@ const website: Segment = {
     "Thanks so much!",
     "I made this site using Astro and Svelte",
     "This site is open source and you can check out the source code on GitHub",
-    "(it's a bit messy, sorry)",
+    "(the source code is a bit messy, sorry)",
   ],
   options: [
     {

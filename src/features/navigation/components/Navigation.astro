@@ -30,7 +30,6 @@ const { isRelative = false } = Astro.props;
     </a>
     <!-- Mobile nav buttons -->
     <div class="flex ml-auto md:hidden items-center space-x-4">
-      <NavContactButton />
       <IconButton id="show-mobile-nav" label="Open main menu">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +118,11 @@ const { isRelative = false } = Astro.props;
         links.map((link) => (
           <li>
             <a
-              class="block py-6 px-4 w-full hover:bg-grey-4 focus:bg-grey-4 rounded-lg duration-300"
+              class="block py-6 my-2 px-4 w-full hover:bg-grey-4 focus:bg-grey-4 rounded-lg duration-300"
+              class:list={{
+                "underline underline-offset-4 bg-grey-3":
+                  activeRoute?.href === link.href,
+              }}
               href={link.href}
             >
               {link.text}
@@ -127,6 +130,9 @@ const { isRelative = false } = Astro.props;
           </li>
         ))
       }
+      <li>
+        <NavContactButton />
+      </li>
     </ul>
   </div>
 </dialog>

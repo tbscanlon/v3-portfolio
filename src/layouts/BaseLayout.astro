@@ -6,14 +6,11 @@ import Navigation from "@features/navigation/components/Navigation.astro";
 import Footer from "@features/navigation/components/Footer.astro";
 import Chat from "@features/chat/components/Chat.svelte";
 import Meta from "@components/Meta.astro";
-
-export interface Meta {
-  title: string;
-}
+import type { Props as MetaProps } from "@components/Meta.astro";
 
 interface Props {
   children?: any;
-  meta: Meta;
+  meta: MetaProps;
 }
 
 const { meta } = Astro.props;
@@ -21,7 +18,11 @@ const { meta } = Astro.props;
 
 <html lang="en">
   <head>
-    <Meta title={meta.title} />
+    <Meta
+      title={meta.title}
+      description={meta.description}
+      image={meta.image}
+    />
   </head>
   <body class="antialiased bg-grey-2 text-grey-11 text-md md:text-lg">
     <Navigation />

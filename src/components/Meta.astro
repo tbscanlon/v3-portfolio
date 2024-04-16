@@ -1,12 +1,14 @@
 ---
-interface Props {
+export interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title,
   description = "The portfolio of Tom Scanlon, a web developer based in Milan.",
+  image = `og.png`,
 } = Astro.props;
 
 const baseURL = Astro.site ?? Astro.url;
@@ -15,7 +17,7 @@ const pageTitle =
   title && title !== "Home" ? `${title} | Tom Scanlon` : "Tom Scanlon";
 
 const url = baseURL.href;
-const ogImage = `${baseURL.origin}/og.png`;
+const ogImage = `${baseURL.origin}/${image}`;
 
 const og = {
   "og:title": pageTitle,
