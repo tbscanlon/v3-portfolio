@@ -51,7 +51,7 @@ const ids = {
    * ID of a game from Steam.
    * @see https://store.steampowered.com/
    */
-  game: "1086940",
+  game: "2072450",
 
   /**
    * ISBN-13 of a book.
